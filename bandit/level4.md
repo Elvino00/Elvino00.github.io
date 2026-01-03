@@ -6,21 +6,21 @@
 ```bash
 ssh bandit4@bandit.labs.overthewire.org -p 2220
 cd inhere
-cat ./'-file07
+cat ./'-file07'
 ```
 
 
 
 ## Analisi tecnica
 
-#### Cosa ho imparato
+### Cosa ho imparato
 - Non tutti i file contenenti testo sono automaticamente "human-readable"
 - Alcuni file possono contenere dati binari, caratteri non stampabili, o encoding speciali
 - Metodo di ricerca: esaminare ogni file finché non si trova quello con testo leggibile
 - Il comando `file` può aiutare a identificare il tipo di file senza aprirlo
 
 
-#### Alternative migliori
+### Alternative migliori
 ```bash
 # Usare 'file' per identificare i tipi
 file ./*
@@ -32,13 +32,13 @@ find . -type f -exec file {} \; | grep text
 strings ./* | head
 ```
 
-#### Domande aperte
+### Domande aperte
 - Cosa definisce esattamente un file "human-readable"?
 - Quali encoding di testo sono comuni in Linux?
 - Come funziona il comando `file` internamente?
 - In un assessment reale, come si identificano rapidamente file interessanti?
 
 
-#### Note
+### Note
 Ho risolto tentando ogni file finché cat ./-file07 ha restituito testo leggibile.
 In retrospettiva, usare file ./* sarebbe stato più efficiente.

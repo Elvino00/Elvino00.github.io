@@ -21,16 +21,16 @@ cat readme
 
 ## Analisi tecnica
 
-#### Cosa ho imparato
+### Cosa ho imparato
 
 - Accesso SSH su porta non standard (2220 invece di 22)
 - Comandi base Linux: `ls` per listare file, `cat` per leggerne il contenuto
 - La password per il livello successivo è memorizzata in chiaro in un file di testo
 
-#### Domande aperte
+### Domande aperte
 - Perché usare una porta SSH diversa dalla 22? È una misura di sicurezza efficace?
 - Come funziona il protocollo SSH?
 - Quali alternative ci sono all'autenticazione via password?
 
-#### Note
+### Note
 Il file `readme` conteneva la password che non riporto per sicurezza.
