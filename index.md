@@ -9,3 +9,8 @@ Technical analysis of excercises and vulnerabilities.
 - [Livello 2 → 3](bandit/level2.md)
 - [Livello 3 → 4](bandit/level3.md)
 - [Livello 4 → 5](bandit/level4.md)
+- [Livello 5 → 6](bandit/level5.md)
+- [Livello 6 → 7](bandit/level6.md)
+- [Livello 7 → 8](bandit/level7.md)
+- [Livello 8 → 9](bandit/level8.md)
+- [Livello 9 → 10](bandit/level9.md)

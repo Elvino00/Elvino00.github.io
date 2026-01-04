@@ -1,6 +1,7 @@
 # Bandit Level 3 → Level 4
 
 ## Obiettivo
+Trovare e leggere un file nascosto all'interno della directory `inhere`.
 
 ## Comandi utilizzati
 ```bash
@@ -18,7 +19,7 @@ cat ...Hiding-From-You
 - I file che iniziano con `.` (dotfiles) sono normalmente nascosti in Linux
 - Il comando `ls -a` mostra tutti i file, inclusi quelli nascosti (`a` sta per "all")
 - I file nascosti non sono protetti, solo non visibili con ls standard
-- Directory come `inhere` possono contenere file nascosti come elemento di un Capture The Flag
+- Directory come `inhere` possono contenere file nascosti come elemento di un *Capture The Flag*
 
 ### Domande aperte
 - Qual è lo scopo originale dei file nascosti in Unix/Linux?

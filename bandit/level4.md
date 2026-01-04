@@ -1,6 +1,7 @@
 # Bandit Level 4 → Level 5
 
 ## Obiettivo
+Trovare l'unico file leggibile da umani (human-readable) nella directory `inhere`.
 
 ## Comandi utilizzati
 ```bash
@@ -40,5 +41,5 @@ strings ./* | head
 
 
 ### Note
-Ho risolto tentando ogni file finché cat ./-file07 ha restituito testo leggibile.
-In retrospettiva, usare file ./* sarebbe stato più efficiente.
+Ho risolto tentando ogni file finché `cat ./-file07` ha restituito testo leggibile.
+In retrospettiva, usare `file ./*` sarebbe stato più efficiente.
