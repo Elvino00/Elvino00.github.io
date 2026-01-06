@@ -23,3 +23,7 @@ Technical analysis of excercises and vulnerabilities.
 - [Livello 16 → 17](bandit/level16.md)
 - [Livello 17 → 18](bandit/level17.md)
 - [Livello 18 → 19](bandit/level18.md)
+- [Livello 19 → 20](bandit/level19.md)
+- [Livello 20 → 21](bandit/level20.md)
+- [Livello 21 → 22](bandit/level21.md)
+- [Livello 22 → 23](bandit/level22.md)
