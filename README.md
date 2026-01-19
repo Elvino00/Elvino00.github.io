@@ -5,6 +5,7 @@ Documentazione tecnica del mio percorso di apprendimento nella cybersecurity.
 ## 📁 Struttura
 
 - **`/bandit`** - Analisi dei livelli di OverTheWire Bandit
+- **`/security_plus`** - Appunti studio certificazione Security+
 - Ogni file include: obiettivo, metodologia, apprendimenti, domande aperte
 
 ## 🧠 Metodologia

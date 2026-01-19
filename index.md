@@ -37,3 +37,7 @@ Technical analysis of excercises and vulnerabilities.
 - [Livello 30 → 31](bandit/level30.md)
 - [Livello 31 → 32](bandit/level31.md)
 - [Livello 32 → 33](bandit/level32.md)
+
+## CompTIA Security+
+
+- [Lezione 1](security+/chapter1.md)
