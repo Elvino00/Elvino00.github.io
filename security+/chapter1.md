@@ -111,13 +111,94 @@ Integrity is verified through **hashing**, which creates a short text string kno
 Non-repudiation is achieved by adding a digital signature, which uses a private key (known only to the sender) and an associated public key (available to anyone).
 
 Let's take the example of Alice sending a message to Bob:
-[Creazione Firma Digitale](https://res.cloudinary.com/dnhgctqsu/image/upload/Alice_and_Bob_a8krb8.png)
+[Digital Signature Creation](https://res.cloudinary.com/dnhgctqsu/image/upload/Alice_and_Bob_a8krb8.png)
 1. **Hash Creation:** Alice's system creates a hash of the original message ("You're hired, Bob").
 2. **Hash Encryption:** The hash is encrypted with Alice's private key. This encrypted hash becomes the digital signature.
 3. **Sending:** Alice sends the cleartext message along with the digital signature to Bob.
 4. **Decryption and Verification by Bob:** Bob receives the message and uses **Alice's public key** to decrypt the signature and obtain the original hash.
 5. **Comparison:** Bob independently generates a new hash from the received message and compares it with the one obtained from Alice's signature.
 
-[Verifica Firma digitale](https://res.cloudinary.com/dnhgctqsu/image/upload/Screenshot_From_2026-01-19_18-42-51_n4uif2.png)
+[Digital Signature Verification](https://res.cloudinary.com/dnhgctqsu/image/upload/Screenshot_From_2026-01-19_18-42-51_n4uif2.png)
 
 If the two hashes match, Bob has mathematical proof that the message **has not been altered** and that **it must have been sent by Alice**, since only she possesses the private key needed to create that specific signature. This process ensures that neither Alice nor Bob can deny the transaction, guaranteeing non-repudiation.
+
+
+## Authentication, Authorization, and Accounting (AAA)
+
+The **AAA framework** is a foundational security concept used to manage access to systems and resources. It consists of three primary components, often preceded by the initial step of **identification**.
+
+###  Core Components of AAA
+-   **Identification:** This is the initial step where a user **claims to be a specific identity** on a system, typically by providing a username.
+-   **Authentication:** This process **proves that the user is truly who they say they are**. This is achieved by checking the provided username against a secret password or additional authentication factors.
+-   **Authorization:** Once identified and authenticated, the system must determine the **type of access** the user is permitted. This ensures that users can only access resources relevant to their department (e.g., shipping and receiving) and are restricted from others (e.g., finance).
+-   **Accounting:** Security systems must maintain a **log of activity**. This includes recording the login time, the amount of data sent or received, and the time the user logged out.
+
+
+
+###  Practical Application: The AAA Server
+In many organizations, authentication data is not stored locally on individual devices like firewalls or VPN concentrators. Instead, it is managed centrally:
+-   **Centralized Management:** A dedicated **AAA server** stores usernames, passwords, and authentication factors in a central database.
+-   **The Process:** When a user attempts to log into a **VPN concentrator**, the device sends the credentials to the AAA server. The server verifies the match and sends an approval back to the concentrator, which then allows the user to access internal resources.
+
+
+
+###  Device Authentication and Certificates
+Security professionals must often authorize devices (like company laptops) that may be located anywhere in the world and cannot manually enter a password,.
+-   **Digital Certificates:** To verify that a device is company-owned, a **digitally signed certificate** is installed on the machine
+-   **Certificate Authority (CA):** A CA is a device or software responsible for **managing and signing certificates** within an environment 
+-   **Verification:** During login, the security infrastructure compares the device's certificate (signed by the CA) against the CA's own certificate. If they match, the device is authenticated as a trusted system
+
+
+
+### Authorization Models and Scalability
+Manually assigning rights and permissions to every individual user does not scale well in large organizations. 
+-   **The Problem with Manual Mapping:** If a user in "shipping and receiving" needs access to five different databases and tracking systems, manually configuring these for hundreds of employees is inefficient and error-prone
+-   **Abstraction through Groups:** To scale, organizations use **authorization models** (or abstractions) to separate users from the resources they access
+-   **Role-Based Access:** Instead of mapping users to resources, users are added to a **group** (e.g., "Shipping and Receiving Group"). Permissions are assigned to the group itself, so any user added to it automatically gains all necessary access to shipping labels, customer data, and tracking reports
+
+
+## Gap Analysis
+
+A gap analysis is a formal study comparing an organization's current security posture ("**where we are**") against its desired security goals ("**where we would like to be**")
+
+Its **purpose** is to identify what security measures will be required in the future.
+
+Executing this concept requires a complex process that can take several **weeks**/**months**, or even **years** to complete. It requires **extensive** project **planning**, data gathering, and involvement from various people across the organization.
+
+### Establishing Baselines
+Before conducting the analysis, an organization must establish a baseline to serve as a target goal
+
+- **Common Standards**:
+    - **NIST SP 800-171 Revision 2**: Focused on "Protecting Controlled Unclassified Information in Non-federal Systems and Organizations"
+
+    - **ISO/IEC 27001**: An international standard for Information Security Management Systems
+
+    - **Custom Baselines**: Organizations can also create their own standards based on specific internal needs
+
+### Key Areas of Evaluation
+The analysis typically breaks down broad security categories into smaller, manageable segments for evaluation:
+
+- **People**: Evaluates staff based on their formal <ins>IT</ins> security <ins>experience</ins>, the <ins>training</ins> they have <ins>received</ins>, and their specific <ins>knowledge</ins> of the <ins>organization</ins>'s <ins>policies</ins> and <ins>procedures</ins>
+
+- **Processes**: Involves an <ins>evaluation</ins> of <ins>existing IT systems</ins> to see how they align with formal security policy documentation
+
+- **Example (Access Control)**: A broad category like "Access Control" is broken down into specific tasks such as user registration/deregistration, access provisioning, and management of privileged rights
+
+
+[Tabella SP 800-171 Rev 2](https://res.cloudinary.com/dnhgctqsu/image/upload/Screenshot_From_2026-01-24_19-14-17_exoc0r.png)
+
+### The Analysis and Reporting Process
+1. **Comparison**: The analysis begins by comparing existing systems against the baseline to identify weaknesses and determine effective processes to compensate for them
+
+2. **Bridging the Gap**: The analysis must determine the "<ins>path</ins>" to reach the desired state, which often requires time, money, new equipment, and formal Change Control
+
+3. **The Gap Analysis Report**: This final document summarizes all discoveries
+It includes:
+    - The current status of security objectives
+    - A pathway/recommendations for moving forward
+    - Visual Prioritization: Reports often use color-coding to show which locations or requirements need the most work:
+        - **Red**: Needs significant work (highest priority for improvement)
+        - **Yellow**: Midpoint
+        - **Green**: Relatively close to meeting the baseline
+
+[Gap Analysis Report](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769278652/tabella_wuznth.png)
