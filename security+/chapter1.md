@@ -185,20 +185,109 @@ The analysis typically breaks down broad security categories into smaller, manag
 - **Example (Access Control)**: A broad category like "Access Control" is broken down into specific tasks such as user registration/deregistration, access provisioning, and management of privileged rights
 
 
-[Tabella SP 800-171 Rev 2](https://res.cloudinary.com/dnhgctqsu/image/upload/Screenshot_From_2026-01-24_19-14-17_exoc0r.png)
+[SP 800-171 Rev 2 Table](https://res.cloudinary.com/dnhgctqsu/image/upload/Screenshot_From_2026-01-24_19-14-17_exoc0r.png)
 
 ### The Analysis and Reporting Process
-1. **Comparison**: The analysis begins by comparing existing systems against the baseline to identify weaknesses and determine effective processes to compensate for them
+1. **Comparison**: The analysis begins by comparing <ins>existing systems</ins> **against** the <ins>baseline</ins> to <ins>identify weaknesses</ins> and determine <ins>effective processes</ins> to **compensate** for them
 
-2. **Bridging the Gap**: The analysis must determine the "<ins>path</ins>" to reach the desired state, which often requires time, money, new equipment, and formal Change Control
+2. **Bridging the Gap**: The analysis must determine the "<ins>path</ins>" to reach the <ins>desired state</ins>, which often requires time, money, new equipment, and formal Change Control
 
 3. **The Gap Analysis Report**: This final document summarizes all discoveries
 It includes:
-    - The current status of security objectives
-    - A pathway/recommendations for moving forward
-    - Visual Prioritization: Reports often use color-coding to show which locations or requirements need the most work:
+    - The <ins>current status</ins> of security objectives
+    - A <ins>pathway/recommendations</ins> for moving forward
+    - **Visual Prioritization**: Reports often use color-coding to show which <ins>locations</ins> or requirements <ins>need</ins> the most <ins>work</ins>:
         - **Red**: Needs significant work (highest priority for improvement)
         - **Yellow**: Midpoint
         - **Green**: Relatively close to meeting the baseline
 
 [Gap Analysis Report](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769278652/tabella_wuznth.png)
+
+
+## Zero Trust
+In traditional network environments, once a user or device passes through the initial firewall, the internal network is often relatively open, allowing both authorized and unauthorized entities to move between systems without further checks.
+**Zero Trust** shifts this paradigm by operating under the principle that **nothing is trusted by default**. Every <ins>user, device, and process</ins> must <ins>prove its identity</ins> and be <ins>authenticated</ins> every time they attempt to <ins>access a specific resource</ins>. 
+This environment often employs several security controls, including:
+-   **Multifactor authentication (MFA)** during login.
+-   **Encryption** for both data at rest and data traversing the network.
+-   Additional **system permissions** and **firewalls**.
+
+### Planes of Operation
+To implement Zero Trust, security administrators <ins>break down</ins> security <ins>devices</ins> and <ins>processes</ins> into <ins>two</ins> distinct functional <ins>planes of operation</ins>:
+-   **The Data Plane:** This is the <ins>part of the device</ins> - whether a physical switch, virtual firewall, or cloud process - that performs the **actual security processing**.
+It handles the real-time movement of data, including <ins>forwarding, routing, and Network Address Translation</ins> (NAT).
+-   **The Control Plane:** This is where the **management of the data plane** occurs. It is used to <ins>configure policies, routing tables, and rules</ins> that determine <ins>how data is allowed to traverse the network</ins>.
+
+### Identity and Access Control
+Zero Trust requires a "smarter" way to evaluate security controls through methods like **adaptive identity**. Instead of relying solely on a user's claims, the system examines multiple variables to confirm identity, such as:
+-   **Geographic location and IP address** (e.g., flagging a request if a user is using a Chinese IP to access U.S. resources).
+-   **Organizational relationship**, such as whether the individual is a full-time employee or a contractor.
+-   **Connection type** and the specific device being used.
+
+These data points are integrated into a **policy-driven access control** system that decides the level of authentication required. Additionally, organizations categorize network traffic into **security zones** (such as "Trusted," "Untrusted," "Internal," or "External") to set rules on which zones are allowed to communicate with one another.
+
+[Zero trust across planes](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769360627/Screenshot_From_2026-01-25_18-02-03_xnnms9.png)
+
+### Key Architectural Components
+The Zero Trust model relies on a specific hierarchy of components to evaluate and enforce security decisions:
+-   **Policy Enforcement Point (PEP):** Acting as a **gatekeeper**, the PEP is the location where all network traffic must pass. It does not make the final decision but gathers information about the traffic and provides it to the decision-making components.
+-   **Policy Decision Point (PDP):** This consists of two main parts:
+    -   **Policy Engine:** This examines the request against **predefined security policies** to decide if access should be granted, denied, or revoked.
+    -   **Policy Administrator:** Once a decision is made, the administrator provides the necessary **access tokens or credentials** back to the PEP.
+
+### The Zero Trust Workflow
+In a complete Zero Trust model, a subject (user or system) from an **untrusted zone** attempts to communicate across the **data plane**. The traffic hits the **Policy Enforcement Point**, which sends the request to the **Policy Administrator** and **Policy Engine**. If the Policy Engine determines the traffic is allowed based on its evaluation, the decision is passed back through the administrator to the enforcement point, which finally grants access to the **trusted zone** and the requested enterprise resource.
+
+
+## Physical Security
+
+IT security professionals must be proficient in **physical security** in addition to digital security. Here are some physical security methods and technologies used to protect facilities.
+
+### Structural Barriers
+-   **Barricades and Ballards:** These are used to **channel people** through specific <ins>access points</ins> and prevent <ins>vehicles</ins> from entering <ins>restricted areas</ins>. They can also serve as a **security notice** to indicate a <ins>high-security zone</ins>. Beyond concrete barriers, features like water and bridges can also function as barricades.
+-   **Fencing:** Fences are obvious physical controls that can be **transparent or opaque**. To increase security, fences should be robust and may include additions like **razor wire** or increased height to prevent intruders from climbing over.
+
+### Entry and Identification Controls
+-   **Access Control Vestibules:** This is a specialized <ins>room</ins> one must pass <ins>through</ins> to enter a building. They can be configured in various ways—such as having <ins>doors that cannot be unlocked simultaneously</ins> — to control the flow of individuals or small groups. These are common in high-security areas like **data centers** and often require <ins>card</ins> or **biometric readers** for <ins>authentication</ins>.
+-   **Identification Badges:** <ins>Employees</ins> are often required to <ins>wear</ins> visible <ins>ID badges</ins> containing their <ins>picture</ins> and <ins>name</ins>. These badges are frequently integrated with **electronic locks**, allowing the organization to <ins>log</ins> every time an individual <ins>enters a room</ins> into a central database.
+-   **Security Guards:** Human guards provide a physical presence to <ins>validate employees and guests</ins>. Using two or more guards simultaneously provides **two-person integrity**, ensuring that one individual <ins>cannot circumvent security policies</ins> without another person providing checks and balances.
+
+### Surveillance and Lighting
+-   **Cameras (CCTV):** Closed-circuit television systems are used to <ins>monitor</ins> locations more efficiently than manual oversight. Modern cameras are "intelligent," featuring **motion detection**, **facial recognition**, and the ability to **read license tags**.
+-   **Lighting:** Proper illumination is a primary <ins>deterrent</ins> because unauthorized individuals prefer to move out of view. Lighting is also critical for camera performance, specifically for **facial recognition** in areas like parking lots.
+
+### Detection Technologies
+There are several types of sensors used to detect movement or presence:
+-   **Infrared (IR):** IR technology detects radiation and is used in cameras to see in the dark or in **motion detectors**.
+-   **Pressure Sensors:** These detect changes in force when someone moves across a specific area.
+-   **Microwave Technologies:** These are used to detect movement over **much larger areas** than infrared sensors can cover.
+-   **Ultrasonic Detection:** This technology uses **reflected sound waves** to detect motion and can provide collision detection in loading zones or parking lots.
+
+## Deception and Disruption
+IT security professionals can use **deception and disruption** techniques to attract, study, and track attackers who attempt to gain access to systems.
+
+### Honeypots
+A **honeypot** is a system designed specifically to attract attackers and keep them engaged so that security professionals can observe the techniques and automation they use. 
+-   **Purpose:** These systems act as a <ins>virtual world</ins> that is entirely <ins>separate</ins> from actual production processes. By monitoring a honeypot, you can identify what <ins>types</ins> of automated <ins>processes</ins> or specific <ins>systems</ins> the attackers are <ins>targeting</ins>.
+-   **The "Race":** There is a continuous race between defenders and attackers; as <ins>attackers</ins> become better at <ins>identifying traps</ins>, <ins>defenders</ins> must increase the <ins>complexity and intelligence</ins> of honeypots to make them appear more <ins>realistic</ins>.
+-   **Creation:** Security professionals can build these using various commercial or open-source software packages.
+
+### Honey Nets
+When multiple virtualized <ins>honeypots</ins> are <ins>combined</ins> into a <ins>larger infrastructure</ins>, it is called a **honey net**. 
+-   **Components:** A honey net can include various network elements such as **workstations, servers, routers, and firewalls** to mimic a real-world environment.
+-   **Effectiveness:** This larger-scale infrastructure is much more believable to an attacker and is intended to keep them occupied for a significant amount of time. 
+
+For more information on these technologies, look [here](www.projecthoneypot.org).
+
+### Honey Files
+Deception can also be implemented at the file level through **honey files**.
+-   **Nature:** These are files containing fake information that appear sensitive or important, such as a file named **"password.txt"**.
+-   **Monitoring:** Since these files have no place in a normal production network, any attempt to access or open them should trigger **alerts or alarms** sent to a management station, signaling that someone is unauthorizedly browsing the system.
+
+### Honey Tokens
+**Honey tokens** are pieces of traceable, falsified data used to identify issues with data leaks or public distribution.
+-   **Functionality:** If a honey token is copied and distributed, its unique nature allows security professionals to know exactly where it <ins>originated</ins>.
+-   **Examples of Honey Tokens:**
+    -   **API Credentials:** <ins>Fake credentials</ins> placed on a public cloud share to see <ins>who</ins> attempts to <ins>use them</ins>.
+    -   **Email Addresses:** <ins>Fake addresses</ins> that are monitored to see if they <ins>appear elsewhere</ins> on the <ins>internet</ins>, which can help <ins>identify</ins> who is <ins>attacking</ins> the network.
+    -   **Other Data Types:** Honey tokens can take many forms, including **database records, browser cookies, or even specific pixels on a web page**. If this data is posted elsewhere online, it provides actionable intelligence about the <ins>source</ins> of the <ins>breach</ins>.
