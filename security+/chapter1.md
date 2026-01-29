@@ -291,3 +291,62 @@ Deception can also be implemented at the file level through **honey files**.
     -   **API Credentials:** <ins>Fake credentials</ins> placed on a public cloud share to see <ins>who</ins> attempts to <ins>use them</ins>.
     -   **Email Addresses:** <ins>Fake addresses</ins> that are monitored to see if they <ins>appear elsewhere</ins> on the <ins>internet</ins>, which can help <ins>identify</ins> who is <ins>attacking</ins> the network.
     -   **Other Data Types:** Honey tokens can take many forms, including **database records, browser cookies, or even specific pixels on a web page**. If this data is posted elsewhere online, it provides actionable intelligence about the <ins>source</ins> of the <ins>breach</ins>.
+
+
+## Change Management
+
+Change management is a critical <ins>formal process</ins> used in corporate environments to <ins>ensure</ins> that <ins>updates</ins> to <ins>applications</ins>, operating systems, <ins>or infrastructures</ins> like routers and firewalls are <ins>implemented properly</ins> without causing widespread disruption. Unlike home environments where a change might only affect one computer, a <ins>single change</ins> in a large organization can <ins>impact thousands of systems</ins>.
+
+
+### The Purpose of Change Control
+-   **Security and Stability:** Regularly updating systems is vital because <ins>unpatched systems</ins> are <ins>less secure</ins>. Formal processes **prevent the problems** that arise if everyone made changes at will, such as **application inconsistencies** or **failures**.
+-   **Availability:** The primary goals are to **maintain system uptime**, ensure all parties are informed to **avoid confusion**, and **prevent human error** during implementation.
+
+### The Typical Change Control Process
+1.  **Documentation:** The process begins by filling out a formal <ins>Change Control form</ins>. This includes documenting the **reason for the change**, the **scope** (which systems are affected), and the **intended schedule** (date and time).
+2.  **Risk Analysis:** A Change Control Board or committee analyzes the risks. They must **balance** the **risk** of *making* the **change** (potential for failure during busy periods) against the **risk** of *not* making the **change** (such as leaving a security vulnerability unpatched).
+3.  **Approval:** The board uses the provided documentation to decide whether to <ins>allow</ins> or <ins>disallow</ins> the <ins>change</ins>.
+4.  **Verification:** Once implemented, users and owners must <ins>test</ins> the <ins>systems</ins> to confirm the change was successful and did not cause new problems.
+
+### Roles and Responsibilities
+-   **Owners:** The <ins>owner</ins> of the application or data usually <ins>initiates</ins> the <ins>request</ins> and <ins>manages</ins> the <ins>process</ins> but does not typically perform the technical change themselves. They are <ins>responsible</ins> for final <ins>testing</ins> and <ins>verification</ins>.
+-   **IT Team:** The IT department generally <ins>handles</ins> the actual <ins>technical implementation</ins> of the change.
+-   **Stakeholders:** These are <ins>individuals</ins> or departments impacted by the <ins>change</ins>. Identifying them can be complex; for example, a change to shipping label software might impact accounting (for reports), customer delivery times, and even revenue recognition visible to the CEO.
+
+### Risk Management and Testing
+-   **Types of Risk:** Risks include the fix not working, the update breaking other systems, operating system failure, or **data corruption**. 
+-   **Sandboxing:** To mitigate risk, changes should be tested in a **sandbox environment**, a "technological safe space" that duplicates the production environment so mistakes do not affect users.
+-   **Backout Plans:** Every change must have a documented **backout or rollback procedure** to revert the system to its original state if the change fails. It is highly recommended to have a **full and complete backup** of the system before any change is attempted.
+
+### Scheduling and Implementation
+-   **Maintenance Windows:** Finding time to implement changes is often the hardest part. IT teams frequently work during "off-hours," such as weekends, holidays, or early mornings, to minimize user disruption.
+-   **Change Freezes:** Some organizations, such as retail companies, may implement a **total freeze on changes** during their busiest times of year (e.g. between Thanksgiving and New Year).
+
+### Governance
+Change management should be a part of an organization's **Standard Operating Procedures (SOPs)**. These procedures are typically documented on a company intranet so they are accessible to everyone, ensuring no one makes unauthorized changes to the network. The process is also expected to be updated over time to improve efficiency and meet company requirements.
+
+## Technical Change Management
+While making changes to a few devices at home is simple, performing updates in an environment with hundreds or thousands of devices is a complex process.
+
+### Access Control Lists
+A common technical change involves managing **allow lists** and **deny lists** to control which applications can run:
+-   **Allow lists** are highly <ins>restrictive</ins>, permitting only specifically named applications to run while blocking everything else.
+-   **Deny lists** are more <ins>flexible</ins>, allowing all applications to run except those explicitly identified as dangerous or malicious, such as code identified by antivirus software.
+
+### Change Scope and Policy
+Every change approved by a Change Control Board has a **specifically documented scope**. Technicians are generally <ins>limited</ins> to making <ins>only</ins> the <ins>changes listed</ins>; for instance, a window for printer driver updates does not authorize changes to other applications. However, if the primary goal requires a minor, unlisted modification (like editing a configuration file), company policies may allow the technician to expand the scope to ensure the update succeeds.
+
+### Managing Downtime and Availability
+To minimize impact, significant changes are usually scheduled for **non-production hours**. 
+-   **24/7 Environments:** In organizations that never shut down, technicians often use a **primary and secondary system** approach. They update the primary system while users are on the secondary, then switch over seamlessly. 
+-   **Fallback and Communication:** This dual-system setup allows for an easy **fallback** to the original configuration if problems arise. It is critical to communicate these windows to users via emails or centralized **Change Control calendars**.
+
+### Implementation and Verification
+The implementation of a change often requires **rebooting the operating system**, power cycling the hardware, or restarting a specific service or **daemon** (in Linux). Beyond applying the update, this process <ins>verifies</ins> if the <ins>system</ins> can properly <ins>recover</ins> and <ins>react</ins> during a real power outage.
+
+### Challenges: Legacy Systems and Dependencies
+-   **Legacy Applications:** These are <ins>old</ins>, often <ins>unsupported systems</ins> that organizations are <ins>afraid</ins> to <ins>change</ins> because **no one understands them**. By <ins>documenting</ins> these systems, technicians can <ins>bring</ins> them into the <ins>normal support cycle</ins> and become experts in their operation.
+-   **Dependencies:** Changes are often complicated by dependencies, where one service cannot be updated until another is. For example, you might need to update firewall firmware before you can update the firewall management software.
+
+### Documentation and Version Control
+Because changes occur constantly, existing documentation quickly becomes obsolete. Technicians must update **network diagrams, IP addresses, and procedures** as part of the change process. **Version Control** is used to track specific changes to code, configurations, patches, and registries. This allows the organization to know exactly what was changed and provides a mechanism to revert to a previous version if the update fails.
