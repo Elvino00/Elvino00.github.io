@@ -350,3 +350,108 @@ The implementation of a change often requires **rebooting the operating system**
 
 ### Documentation and Version Control
 Because changes occur constantly, existing documentation quickly becomes obsolete. Technicians must update **network diagrams, IP addresses, and procedures** as part of the change process. **Version Control** is used to track specific changes to code, configurations, patches, and registries. This allows the organization to know exactly what was changed and provides a mechanism to revert to a previous version if the update fails.
+
+## Public key Infrastructure (PKI)
+
+**Public Key Infrastructure (PKI)** is a broad cryptographic term that encompasses the **policies, procedures, hardware, and software** used to create, distribute, manage, store, and revoke **digital certificates**. It is frequently used to associate a specific certificate with a person or device, often through a **Certificate Authority (CA)**, to ensure that a user or device is truly who they claim to be.
+
+### Symmetric vs. Asymmetric Encryption
+Understanding PKI requires distinguishing between two primary encryption methods:
+
+-   **Symmetric Encryption:** This method uses the **same single secret key** for both <ins>encrypting</ins> and <ins>decrypting</ins> information. While it is **very fast** and has low overhead, it faces significant **scalability problems** when more than a few people need to share and manage keys.
+-   **Asymmetric Encryption:** Also known as public key cryptography, this method uses **two different but mathematically related keys** created simultaneously: a **public key** and a **private key**. Although they are related through complex math involving large prime numbers and randomization, it is <ins>impossible</ins> to <ins>reverse-engineer</ins> or <ins>derive</ins> the <ins>private key</ins> from the public key.
+
+### The Mechanics of Asymmetric Keys
+In an asymmetric system, the **public key** is available to anyone and is used to **encrypt data**. The **private key** is kept strictly confidential by the owner and is the **only key capable of decrypting** data that was encrypted with the corresponding public key.
+
+[Asimmetric encryption](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769771601/Asymmetric_key_pthhzy.png)
+
+For example, if Bob wants to send a secure message to Alice, he uses **Alice's public key** to transform his plaintext into ciphertext. Even if an unauthorized party intercepts the ciphertext and possesses the public key, they cannot decrypt the message; only Alice can revert it to plaintext using her **private key**. To increase security, individuals often **password-protect their private keys** to prevent unauthorized access if the key file is stolen.
+
+### Key Management and Escrow
+While individuals can manage their own key pairs, large organizations with thousands of users require more robust management systems. 
+-   **Key Escrow:** This is a process where **private keys are held by a third party** or stored locally by the organization. 
+-   **Purpose:** Escrow ensures that the organization can still **decrypt data** if an employee leaves, moves departments, or if a government agency needs access to project data. 
+-   **Trade-offs:** Although handing over a private key to a third party can be **controversial**, it is often viewed as a necessary step to maintain the **uptime and availability** of organizational data.
+
+## Encrypting Data at Rest
+Protecting data stored on physical devices, such as SSDs or hard drives, is referred to as **encrypting data at rest**. This can be achieved through several methods:
+-   **Full Disk or Volume Encryption:** This encrypts <ins>everything</ins> on a storage device. Examples include **BitLocker** for Windows and **FileVault** for macOS.
+-   **File-level Encryption:** Instead of the whole drive, <ins>individual files</ins> can be secured. In Windows, the **Encrypting File System (EFS)** is built into the NTFS file system to provide this functionality.
+-   **Database Encryption:** Databases can use **transparent encryption**, which utilizes a <ins>symmetric key</ins> to encrypt the entire database. However, this creates <ins>overhead</ins> because the data must be decrypted every time it is accessed or searched. To improve performance, **column-level encryption** can be used to encrypt only <ins>sensitive fields</ins> (like Social Security numbers) while leaving others (like names or IDs) in plain text for faster searching.
+
+### Encrypting Data in Transit
+When data is sent across a network, it must be protected so that unauthorized parties cannot understand it if they intercept the connection.
+-   **Web Browsing:** Most modern browser communication uses **HTTPS** to ensure all traversing data is encrypted.
+-   **Virtual Private Networks (VPNs):** These create **encrypted tunnels** for secure remote access or for connecting different sites. Client-based VPNs often use **SSL or TLS**, while site-to-site connections commonly use **IPsec**.
+
+### Algorithms and the Importance of Keys
+For encryption to work, both the sender and receiver must use the **same encryption algorithm**. While there are many algorithms with different security levels and speeds—such as the older **DES (Data Encryption Standard)** or the more modern **AES (Advanced Encryption Standard)**—the algorithms themselves are typically public and well-known. 
+
+The security of the data does not rely on the secrecy of the algorithm, but rather on the **secrecy of the key**. This is compared to a door lock: everyone knows how the lock works, but you still need the specific key to get in.
+
+### Defending Against Attacks
+Encryption keys are susceptible to **Brute Force attacks**, where an attacker tries every possible combination to find the key. To defend against this, security professionals use:
+-   **Increased Key Length:** Longer keys are much harder to crack. Common lengths include **128 bits** or larger for symmetric encryption and **3,072 bits** or larger for asymmetric encryption.
+-   **Key Stretching:** This involves performing the encryption or hashing process multiple times (e.g., hashing a password, then hashing that hash). This adds significant **computational overhead** for an attacker, making a brute-force attempt take much longer.
+
+## Key Exchange
+
+Key exchange is the process of <ins>sharing an encryption key</ins> between a sender and a receiver so that data can be **encrypted** and **decrypted** securely. This presents a significant logistical challenge when communicating over an insecure medium like the internet, as the key must be shared without being intercepted. There are two primary ways to accomplish this: **out-of-band** and **in-band** key exchange.
+
+### Out-of-Band Key Exchange
+Out-of-band exchange involves sharing the key through a channel **outside of the network**. Because this method does not use the network, it <ins>avoids</ins> the risk of <ins>digital interception</ins>. Examples of out-of-band exchange include:
+-   Sending a <ins>courier</ins> or a <ins>person</ins> with a handcuffed suitcase to deliver the key.
+-   Providing the key over a <ins>telephone call</ins>.
+-   Exchanging the key <ins>in person</ins>.
+
+### In-Band Key Exchange
+On the internet, users often need to <ins>encrypt</ins> communications </ins>immediately (such as when using a web browser), making physical exchange impractical. In these cases, **in-band key exchange** is used to send key-related information across the network. There are two main ways to perform in-band exchange:
+
+**1. Using Asymmetric Encryption**
+This method uses **asymmetric encryption** to securely wrap a **symmetric key**. 
+-   A client generates a random symmetric key and encrypts it using the server’s **public key**. 
+-   The client sends this encrypted package to the server, and the server uses its **private key** to decrypt it. 
+-   This allows both parties to obtain the same symmetric key quickly and securely. 
+-   These are often used as **session keys**, which are **ephemeral** (temporary); they are used for a single session and then discarded to be replaced by a new key for the next session.
+
+**2. Key Exchange Algorithms**
+Another method allows two parties to create the **same symmetric key on both sides** without ever actually sending the key across the network. This process uses **public key cryptography** and a specific mathematical algorithm.
+
+[Symmetric key from Asymmetric key](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769789923/Symmetric_key_from_asymmetric_keys_sczm49.png)
+
+-   **The Process:** Bob combines his private key with Alice’s public key, while Alice combines her private key with Bob’s public key. 
+-   **The Result:** Because the keys used by both parties are **mathematically related**, the algorithm generates the exact same symmetric key for both Bob and Alice. 
+-   This method is unique because it is not performing encryption or hashing; it is strictly **building the key** simultaneously on both ends of the conversation.
+
+## Encryption Technologies
+Encryption technologies involve specialized hardware and management systems designed to provide cryptographic functions, secure key storage, and data privacy across various environments.
+
+### Trusted Platform Module (TPM)
+A **Trusted Platform Module (TPM)** is a standardized hardware <ins>chip</ins> or subsystem found on modern motherboards specifically designed for **cryptographic functions**. 
+-   **Key Generation:** It can generate random numbers and keys.
+-   **Persistent Memory:** The TPM contains persistent memory where unique keys can be "burned" into the chip, making them unique to only that specific machine.
+-   **Security Use Cases:** It is particularly useful for **full disk encryption**, such as creating and storing keys for BitLocker.
+-   **Protection:** Information in the TPM is password protected and is designed to be **resistant to brute-force or dictionary attacks**.
+
+### Hardware Security Module (HSM)
+While a TPM focuses on a single device, a **Hardware Security Module (HSM)** is designed for **large-scale cryptographic use** in environments like data centers.
+-   **Scalability:** HSMs provide cryptographic functions for <ins>hundreds</ins> or thousands of <ins>devices</ins>, such as web servers.
+-   **Redundancy:** In large environments, HSMs are typically <ins>clustered</ins> and include redundant power supplies and network connectivity to ensure <ins>constant access</ins>.
+-   **Performance:** To handle high-speed requirements, many HSMs use **separate plug-in cards** or **cryptographic accelerators** to perform real-time encryption and decryption.
+-   **Centralized Security:** They allow for the <ins>centralized storage</ins> of sensitive <ins>keys</ins> while preventing unauthorized access.
+
+### Key Management Systems
+As the number of keys for web servers, individual users, and full disk encryption grows, a centralized **Key Management System** becomes necessary for administration.
+-   **Deployment:** These systems can be hosted on-premises or as a **cloud-based system** accessible from anywhere.
+-   **Centralized Console:** They provide a <ins>single management console</ins> to oversee diverse key types, including SSL/TLS, SSH, Active Directory, and BitLocker keys.
+-   **Security Logic:** These systems keep <ins>keys separate from the data</ins> they are intended to protect.
+-   **Automation and Monitoring:** They support **automatic key rotation**, **logging**, and **reporting**. Dashboards allow administrators to see which keys are active, when certificates expire, and how often keys are utilized.
+
+###  Secure Enclave
+A **Secure Enclave** is a dedicated **security processor** built into systems like mobile phones, laptops, and desktops to maintain data privacy.
+-   **Isolated Processing:** It is not the system's primary CPU; it is a separate processor dedicated solely to data privacy.
+-   **Boot Security:** It features its own boot ROM and monitors processes during the boot sequence.
+-   **Cryptographic Capabilities:** It includes a true random number generator and can perform **real-time AES encryption** of data as it moves in and out of memory.
+-   **Root of Trust:** It contains built-in, immutable cryptographic keys that serve as a "root" for all other cryptography on the system. 
+-   **Privacy:** This technology ensures data remains private even if the physical device falls into the hands of someone else.
