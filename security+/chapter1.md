@@ -455,3 +455,99 @@ A **Secure Enclave** is a dedicated **security processor** built into systems li
 -   **Cryptographic Capabilities:** It includes a true random number generator and can perform **real-time AES encryption** of data as it moves in and out of memory.
 -   **Root of Trust:** It contains built-in, immutable cryptographic keys that serve as a "root" for all other cryptography on the system. 
 -   **Privacy:** This technology ensures data remains private even if the physical device falls into the hands of someone else.
+
+## Obfuscation
+**Obfuscation** is the process of taking information that is easy to understand and making it significantly more difficult to comprehend. It is characterized as <ins>hiding information "in plain sight"</ins> and the process is <ins>reversible</ins> if you <ins>know</ins> the specific <ins>method</ins> used to <ins>hide</ins> the <ins>data</ins>. 
+
+There are **three** primary forms of obfuscation:
+
+### 1. Steganography
+Steganography, which means "concealed writing" in Greek, is a method of hiding data within other types of media. It is often referred to as **security through obscurity** because the data is easily recovered if the process is known.
+-   **Media Types:** Data can be hidden within images (often called **cover text**), audio files, or video tracks.
+-   **Network Traffic:** Messages can be embedded within **TCP packets** and sent across a network a few bits at a time.
+-   **Printer Watermarks:** Laser printers often include nearly invisible yellow dots known as **machine identification codes**. These dots can be used to identify the specific printer used for a document.
+
+### 2. Tokenization
+Tokenization replaces sensitive data with a non-sensitive substitute called a **token**.
+-   **Functionality:** Unlike encryption, tokens often have **no mathematical relationship** to the original data, making them safe to send across a network without further encryption or hashing. 
+
+[Tokenization example](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769958947/Tokenization_w4wcvv.png)
+
+-   **Mobile Payments:** This is the process used when paying with a mobile phone or smartwatch. A **token service server** provides the phone with one-time use tokens. During checkout, the phone <ins>sends</ins> a <ins>token</ins> instead of the actual credit card number. The merchant then <ins>validates</ins> the <ins>transaction</ins> through a <ins>reverse lookup</ins> performed by the token server.
+
+### 3. Data Masking
+Data masking involves hiding portions of original data and only displaying a small part of it. 
+-   **Examples:** A common example is a credit card receipt that displays only the last four digits of a card number while replacing the rest with asterisks.
+-   **Usage:** This technique is used to prevent unauthorized access to sensitive information and to limit what customer service representatives can see when assisting a caller. Beyond asterisks, data can be masked by rearranging numbers or replacing them with other characters that can be reversed later.
+
+
+## The Fundamentals of Hashing
+A **cryptographic hash** is a short string of text used to represent data, often referred to as a **message digest** or a **fingerprint**. Key characteristics of hashing include:
+-   **One-Way Function:** Unlike encryption, hashing is <ins>not reversible</ins>; you cannot recreate the original data from the hash alone.
+-   **Integrity Verification:** Hashes are primarily used to <ins>ensure</ins> that a <ins>file</ins> or document has <ins>not been altered</ins>. For instance, users can compare the hash of a downloaded file (like a Linux ISO) with the hash posted on the website to verify they match.
+-   **Sensitivity to Change:** Hashing algorithms are designed so that even a <ins>minor change</ins> to the input (such as changing a period to an exclamation mark) <ins>results</ins> in a drastically <ins>different</ins> output <ins>hash</ins>.
+-   **Collision Resistance:** A "collision" occurs when two different inputs produce the identical hash value. While modern algorithms like **SHA-256** (which produces 64 hexadecimal characters) are designed to make collisions extremely rare, older algorithms like **MD5** are no longer recommended because they are susceptible to collisions.
+
+### Hashing in Password Security
+Passwords should **never** be **stored in plain text** or **encrypted form**, as <ins>encryption could be reversed</ins> if a key is compromised. Instead, systems store a <ins>hash</ins> of the password. 
+
+To further secure these hashes, administrators use **salting**:
+-   **Definition of Salting:** A salt is **random information** added to a password during the hashing process to <ins>randomize</ins> the result.
+-   **Benefits:** Every user receives a <ins>unique</ins> salt. This ensures that even if two users have the same password, their stored <ins>hashes</ins> will <ins>look completely different</ins>. 
+-   **Preventing Rainbow Tables:** Salting is specifically used to defeat **rainbow tables**, which are pre-compiled lists of all possible inputs and their corresponding hashes. While a rainbow table can identify a non-salted hash in seconds, salts force an attacker to use **brute force** methods, which can take days or weeks.
+
+### Digital Signatures
+A **digital signature** is a digital version of a signature that provides three core security benefits: **integrity** (the message hasn't changed), **authentication** (proof of the sender’s identity), and **non-repudiation** (the sender cannot deny sending the message).
+
+The process of creating a digital signature involves **asymmetric cryptography** using public and private keys:
+1.  **Creation:** To sign a message, the sender's email client hashes the plain text and then **encrypts that hash using the sender's private key**. 
+2.  **Transmission:** The original message is usually sent in plain text along with the encrypted hash (the digital signature) as an attachment or footer.
+
+[Digital Signature Creation](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769965372/Create_digital_signature_whfo9h.png)
+
+3.  **Verification:** The recipient's client **decrypts the digital signature using the sender's public key** to reveal the original hash. It then independently hashes the received plain text message and compares the two hashes.
+4.  **Confirmation:** If the hashes match, it proves the document is identical to the original and confirms the sender's identity. If the public key cannot verify the signature, the document has been changed and cannot be trusted.
+
+[Digital Signature Verification](https://res.cloudinary.com/dnhgctqsu/image/upload/v1769965372/Verify_digital_signature_ylrjps.png)
+
+## Blockchain Technology
+
+Blockchain technology is a **distributed ledger** that is <ins>visible</ins> to <ins>everyone</ins> and used to <ins>track</ins> individual <ins>transactions</ins>. Every participant in the blockchain network can maintain and possess a **copy of this ledger**. When changes are recorded, they are distributed to everyone else maintaining a copy.
+
+[Transaction in blockchain](https://res.cloudinary.com/dnhgctqsu/image/upload/v1770027534/Blockchain_diu7ok.png)
+
+The process of recording data on a blockchain involves several steps:
+-   **Transaction Initiation:** A transaction is created, such as transferring Bitcoin, tracking a data backup, or transferring a house title.
+-   **Distribution:** Instead of sending the transaction to a single person, the information is sent to **everyone participating** in the blockchain. Every individual device keeping track of the ledger receives a copy.
+-   **Block Creation:** Transactions are grouped into a **larger block**. 
+-   **Hashing for Integrity:** To complete the block, a **hash** is added. This hash ensures the **integrity** of all transactions within that block.
+
+A critical feature of this technology is its security. If someone attempts to modify an existing transaction, the **hash becomes invalid**. Other devices maintaining the ledger will identify the invalid hash, **throw out the block**, and confirm that the data has been modified.
+
+While commonly associated with **cryptocurrency**, blockchain technology is used for various purposes, including **payment processing, digital identification, supply chain monitoring, and digital voting**.
+
+
+## Certificates
+**Digital certificates** are files containing a **public key and a digital signature** used primarily to establish **trust** and provide authentication in IT security. 
+
+### The Role and Format of Certificates
+-   **Purpose:** Certificates act as <ins>digital identification</ins> cards, allowing a system to <ins>trust</ins> that a user or entity is who they <ins>claim</ins> to be.
+-   **Standardization:** Most certificates use a standardized format called **X.509**, which allows different web browsers and systems to read them regardless of the website.
+-   **Contents:** A certificate stores a vast amount of information, including a **serial number, version, signature algorithm, issuer name, holder name, and the public key**.
+-   **Root of Trust:** Trust is often anchored in a *root of trust* which can be provided through hardware (like Hardware Security Modules), software, or firmware.
+
+### The Certificate Authority (CA) and Trust Models
+-   **Certificate Authority (CA):** This is a <ins>trusted</ins> third party that <ins>validates</ins> an entity’s <ins>identity</ins> and digitally signs their certificate. Browsers contain a built-in list of hundreds of trusted CAs.
+-   **Validation Process:** When you "purchase" a certificate, you are actually paying for the **validation process** where the CA verifies that you truly <ins>own</ins> and control the <ins>domain</ins> or system.
+-   **Web of Trust:** An <ins>alternative</ins> to a centralized CA where multiple individuals sign each other’s certificates to establish trust.
+-   **Internal CAs:** Organizations can run <ins>their own CA</ins> using software like Microsoft Windows domain services or OpenCA to secure internal applications. To work, the internal CA’s public certificate must be installed on all local devices.
+
+### Creating and Managing Certificates
+-   **Certificate Signing Request (CSR):** To get a certificate signed, you create a CSR using <ins>your public key</ins> and organizational information and send it to a CA. The CA then signs it using their **private key**.
+-   **Wildcard and SAN:** A **Subject Alternative Name (SAN)**, sometimes called a **wildcard certificate**, allows one certificate to be used for <ins>multiple devices</ins> within a domain by using an asterisk (e.g., `*.birdfeeder.live`).
+
+### Revocation Methods
+If a certificate is <ins>compromised</ins>—such as during the **Heartbleed** attack of 2014, where private keys were exposed—it must be <ins>revoked</ins>. There are two primary ways to check for revocation:
+1.  **Certificate Revocation List (CRL):** A list of all revoked certificates maintained by the CA. Browsers download this file via a URI found in the certificate details to check if a site is still trusted.
+2.  **Online Certificate Status Protocol (OCSP):** A more efficient, real-time protocol for checking certificate status. 
+    -   **OCSP Stapling:** This improves efficiency by embedding the certificate's status directly into the **SSL handshake** between the web server and the browser, signed by the CA to ensure validity. 
