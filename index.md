@@ -40,4 +40,5 @@ Technical analysis of excercises and vulnerabilities.
 
 ## CompTIA Security+
 
-- [Lezione 1](security+/chapter1.md)
+- [Capitolo 1](security+/chapter1.md)
+- [Capitolo 2](security+/chapter2.md)
