@@ -72,7 +72,7 @@ A **threat vector** (or attack vector) is the specific **method an attacker uses
 ### Network and Configuration Vectors
 -   **Wireless and Bluetooth:** Using outdated protocols like **WEP or WPA** (instead of WPA3) makes networks vulnerable. Attackers also look for **rogue access points** or use **Bluetooth** for reconnaissance and entry.
 -   **Open Ports and Misconfigurations:** Every open port (like Port 80 for web servers) is a potential entry point. **Misconfiguring** complex applications or leaving unnecessary services running increases the attack surface.
--   **Default Credentials:** Many devices come with **default usernames and passwords** (e.g., admin/admin) that are easily found on public websites.
+-   **Default Credentials:** Many devices come with **default usernames and passwords** (e.g. admin/admin) that are easily found on public websites.
 
 ### Supply Chain Vectors
 -   **Manufacturing and Third Parties:** Malicious code or hardware can be added to equipment during or after manufacturing. 
@@ -96,7 +96,7 @@ Phishing is a form of **social engineering** that uses various communication met
 There are several ways to identify a phishing attempt:
 -   **Suspicious Links:** Links in messages often point to a different location than what is expected for a trusted site.
 -   **Visual Inconsistencies:** Fake login pages may have "something not quite right," such as **spacing issues or incorrect fonts**.
--   **Incongruent Senders:** The sender's email address might not match the service they claim to represent (e.g., a Rackspace alert sent from an iCloud address).
+-   **Incongruent Senders:** The sender's email address might not match the service they claim to represent (e.g. a Rackspace alert sent from an iCloud address).
 -   **Urgency and Threats:** Attackers often use **deadlines** or threats—such as telling a user they will be blocked from sending or receiving emails—to pressure them into acting quickly.
 
 ### Attacker Techniques
@@ -173,3 +173,88 @@ When a user searches for a legitimate brand, they may be **redirected to one of 
 -   **Malware Infection:** The downloaded software is typically illegitimate and contains **malware**.
 -   **Data Theft and Tracking:** Once a computer is infected, the malware may display ads, track the user's browsing habits, or **exfiltrate data** to the attacker.
 
+## Memory Injections
+
+Software and malware cannot execute on a computer unless they are **loaded from a disk into memory** and processed by the CPU. Memory contains various components necessary for these operations, including **Dynamic Link Libraries (DLLs)**, threads, buffers, and memory management functions. 
+
+### Methods of Operation
+Malware typically has two choices for how it runs in memory:
+-   **Standalone Process:** It can run as its own independent process.
+-   **Process Injection:** It can find an existing, legitimate process and **inject itself** between that process's starting and ending memory addresses.
+
+### Advantages of Injection
+Injecting into an existing process provides several benefits to an attacker:
+-   **Evasion:** It allows the malware to **avoid detection** by anti-malware software that is specifically looking for known malicious processes.
+-   **Privilege Escalation:** The malware inherits the **same rights and permissions** as the process it has injected into. This is an easy way for attackers to gain higher levels of access than they would normally have on the system.
+
+### DLL Injection Mechanism
+One of the most common forms of this technique is **DLL (Dynamic Link Library) injection**. This process involves several steps:
+1.  **Storage:** The attacker first installs a **malicious DLL** onto a storage drive that the target system can access.
+2.  **Linking:** The attacker places a **path or a link** to that malicious DLL inside the target process.
+3.  **Execution:** As the legitimate process executes, it eventually reaches the point where it references that path. It then pulls the malicious DLL from the disk and **loads it into memory**, at which point the malware begins running on the system.
+
+[DLL Injection Mechanism](https://res.cloudinary.com/dnhgctqsu/image/upload/v1771262041/Dll_Injection_Mechanism_vsfw48.png)
+
+
+## Buffer Overflow
+
+A **buffer overflow attack** occurs when an attacker writes more data into a specific area of memory than it is designed to hold, causing the extra information to **overflow into adjacent memory areas**.
+
+### How Buffer Overflows Work
+-   **Bounds Checking:** Under normal circumstances, application developers use **bounds checking** to ensure that data being written to a section of memory does not exceed its allocated size (for example, ensuring only 8 bytes are written into an 8-byte space). 
+-   **Exploitation:** Attackers search for parts of an application where bounds checking is absent to modify the application's intended design. 
+-   **Difficulty and Risk:** This is not a simple vulnerability to exploit. If the overflow is handled incorrectly, it can cause the entire **system or application to crash**. Attackers specifically look for **repeatable** overflows that allow them to perform functions advantageous to them.
+
+### Example: Gaining Administrative Rights
+Here's an example of how a buffer overflow can be used to gain **elevated permissions**:
+
+[Esempio Buffer Overflow](https://res.cloudinary.com/dnhgctqsu/image/upload/v1771324903/Buffer_overflow_tttkbv.png)
+
+1.  **Memory Setup:** There are two variables in memory: **Variable A** (8 bytes, initially empty) and **Variable B** (2 bytes, current value 1979).
+2.  **Permissions Logic:** In this application, Variable B controls user rights. A value below 2,000 grants guest/user rights, but a value **over 24,000** grants **administrative rights**. 
+3.  **The Attack:** Variable B cannot normally be changed from within the application. However, an attacker finds a vulnerability in Variable A. They attempt to store the 9-letter word **"excessive"** into the 8-byte space of Variable A.
+4.  **The Overflow:** The first eight characters fill Variable A. The ninth character ("e") overflows into the first byte of Variable B. 
+5.  **The Result:** This overflow changes the value of Variable B from 1979 to **25,856**. Because this value is over 24,000, the attacker successfully gains **administrative rights and permissions** without needing any actual credentials.
+
+## Race Condition
+A **Race condition** occurs when an application <ins>fails</ins> to <ins>account</ins> for two or more events happening at nearly the <ins>same time</ins>. This lack of synchronization can lead to **unexpected outcomes** when processes operate simultaneously.
+
+### Time-Of-Check to Time-Of-Use (TOCTOU)
+A common type of race condition is known as a **TOCTOU attack**. This happens when an application checks a system to <ins>retrieve</ins> a stored value and then <ins>performs</ins> a function with that value later. The vulnerability exists because **another process may change that value** in the window of time between the initial check and the actual use of the information.
+
+### Practical Example: Banking Logic Flaw
+
+[Race Condition Example](https://res.cloudinary.com/dnhgctqsu/image/upload/v1771330238/Race_condition_example_fq1zj0.png)
+
+Let's take the example of two users (User 1 and User 2) transferring money between Account A and Account B, both starting with \$100.
+-   **The Flaw:** The application is designed to update deposits immediately, but **withdrawals are not immediately updated** in the ledger.
+-   **The Sequence:** Both users deposit \$50 into Account B, which updates correctly to \$200. User 1 then withdraws \$50 from Account A; from their perspective, Account A now has \$50. 
+-   **The Race Condition:** User 2 also withdraws \$50 from Account A. Because the first withdrawal was not immediately reflected for all users, User 2's transaction incorrectly uses the \$50 balance as a starting point rather than the true balance.
+-   **The Result:** The final balance for Account A is \$50 when it **should actually be \$0**.
+
+### Real-World Incidents
+-   **Mars Rover Spirit (2004):** A race condition involving the rover's file system triggered a safety mechanism that caused a **reboot loop**. The rover would recognize a fatal error, reboot to fix it, and immediately encounter the same error again. Developers were eventually able to send code to the rover to **bypass the error** and restore functionality.
+-   **Tesla Model 3 (2023):** During the Pwn2Own competition, researchers used a **TOCTOU attack** via Bluetooth to exploit the car's infotainment system. This allowed them to **elevate their privileges to "root user,"** earning them a \$100,000 prize and the vehicle itself.
+
+## Malicious Updates
+
+While security professionals emphasize <ins>keeping</ins> operating systems and applications <ins>patched</ins> to <ins>avoid</ins> vulnerabilities, there is a risk that attackers can embed malicious code within these updates.
+
+### Best Practices for Safe Updates
+To mitigate the risks of installing malicious software during the update process, there are several best practices:
+-   **Maintain Backups:** Always have a **system backup** before making changes. This allows you to revert to a previous configuration if the update causes problems.
+-   **Use Trusted Sources:** Ensure that updates are coming from sources you commonly use or those officially associated with the software.
+-   **Download from Developers:** For the highest level of trust, download patches **directly from the application developer’s website** rather than third-party sites.
+-   **Verify Digital Signatures:** Many operating systems will only install software that has been **digitally signed** by the developer (e.g Microsoft, Google, or Adobe). The OS validates this signature to ensure the update is legitimate.
+-   **Utilize Built-in Update Processes:** Many applications have internal update mechanisms that automatically perform security checks and verify digital signatures, offering a high level of trust.
+
+### Identifying Red Flags
+Users should be cautious of how an update message is delivered:
+-   **Trustworthy Messages:** An update prompt that appears when you first start your browser is generally considered more reliable.
+-   **Suspicious Messages:** Be skeptical of update prompts that appear after clicking a search engine link or as **random pop-ups** during a normal web-browsing session.
+
+### The SolarWinds Case Study
+The sources highlight that even trusted processes are not a 100% guarantee of safety, as seen in the **SolarWinds** incident reported in December 2020. 
+-   **The Breach:** Attackers gained access to SolarWinds' development systems and embedded malicious code into the **Orion** application.
+-   **Distribution:** Because the malicious code was rolled into a legitimate update, it was **digitally signed** by the company and automatically distributed to users.
+-   **Impact:** This allowed attackers to gain "full rein" over the systems of hundreds of large companies and government agencies, using the Orion system as a jumping-off point to reach other unsecured systems. Although such attacks are rare, they demonstrate how a trusted distribution process can be exploited to spread malware to thousands of systems simultaneously.
