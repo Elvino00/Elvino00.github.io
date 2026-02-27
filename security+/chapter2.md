@@ -258,3 +258,134 @@ The sources highlight that even trusted processes are not a 100% guarantee of sa
 -   **The Breach:** Attackers gained access to SolarWinds' development systems and embedded malicious code into the **Orion** application.
 -   **Distribution:** Because the malicious code was rolled into a legitimate update, it was **digitally signed** by the company and automatically distributed to users.
 -   **Impact:** This allowed attackers to gain "full rein" over the systems of hundreds of large companies and government agencies, using the Orion system as a jumping-off point to reach other unsecured systems. Although such attacks are rare, they demonstrate how a trusted distribution process can be exploited to spread malware to thousands of systems simultaneously.
+
+
+## Operating system vulnerabilities
+
+An **operating system (OS) patched** to the latest version is a fundamental requirement for security professionals because OSs are foundational platforms used by everyone, making them primary targets for attackers.
+
+
+-   **Complexity and Vulnerabilities:** Modern operating systems are incredibly complex; for example, Windows 11 contains tens of millions of lines of code. This high volume of code increases the likelihood of security vulnerabilities appearing. Many vulnerabilities likely exist in current systems that have not yet been discovered by researchers or attackers.
+-   **The Patching Cycle:** Once a vulnerability is discovered and reported, manufacturers create updates. Microsoft specifically uses **"Patch Tuesday"**—the second Tuesday of every month—to release sets of security patches. These patches address various issues, such as **Elevation of Privilege**, **Security Feature Bypass**, and **Remote Code Execution**.
+-   **The Risk of Delay:** When a vulnerability is announced, attackers often attempt to **reverse engineer** the update to create attack code. Systems must be patched as quickly as possible to stay ahead of these subsequent attacks.
+-   **Best Practices for Deployment:**
+    -   **Backups:** Always ensure you have a backup before performing a patch so you can revert to a "known good" configuration if something goes wrong.
+    -   **Testing:** In large environments with hundreds or thousands of devices, patches should be **tested** before being deployed to production to ensure they do not break other system functions.
+    -   **Reboots:** Some patches, particularly those affecting the core of the operating system, require a **system reboot** to be fully applied.
+
+
+## SQL Injection
+
+A **code injection attack** occurs when an attacker inputs their own code into an application's input fields. This is a common vulnerability that arises when developers fail to implement proper checks to prevent unwanted data from being processed. While there are many types of code injections, such as HTML and XML, **SQL injection (SQLi)** is one of the most significant.
+
+### What is SQL Injection?
+SQL stands for **Structured Query Language**, the primary method for applications to interact with databases. In a normal transaction, the application takes user input and uses it to query the database—for example, searching for a specific username like "Professor". A **SQL injection** allows an attacker to <ins>insert</ins> their own <ins>requests</ins> into that query, altering its intended purpose.
+
+### How the Attack Works
+-   **Ease of Use:** This vulnerability is often easy to exploit because it can be done directly through a **web browser** using existing input fields. It does not require specialized software or tricking a user into clicking a link.
+-   **The "1=1" Method:** A common technique involves adding code like `OR 1=1` to a query. Because the statement "1 equals 1" is always true, the database may bypass original security filters and return every record in the table.
+-   **Example Case:** Using a vulnerable application called **WebGoat**, an attacker can bypass a login requiring a name and a transaction authentication number. By injecting `' OR '1'='1'`, the attacker can retrieve all department information instead of just their own.
+
+### Impact and Risks
+A successful SQL injection can give an attacker **complete control** over the database. The potential consequences include:
+-   **Viewing** all sensitive data stored in the database.
+-   **Deleting** entire datasets.
+-   **Modifying** information.
+-   **Shutting down** the database so it becomes inaccessible to others.
+
+## Cross-site Scripting (XSS)
+
+**Cross-site Scripting (XSS)** is one of the most common vulnerabilities for web-based applications, exploiting the trust a browser has for different websites.
+
+### How XSS Works
+
+XSS vulnerabilities typically involve **JavaScript**, a popular scripting language that most users have enabled in their browsers. In a high-level exploit:
+-   An attacker sends a **link** containing a **malicious script** to a victim via email, text, or other methods.
+-   When the victim clicks the link, they are taken to a **legitimate, trusted website**, but the malicious script runs alongside the connection.
+-   Behind the scenes, the script sends **private data**—such as cookie information and session details—directly to the attacker.
+-   By obtaining this session information, the attacker can gain the **same access** to the website as the victim.
+
+[How XSS Attack Works](https://res.cloudinary.com/dnhgctqsu/image/upload/v1772020725/XSS_Attack_iw8gya.png)
+
+### Types of XSS Attacks
+The source describes two primary categories of XSS:
+
+-   **Non-persistent (Reflected) Attack:** This occurs when a website allows scripts to run inside **user input blocks**, such as search engines or credit card fields. For example, if a "credit card number" field does not check for scripts, an attacker can embed JavaScript there to display or steal session IDs when a user clicks "Purchase". In this scenario, the attacker sends the malicious code to the user, who then executes it against a third-party site.
+-   **Persistent (Stored) Attack:** In this version, the attacker stores the malicious payload on a **third-party site**, such as a social media platform. Because the script is stored on the site itself, **everyone who visits that page** will have the malicious code run in their local browser. These attacks can spread rapidly if the script is designed to automatically share itself to the visitors' own social feeds.
+
+### Real-World Example: Subaru (2017)
+Security researcher Aaron Guzman identified an XSS vulnerability on **Subaru’s website** used for vehicle management. 
+-   **The Issue:** Subaru used login tokens that **never expired**, allowing for permanent access once a token was obtained.
+-   **The Attack:** An attacker could use XSS to steal a victim's token via a malicious link.
+-   **The Consequence:** With that token, an attacker could perform service requests on the victim's vehicle or even add their own email address to other accounts to manage those vehicles as well. 
+-   **Resolution:** Subaru resolved these vulnerabilities after being informed by the researcher.
+
+### Prevention and Protection
+There are several ways for both users and developers to defend against XSS:
+
+-   **For Users:** 
+    -   **Avoid clicking links** from untrusted third parties in emails or messages; instead, type trusted domain names directly into the browser.
+    -   Keep browsers and applications **updated to the latest versions** to receive patches for known vulnerabilities.
+    -   Consider **disabling or limiting JavaScript** via browser plugins, though this may limit the functionality of some websites.
+-   **For Developers:** 
+    -   Ensure all **application inputs are checked** and validated to prevent users from adding their own scripts to input fields.
+
+
+## Hardware Vulnerabilities
+
+There are security risks associated with **networked hardware devices**, particularly those where the internal operating system (often called **firmware**) is not accessible to the user. Because these devices — ranging from office clock-in systems and air conditioners to home appliances like stoves and refrigerators — are <ins>connected</ins> to the network, they represent potential <ins>security vulnerabilities</ins>.
+
+### Firmware and Manufacturer Challenges
+A primary concern is that **firmware can only be managed or updated by the manufacturer**. Unlike standard operating systems like Windows or macOS, which typically release patches within a month, hardware manufacturers may <ins>not prioritize IT security</ins>. For example, the sources note that Trane was notified of vulnerabilities in its Comfortlink II thermostats in April 2014, but did not release a patch until April 2015, with a second following in January 2016.
+
+### Product Lifecycle: EOL vs. EOSL
+There are two key dates in a product's lifecycle:
+-   **End of Life (EOL):** The manufacturer **stops selling** the product. While this is a warning that support will eventually end, security patches and updates may still be available during this phase.
+-   **End of Service Life (EOSL):** The manufacturer **no longer provides security patches**. At this point, the device becomes a significant risk. While some manufacturers offer expensive high-end support options to continue service, most users should replace the device as soon as it hits EOSL.
+
+### Legacy Systems and Mitigation
+Organizations often struggle with **legacy devices**—older systems, applications, or middleware that have reached EOL or EOSL but are still in use. These systems may be **critical to organizational goals**, making them difficult to turn off or replace immediately. 
+
+When a legacy device cannot be easily phased out, **mitigation strategies** can be implemented to protect it, such as:
+-   **Firewall rules** to limit who can connect to the device.
+-   **IPS signatures** specifically designed for older operating systems.
+-   Developing a clear **path to replacement** while these security measures are in place.
+
+## Virtualization Vulnerabilities
+
+In modern cloud infrastructures, virtual machines can be built and torn down almost instantly and in large numbers. This constant churn makes it difficult to maintain a consistent **security posture** compared to managing traditional, static devices.
+-   **Diverse Configurations:** VMs often have unique configurations involving different numbers of operational CPUs, varying memory, and storage capacities. Despite these differences, they run standard operating systems (OSes) like Windows or Linux and require the same **security best practices** as physical hardware.
+-   **Shared Vulnerabilities:** Virtual environments remain susceptible to common security issues, including **local privilege escalation**, **command injection**, and **information disclosure**.
+
+### VM Escape
+A **VM escape** occurs when an attacker manages to move from one guest virtual machine to another on the same hypervisor.
+-   **Security Risk:** While VMs are designed to be self-contained, an escape allows an attacker to bypass isolation. Since a single hypervisor might manage hundreds of VMs, a successful escape provides access to an enormous amount of data across many systems simultaneously.
+-   **Real-World Example:** At the **2017 Pwn2Own competition**, researchers demonstrated a VM escape. They used a bug in the JavaScript engine of Microsoft Edge to escape a browser sandbox, exploited a Windows 10 kernel vulnerability to gain guest OS access, and finally used a hardware simulation bug in VMware to jump to another VM on the same hypervisor. This demonstration allowed the vendor to create and roll out a patch before the exploit could be widely used.
+
+### Resource Reuse and Hypervisor Management
+The **hypervisor** acts as the manager between physical hardware and the virtual world, allocating resources like CPU, memory, and storage.
+-   **Over-allocation:** Hypervisors often <ins>allocate</ins> more virtual <ins>resources</ins> than are physically <ins>available</ins> (e.g., allocating 6GB of RAM across three VMs on a host that only has 4GB of physical RAM), relying on the fact that not all VMs will need all resources at once.
+-   **Memory Sharing Issues:** Because resources are shared, a bug in the hypervisor’s memory management can lead to **resource reuse** issues. If the hypervisor does not properly restrict information sharing, it is possible for one VM to write to a memory area that another VM can then read. Keeping the hypervisor code updated is essential to preventing this type of unauthorized data access.
+
+
+## Cloud-specific vulnerabilities
+
+There are several critical cloud-specific vulnerabilities and security challenges organizations to face when moving applications and data to the cloud.
+
+### Security Best Practices and Statistics
+While organizations have rapidly embraced the cloud for applications and sensitive data, they often fail to follow security best practices. Specifically, it is estimated that **76% of organizations do not use multifactor authentication (MFA)** to log into their central cloud consoles. Furthermore, up to **63% of the code currently in the cloud is unpatched**, with many of these vulnerabilities carrying a **Common Vulnerability Scoring System (CVSS) score of 7 or higher**.
+
+### Public Accessibility and Denial of Service
+Because applications in a public cloud are designed to be accessible to anyone, they are inherently vulnerable to connection attempts from anywhere in the world. This accessibility makes them targets for **Denial of Service (DoS)** or **Distributed Denial of Service (DDoS)** attacks, where multiple devices simultaneously attempt to disable an application.
+
+### Authentication and Configuration Issues
+Proper configuration of the application and its surrounding security is vital. Weak or **misconfigured authentication processes** can result in significant data breaches by allowing unauthorized users access without proper credentials. A common misconfiguration is **directory traversal**, which allows users to manually navigate into unauthorized folders or subdirectories on a web server.
+
+### Unpatched Systems and Software Vulnerabilities
+Unpatched operating systems and applications are major risks that can lead to **remote code execution (RCE)**, allowing an attacker to run any application they choose on a cloud-based system. Notable examples of easily exploited application vulnerabilities include **Log4j** and **Spring Cloud Function**, which can allow an attacker to gain full control of the underlying system and potentially pivot to other systems within the same cloud.
+
+### Application-Level Attacks
+Attackers also exploit weaknesses in application code and memory management:
+-   **Input Validation Failures:** If developers do not properly validate input fields, attackers may use **cross-site scripting (XSS)** to gain access.
+-   **Out-of-Bounds Write:** This occurs when an attacker writes information into unauthorized sections of memory, which can cause a **system crash** or facilitate **remote code execution**.
+-   **Code Injection:** Attackers may use techniques like **SQL injection** to gain direct access to sensitive data stored in cloud databases.
