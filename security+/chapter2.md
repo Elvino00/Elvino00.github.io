@@ -389,3 +389,91 @@ Attackers also exploit weaknesses in application code and memory management:
 -   **Input Validation Failures:** If developers do not properly validate input fields, attackers may use **cross-site scripting (XSS)** to gain access.
 -   **Out-of-Bounds Write:** This occurs when an attacker writes information into unauthorized sections of memory, which can cause a **system crash** or facilitate **remote code execution**.
 -   **Code Injection:** Attackers may use techniques like **SQL injection** to gain direct access to sensitive data stored in cloud databases.
+
+## Supply Chain Vulnerabilities
+
+The supply chain is the entire process of moving a product from raw materials to the final consumer. Security concerns exist at every step, including processing, manufacturing, distribution, and consumption, as attackers can inject malicious code or gain unauthorized access at any point.
+
+### Third-Party Service Providers
+Outsourcing services to third parties introduces <ins>significant risk</ins> because the organization must <ins>rely</ins> on the <ins>provider's security posture</ins>. If a provider has access to your systems or sensitive data, a breach of their network can lead directly to a breach of yours.
+-   **Breadth of Risk:** Providers can include IT services, utilities, office cleaning, payroll, accounting, and cloud infrastructure.
+-   **Security Audits:** It is common for organizations to include the right to perform **ongoing security audits** in their contracts with service providers to verify their security processes.
+-   **The Target Breach (2013):** A major example occurred when over 40 million credit cards were stolen from Target. The breach began with an HVAC (heating and air conditioning) vendor that was infected with malware via email. Because Target’s HVAC systems and cash register systems were on the **same unsegmented network**, attackers gained access to every cash register in every store. The breach went undetected for months.
+
+### Hardware Vulnerabilities
+Hardware such as routers, switches, and firewalls can be compromised before they are even installed.
+-   **Verification:** Organizations should use a small list of **trusted vendors** rather than buying from unknown sources online. Policies should be in place to treat new hardware as **untrusted out of the box**.
+-   **Counterfeit Hardware:** In 2022, the Department of Homeland Security arrested a reseller who sold over $1 billion in **counterfeit Cisco products**,. These devices, mostly manufactured in China, looked like legitimate products but were prone to breaking or even catching fire. Because these devices sit at the core of network infrastructure, they are ideal for gathering information.
+
+### Software Vulnerabilities
+Software updates and installations require a high level of trust, which can be exploited by attackers.
+-   **Digital Signatures:** One way to verify software is through **digital signatures**, which most operating systems validate during installation to ensure the file hasn't been tampered with.
+-   **Automated Updates:** These pose a unique challenge because the user is often not involved in the process, requiring total trust in the provider.
+-   **SolarWinds Orion Breach (2020):** This was a massive supply chain exploit where attackers gained access to SolarWinds' internal infrastructure and injected malicious code into their software updates. Because the software was **digitally signed** by SolarWinds, 18,000 customers—including Fortune 500 companies and US federal agencies like the Pentagon and Treasury—installed the malicious update without suspicion. The breach was not detected for approximately six months.
+
+## Misconfiguration Vulnerabilities
+
+Misconfiguration vulnerabilities can lead to <ins>data exposure</ins> and <ins>unauthorized access</ins>. The key areas of concern include unsecured data repositories, administrative account weaknesses, the use of insecure protocols, default credentials, and firewall misconfigurations.
+
+### Unsecured Data and Cloud Storage
+One common vulnerability is leaving sensitive information in **open areas of the internet**, such as unsecured cloud services. Attackers frequently use this for **reconnaissance**, searching for data that owners forgot to secure so they can download and disseminate it.
+A notable example occurred in June 2017, when **14 million Verizon records** were left exposed in an open Amazon S3 repository without passwords or security. While a researcher found these records before an attacker could, it highlights the risk of data being made public without the owner's intention.
+
+### Unsecured Administrative Accounts
+**Privileged accounts**, such as "root" in Linux or "administrator" in Windows, present a significant security challenge. While operating systems often try to prevent creating these accounts without passwords, administrators frequently assign **easy-to-guess passwords** like "123456" or "ninja," making them susceptible to **brute force attacks**. To mitigate this, best practices include:
+-   **Disabling direct login** for administrative accounts.
+-   Logging in with a **normal user account** and using elevated access (such as **su**, **sudo**, or **Run as administrator**) only when necessary.
+-   **Limiting the number of accounts** with root or administrator access to reduce the attack surface.
+
+### Insecure Protocols and Cleartext Data
+Encryption is ineffective if data is sent using **insecure protocols** that do not support it. Protocols like **Telnet, FTP, SMTP, IMAP, and HTTP** send traffic across the network "**in the clear**," meaning anyone performing a **packet capture** (using tools like Wireshark) can read everything, including browser versions, cookies, and URLs.
+-   **Secure alternatives** should be used, such as **SSH, SFTP, and HTTPS**.
+-   The "**Wall of Sheep**" at the DEFCON security conference demonstrates the danger by displaying email addresses and partial passwords harvested from attendees using insecure wireless protocols like POP3 or HTTP.
+
+### Default Credentials and the Mirai Botnet
+Many devices, particularly **Internet of Things (IoT)** devices like cameras and routers, come with **default usernames and passwords**. Some devices do not even prompt the user to change these credentials upon the first login. The **Mirai botnet**, which is now open-source software, specifically targets these devices by scanning for over **60 default configurations** to gain access and recruit them into the botnet.
+
+### Open Ports and Firewall Misconfigurations
+Every time an inbound service is enabled, a **port number** is opened, providing a point of access into a server. It is critical to **limit the number of open ports** to reduce potential entry points for attackers. 
+-   **Firewalls** are used to manage this access, but their rule sets are often large and complex. 
+-   **Complexity** can lead to mistakes where an administrator accidentally provides access to a device or port that should remain restricted.
+-   **Periodic audits** of firewall rule bases are recommended to ensure the network remains secure and that unnecessary ports are closed.
+
+## Mobile Devices Vulnerabilities
+
+Mobile devices present unique security challenges because they are **small, easily hidden, and constantly in motion**, making them difficult to manage and track. These devices contain **sensitive personal and organizational information** and are vulnerable to remote access because they are constantly connected to the internet.
+
+
+### OS-Level Vulnerabilities: Jailbreaking and Rooting
+-   **Definition:** Bypassing a device's built-in security by replacing the original operating system or firmware with a third-party version is known as **rooting** on Android devices and **jailbreaking** on Apple iOS devices.
+-   **Purpose:** Users typically do this to enable new features or circumvent security restrictions that exist on the original OS.
+-   **Security Risk:** If an employee replaces their device's OS, they effectively **bypass all security controls** implemented through a Mobile Device Manager (MDM).
+
+### Application Vulnerabilities
+-   **Malicious Apps:** A single malicious application can expose all data on a device to an attacker.
+-   **Sideloading:** This refers to the practice of **installing applications from outside authorized sources**, such as a company's global application library or a local app store. 
+-   **Connection to Rooting:** Once a device has been rooted or jailbroken, a user is generally able to sideload any application they choose, which significantly increases the risk of installing malicious code.
+
+### Policy and Management
+-   **MDM Restrictions:** Mobile Device Managers are used to restrict the types of applications that can be installed and define the authorized sources for those installations.
+-   **Administrative Controls:** Organizations typically have specific policies, such as **Acceptable Use Policies (AUPs)** or employee handbooks, that forbid the installation of unauthorized software or operating systems.
+-   **Consequences:** Because bypassing these security controls is a serious risk, employees who violate these policies may be subject to dismissal.
+
+## Zero-Day vulnerabilities
+
+Most applications and operating systems currently in use likely contain **undiscovered security vulnerabilities**. These vulnerabilities are eventually discovered by either security researchers, who share the information with developers, or attackers, who seek to exploit them. 
+
+An attacker’s goal is to find these holes first so they can take advantage of them before a **patch** is created to stop them. Because attackers do not share this information with software vendors, the vendors remain unaware that a problem exists. 
+
+### Zero-Day Attacks and Mitigation
+A **zero-day attack** occurs when attackers begin exploiting a vulnerability for which no patch or mitigation currently exists. From the vendor's perspective, the vulnerability has not yet been discovered, making it extremely difficult to protect a system against it. Once the security community identifies a new type of attack, there is a "flurry of work" to quickly create a patch. Until that patch is released, the attacker can continue to exploit the vulnerability.
+
+To stay informed about these threats, visit the [Common Vulnerabilities and Exposures (CVE) website](http://cve.mitre.org).
+
+### Real-World Examples (2023)
+Several major zero-day attacks were documented in early 2023:
+-   **Google Chrome (April 2023):** A zero-day attack involving **memory corruption** and a **sandbox escape**.
+-   **Microsoft (May 2023):** An attack where **self-signed code** ran during the UEFI boot process, which should be prevented by secure boot.
+-   **Apple iOS and iPadOS (May 2023):** Three separate zero-day attacks were patched, covering **sandbox escape**, **disclosure of sensitive information**, and **arbitrary code execution**.
+
+Many of these exploits were actively being used "in the wild" before patches were created by Google, Microsoft, and Apple to close the security holes.
