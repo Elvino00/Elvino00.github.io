@@ -477,3 +477,96 @@ Several major zero-day attacks were documented in early 2023:
 -   **Apple iOS and iPadOS (May 2023):** Three separate zero-day attacks were patched, covering **sandbox escape**, **disclosure of sensitive information**, and **arbitrary code execution**.
 
 Many of these exploits were actively being used "in the wild" before patches were created by Google, Microsoft, and Apple to close the security holes.
+
+## Malware Introduction
+
+**Malware** is a broad term describing any software designed to perform malicious actions on a system. This includes gathering keystrokes, displaying profit-generating advertisements, or infecting systems to encrypt data.
+
+### Malware Categories
+-   **Viruses and Worms:** Programs that infect systems; worms specifically can automatically propagate between systems by exploiting known vulnerabilities.
+-   **Ransomware:** Software that encrypts storage drives and demands payment for recovery.
+-   **Trojan Horses:** Software that appears to perform a legitimate function but actually installs malware.
+-   **Other Categories:** Rootkits, keyloggers, spyware, bloatware, and logic bombs.
+
+### How Malware Operates
+Malware types often work in tandem rather than as isolated events. For instance, a worm might exploit a vulnerability to install itself and then download a **remote access backdoor**, allowing an attacker to manually install additional malicious tools. 
+
+Common methods of infection include:
+-   **User Action:** Clicking links in email messages or interacting with website pop-ups.
+-   **Drive-by Downloads:** Malicious software that is automatically downloaded to a system without the user clicking anything.
+-   **System Vulnerabilities:** Exploiting undiscovered or unpatched flaws in applications and operating systems.
+
+### Motivation: The Value of Data
+The primary reason malware exists is that data is highly valuable to attackers. For individuals, this includes family archives, photos, and important documents. For organizations, attackers target planning documents, employee personal information, and financial details. Attackers exploit this value either by selling the data or by forcing the owner to pay for its recovery.
+
+### Ransomware and Recovery
+**Ransomware** has become a significant business model for attackers. It typically <ins>encrypts</ins> personal files — such as movies and documents — while <ins>leaving the operating system functional</ins> so the victim can read the ransom demands. Attackers usually demand **cryptocurrency** in exchange for a decryption key. 
+
+Here are some best practices to protect yourself against these threats:
+-   **Offline Backups:** Maintaining "known good" backups stored offline ensures that if a system is infected, the ransomware cannot reach and encrypt the backup as well.
+-   **Regular Updates:** Keeping the operating system and all applications updated to the latest versions closes security vulnerabilities that malware might exploit.
+-   **Anti-malware Software:** Using antivirus tools that identify malicious code through **signatures** is essential, though these signatures must be kept up to date to recognize the newest threats.
+
+
+## Viruses and worms
+
+### Computer Viruses
+A computer virus is a type of malware designed to <ins>replicate itself</ins> from one computer to another, much like a biological virus. Key characteristics include:
+
+-   **Requirement for Intervention:** A virus typically requires some form of **human intervention**, such as clicking a malicious link or running an executable file.
+-   **Behavior:** Once active, a virus can <ins>move through</ins> a computer's <ins>file system</ins> or attempt to <ins>access</ins> other <ins>systems</ins> across a <ins>network</ins>. While many cause noticeable downtime or outages, some operate quietly in the background without the user’s knowledge.
+-   **Common Types:**
+    -   **Application/Executable:** The standard type that runs when a user interacts with a link or file.
+    -   **Boot Sector:** These reside in the system's boot sector and run automatically every time the computer starts up.
+    -   **Scripts and Macros:** Malicious code written in scripting languages or macro languages (like those in Microsoft Office) to exploit vulnerabilities in applications or the operating system.
+-   **Fileless Viruses:** This specific type is designed to **avoid detection** by never writing code to the computer's storage drive. Instead, it operates entirely within the system's **memory**. 
+    -   **Infection Process:** Typically starts with a user clicking a link that leads to a website exploiting a vulnerability (e.g., in Java or Windows). 
+    -   **Persistence:** It may use tools like PowerShell to download and run further scripts. To survive a system reboot, it often adds an "autostart" entry to the Windows registry so it can re-infect the memory upon startup.
+
+### Computer Worms
+Worms are a distinct category of malware characterized by their ability to **self-replicate** without any user intervention.
+
+-   **Speed and Efficiency:** Because they do not need a human to click anything, worms can spread extremely quickly, moving across networks at the speed of the network itself. 
+-   **Network Impact:** They move freely between networked systems and can attack at any time.
+-   **Defense Mechanisms:** Technologies like network-based and personal **firewalls**, as well as **Intrusion Prevention Systems (IPS)**, are critical for stopping worms. These systems use signatures to identify and block the worm's traffic.
+-   **Example (WannaCry):** A well-known example is the **WannaCry worm**, which automatically propagated across networks. It utilized the "EternalBlue" exploit to install backdoors and then deployed **ransomware** to encrypt user files and demand payment.
+
+### Protection Methods
+There are some ways to defend against these threats:
+-   **Antivirus Software:** Many operating systems include antivirus that monitors for known malicious executables.
+-   **Signature Updates:** It is vital to keep antivirus "signature files" updated so the software can recognize the latest identified threats.
+-   **Firewalls and IPS:** These are specifically effective against the automated propagation of worms.
+
+## Spyware and bloatware
+
+Let's focus on two types of unwanted software: **spyware** and **bloatware**.
+
+### Spyware
+**Spyware** is a type of malware that **monitors all activity** on your system. It is typically installed through peer-to-peer software, fake security programs, or malicious email links. 
+
+-   **Malicious Actions:** Spyware can display unwanted advertising, **steal personal information**, or commit affiliate fraud to earn money from your online purchases. It monitors browsing habits and may include a **keylogger** to capture everything you type, including **usernames and passwords**, which are then sent to an attacker's server.
+-   **Persistence and Defense:** This code often embeds itself deep within the operating system, making it **difficult to uninstall**. To protect against it, you should:
+    -   Use **anti-malware or anti-virus software** to stop spyware from executing.
+    -   Research software before installation and only use **trusted sources**.
+    -   Maintain a **known good backup** to recover your system if infected.
+    -   Utilize specialized third-party tools like **Malwarebytes** to identify and remove malicious code.
+
+### Bloatware
+**Bloatware** refers to the **unnecessary applications** pre-installed on new computers or mobile devices by the hardware manufacturer. Manufacturers are generally paid to include these "extra" apps, which can include games, security tools, and other utilities not part of the core operating system.
+
+-   **Security and Performance Concerns:** Bloatware is problematic because it consumes **storage space** and may run automatically at startup, reducing the **efficiency of the operating system**. Crucially, these apps may contain **vulnerabilities** (known or unknown), creating a security risk on a brand-new device.
+-   **Removal Methods:** While some bloatware can be manually removed through the operating system's standard **Uninstall** feature or the app's own uninstaller, some do not provide an obvious way to be removed. In cases where standard methods fail, specialized **third-party uninstallers** can be used to force the removal of the code.
+
+## Other type of malwares
+
+### Keyloggers
+
+**Keyloggers** are a type of malware designed to capture **every keystroke** a user makes, allowing attackers to steal sensitive data like **usernames, passwords, credit card information**, and financial details. Attackers target keyboard input because, unlike network traffic or stored files, the process of typing is **not encrypted**. Keylogging software typically stays resident on a system, records keystrokes to a file, and sends that file to the attacker periodically. Advanced keyloggers can also capture **clipboard data, screenshots, instant messages**, and search engine queries. An example is the **DarkComet Remote Access Trojan (RAT)**, which can log specific actions like the use of the space bar or delete key to reconstruct exactly what the user typed.
+
+### Logic bombs
+
+A **logic bomb** is malicious software that waits for a **specific event or time** to occur before "detonating" and performing actions like rebooting the system or erasing data. Triggers can include a specific date or a particular user logging into the system. Because logic bombs are often custom-created for a specific goal, they generally lack **antivirus signatures**, making them extremely difficult to identify. A real-world example occurred in **South Korea in 2013**, where a logic bomb triggered at a specific time, deleting storage and the **master boot record** of systems at banks and broadcasting companies. This attack even affected **ATMs**, leaving them unable to find an operating system after rebooting. To mitigate this risk, organizations should monitor for changes to core system files and ensure users only have the **minimum necessary permissions**, rather than universal administrator rights.
+
+### Rootkits
+
+**Rootkits** are named after the Unix "root" superuser and typically hide themselves within the **operating system kernel**. Because they become part of the OS itself, they are effectively **invisible** to traditional antivirus or anti-malware software and will not appear in standard task or process lists. While some rootkits run as traditional processes and can be identified by anti-malware, those in the kernel have full control of the computer. If a system is infected, specific **standalone removal tools** may be required for mitigation. To prevent rootkits from running, systems use **Secure Boot** (part of the UEFI BIOS), which confirms the operating system's signature hasn't changed before allowing the system to boot.
