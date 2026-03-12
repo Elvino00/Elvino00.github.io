@@ -523,6 +523,9 @@ A computer virus is a type of malware designed to <ins>replicate itself</ins> fr
     -   **Infection Process:** Typically starts with a user clicking a link that leads to a website exploiting a vulnerability (e.g., in Java or Windows). 
     -   **Persistence:** It may use tools like PowerShell to download and run further scripts. To survive a system reboot, it often adds an "autostart" entry to the Windows registry so it can re-infect the memory upon startup.
 
+
+[Fileless virus infection process](https://res.cloudinary.com/dnhgctqsu/image/upload/v1773247661/Fileless_virus_infection_process_ioknyt.png)
+
 ### Computer Worms
 Worms are a distinct category of malware characterized by their ability to **self-replicate** without any user intervention.
 
@@ -530,6 +533,8 @@ Worms are a distinct category of malware characterized by their ability to **sel
 -   **Network Impact:** They move freely between networked systems and can attack at any time.
 -   **Defense Mechanisms:** Technologies like network-based and personal **firewalls**, as well as **Intrusion Prevention Systems (IPS)**, are critical for stopping worms. These systems use signatures to identify and block the worm's traffic.
 -   **Example (WannaCry):** A well-known example is the **WannaCry worm**, which automatically propagated across networks. It utilized the "EternalBlue" exploit to install backdoors and then deployed **ransomware** to encrypt user files and demand payment.
+
+[Worm infection process](https://res.cloudinary.com/dnhgctqsu/image/upload/v1773247755/Worm_infection_process_rwxntf.png)
 
 ### Protection Methods
 There are some ways to defend against these threats:
@@ -570,3 +575,87 @@ A **logic bomb** is malicious software that waits for a **specific event or time
 ### Rootkits
 
 **Rootkits** are named after the Unix "root" superuser and typically hide themselves within the **operating system kernel**. Because they become part of the OS itself, they are effectively **invisible** to traditional antivirus or anti-malware software and will not appear in standard task or process lists. While some rootkits run as traditional processes and can be identified by anti-malware, those in the kernel have full control of the computer. If a system is infected, specific **standalone removal tools** may be required for mitigation. To prevent rootkits from running, systems use **Secure Boot** (part of the UEFI BIOS), which confirms the operating system's signature hasn't changed before allowing the system to boot.
+
+## Physical Attacks
+
+**Physical attacks** are security concerns that occur at the physical level, independent of the operating system version or digital vulnerabilities being used. These attacks are critical because having physical access to a system often translates to having **full control** over it, allowing an attacker to <ins>circumvent</ins> the <ins>operating system</ins> entirely.
+
+There are different types of physical attacks:
+
+-   **Brute Force:** While often associated with passwords, brute force in a physical context involves <ins>forcing open</ins> locked doors or windows to <ins>gain access</ins> to a building or data center. It's suggested to assess the physical security of an infrastructure to determine how difficult it would be for an attacker to gain access this way.
+-   **RFID Cloning:** Attackers can use inexpensive duplicators (often costing less than $50) to clone RFID-based access badges or key fobs. This process is very fast, taking only seconds, and can be done discreetly in public places, such as by brushing up against someone on a train. 
+    -   **Mitigation:** The use of **multi-factor authentication (MFA)**—such as requiring a PIN or biometrics in addition to the badge—is recommended to prevent access even if a card is successfully duplicated.
+-   **Environmental Attacks:** If an attacker cannot access a system directly, they may attack the environment surrounding it. Examples include:
+    -   **Power Disruption:** Turning off a data center's power, which can sometimes be done from outside the building.
+    -   **HVAC Manipulation:** Gaining access to HVAC (Heating, Ventilation, and Air Conditioning) control systems to turn off cooling. This causes equipment to overheat and automatically shut down.
+    -   **Fire Suppression:** Manipulating fire suppression systems to cause a denial of service.
+
+## Denial of service (DoS) Attacks
+
+A **Denial of Service (DoS)** occurs when an attacker intentionally <ins>forces</ins> a service to <ins>fail</ins>, often by <ins>overloading it</ins> so legitimate users cannot gain access or by <ins>exploiting known software vulnerabilities</ins> or design failures. Beyond software exploits, a DoS can be as simple as removing power from a system.
+
+There are different forms and causes of these service failures.
+
+### Intentional and Unintentional Causes
+-   **Competitive Advantage:** Organizations may target third parties to gain a competitive edge or use a DoS as a "smokescreen" to distract from other security exploits occurring elsewhere.
+-   **Accidental DoS:** Self-inflicted outages can occur through networking mistakes, such as plugging two switches together to create a **loop** without running spanning tree. 
+-   **Resource Exhaustion:** Simply downloading a large file (like a Linux distribution) over a small bandwidth connection can consume all available resources for production applications.
+-   **Environmental Factors:** Physical infrastructure failures, such as a water line breaking above a data center, can also result in a denial of service.
+
+### Distributed Denial of Service (DDoS)
+A **DDoS** attack uses multiple devices scattered globally to overwhelm a target's bandwidth or resources. 
+-   **Botnets:** Attackers use malware to create "botnets"—networks of "robot" computers under their control. A single command from a central facility can trigger millions of devices to attack a target simultaneously.
+-   **Asymmetric Threat:** This is considered an asymmetric threat because an attacker with relatively few resources can bring down much larger organizations. For example, the **Zeus botnet** controlled over 3.6 million computers at its peak.
+
+### Amplification and Reflection Attacks
+Attackers often use **amplification** to make their attacks more efficient by turning small amounts of data into very large amounts.
+-   **Protocol Exploitation:** This method takes advantage of common internet protocols like **NTP, ICMP, and DNS**, where a request typically results in a much larger response.
+-   **DNS Amplification Example:** An attacker can send a DNS query of only 15 characters (requesting all information for a domain) that results in a response of approximately 1,300 characters—an amplification of about **86 times**.
+-   **The Process:** The attacker sends commands to a botnet to query **open DNS resolvers**. These queries use a **spoofed IP address**, so the massive amplified responses are directed at the victim's web server instead of the attacker, effectively overwhelming the target.
+
+## DNS Attacks
+
+There are various methods attackers use to manipulate the **Domain Name System (DNS)** to redirect users to malicious websites.
+
+### DNS Poisoning Attacks
+DNS poisoning involves <ins>redirecting</ins> a <ins>user</ins> from a <ins>legitimate</ins> IP address to one <ins>controlled</ins> by <ins>an attacker</ins>. This can be achieved through several methods:
+
+-   **Modifying DNS Servers:** Attackers may attempt to <ins>change</ins> the <ins>configuration</ins> of a DNS server itself by identifying vulnerabilities or obtaining administrative credentials. While effective for redirecting all users of that server, these systems are generally well-protected and difficult to breach.
+-   **Modifying Local Host Files:** A more accessible target is the local "host" file on a client's computer. Since a computer checks its local file for domain resolution before querying a DNS server, an attacker with elevated rights can modify this file to redirect the user.
+-   **On-path (Man-in-the-Middle) Attacks:** An attacker can intercept a DNS query in real-time and reply with a malicious IP address before the legitimate server can respond.
+-   **Domain Registration Hijacking:** Attackers may target the domain registerer account using social engineering, brute force, or leaked credentials. Gaining access allows them to change the DNS settings for the entire domain.
+    -   **Real-world Example:** In October 2016, attackers hijacked 36 domains belonging to a major Brazilian bank for six hours. This allowed them to collect usernames and passwords from a customer base of over 5 million people.
+
+### URL Hijacking (Typosquatting and Brandjacking)
+This technique relies on users making mistakes when typing a web address into their browser. Attackers register similar-looking domain names to achieve various goals, such as generating ad revenue, redirecting traffic to competitors, harvesting login credentials, or distributing malware and ransomware. 
+
+Common variations include:
+-   **Misspellings:** Using a slightly different spelling, such as "professormessor.com" instead of the legitimate "professormesser.com".
+-   **Omitted Letters:** Leaving out a character, such as forgetting the final "s" in a domain name.
+-   **Added Letters:** Including extra characters, such as "professormessers.com".
+-   **Top-Level Domain (TLD) Swapping:** Using the same name but a different extension, such as .org instead of .com.
+
+### Prevention and Protection
+To protect against these attacks, it is recommended to **carefully inspect URLs** before visiting them to ensure they are correct and to **avoid clicking links** within emails.
+
+
+## Wireless Attacks
+
+There are two primary types of wireless attacks that function as **Denial of Service (DoS)**: wireless deauthentication attacks and radio frequency (RF) jamming.
+
+### Wireless Deauthentication Attacks
+This attack occurs when a user is suddenly and repeatedly disconnected from a wireless network without warning or error messages.
+
+-   **Mechanism:** The attack exploits **management frames**, which are messages sent behind the scenes between a device and an access point to manage connections. In earlier versions of the 802.11 specification, these management frames were sent "in the clear" without encryption.
+-   **Execution:** An attacker can capture these unencrypted frames to identify details like the **SSID** (network name), supported rates, and the **MAC addresses** (hardware addresses) of both the access point and the victim's device. By using utilities like `airodump-ng` to identify targets and `aireplay-ng` to send spoofed deauthentication frames, an attacker can force a specific device off the network. As long as these frames are continuously sent, the device cannot reconnect.
+-   **Prevention:** The IEEE 802.11 committee addressed this by updating the specification, starting with **802.11ac**. In these newer standards, management frames such as "disassociate" and "deauthenticate" are **encrypted by default**. However, some frames like beacons and probes still appear in the clear because they must be sent before encryption can be established.
+
+### Radio Frequency (RF) Jamming
+Unlike a deauthentication attack that can target a single device, RF jamming is a DoS attack that affects **everyone** communicating over the targeted wireless frequencies.
+
+-   **Mechanism:** The attacker sends interfering wireless signals to decrease the **signal-to-noise ratio**. If the "noise" becomes louder than the actual data signals from the access point, devices cannot hear or transmit traffic.
+-   **Types of Jamming:**
+    -   **Unintentional:** Jamming can happen accidentally from household items like **microwave ovens** (affecting 2.4 GHz networks) or **fluorescent lights**.
+    -   **Intentional:** Attackers may send constant information, random data, or a flood of legitimate frames to create noise.
+    -   **Reactive Jamming:** This is a more sophisticated method where the attacker only sends a jam signal when they detect someone trying to communicate, making the problem harder to troubleshoot.
+-   **Localization (Fox Hunting):** Because an attacker must be physically near the access point to jam it, they can be located through a process called a **"fox hunt"**. This involves using a **directional antenna** to find where the signal is strongest and an **attenuator** to lower the signal strength as the "hunter" gets closer, allowing them to triangulate and locate the source of the interference.
