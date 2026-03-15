@@ -659,3 +659,49 @@ Unlike a deauthentication attack that can target a single device, RF jamming is 
     -   **Intentional:** Attackers may send constant information, random data, or a flood of legitimate frames to create noise.
     -   **Reactive Jamming:** This is a more sophisticated method where the attacker only sends a jam signal when they detect someone trying to communicate, making the problem harder to troubleshoot.
 -   **Localization (Fox Hunting):** Because an attacker must be physically near the access point to jam it, they can be located through a process called a **"fox hunt"**. This involves using a **directional antenna** to find where the signal is strongest and an **attenuator** to lower the signal strength as the "hunter" gets closer, allowing them to triangulate and locate the source of the interference.
+
+## On-path Attack
+
+An **on-path attack** (formerly known as a **man-in-the-middle attack**) occurs when an attacker positions themselves <ins>between two devices to monitor</ins> and potentially <ins>modify their communication</ins> in real time. These attacks are typically **invisible** to the victims, who remain unaware that their traffic is being intercepted.
+
+There are two specific types of on-path attacks.
+
+### ARP Poisoning
+This attack occurs on a **local IP subnet** and exploits the Address Resolution Protocol (ARP), which lacks built-in security, encryption, or authentication.
+
+-   **Standard Process:** Normally, a device broadcasts a [request](https://res.cloudinary.com/dnhgctqsu/image/upload/v1773572864/ARP_Poisoning_Image_1_zw4pv7.png) to find the MAC address associated with an IP address (like a router). Once [received](https://res.cloudinary.com/dnhgctqsu/image/upload/v1773572995/ARP_Poisoning_Image_2_rjzm10.png), the device saves this information in a local **ARP cache** to use for future communication.
+-   **The Attack:** An attacker [sends a fake ARP response](https://res.cloudinary.com/dnhgctqsu/image/upload/v1773573153/ARP_Poisoning_Image_3_boydqx.png) to a victim’s device, claiming their own MAC address belongs to the target IP (e.g., the router). Because ARP does not verify these messages, the victim’s device [overwrites its cache](https://res.cloudinary.com/dnhgctqsu/image/upload/v1773573251/ARP_Poisoning_Image_4_hflkyd.png) with the attacker's information.
+-   **Consequences:** Once the cache is "poisoned," all traffic intended for the router is sent to the attacker instead. The attacker can then:
+    -   **Monitor** the traffic.
+    -   **Modify** the information being sent.
+    -   **Terminate** the connection entirely.
+
+### On-path Browser Attack
+Also known as a **man-in-the-browser attack**, this version takes place on the victim's own device rather than across the network.
+
+-   **Mechanism:** Malware or a Trojan is installed on the device and configured as a **proxy**. This allows the attacker to redirect traffic before it is sent to the network and after it is received.
+-   **Bypassing Encryption:** Because the malware resides on the same device as the victim, it can see information "in the clear" even if the network traffic itself is **encrypted**.
+-   **Impact:** The malware typically waits for the victim to log into sensitive sites, such as a bank. It captures credentials (usernames and passwords) and can even initiate **hidden sessions** to transfer money or data without the victim's knowledge.
+
+
+## Replay Attack
+
+A **replay attack** occurs when an attacker <ins>captures information</ins> sent between a client and a server and subsequently reuses that information to <ins>impersonate</ins> the victim. While the replay itself is not an "on-path" attack, attackers frequently use on-path methods to gather the necessary data.
+
+There are two primary forms of replay attacks, the methods used to execute them, and how to prevent them.
+
+### Common Types of Replay Attacks
+-   **Pass the Hash:** During a normal authentication process, an attacker captures the victim's username and hashed password. By replaying these credentials to the server, the attacker can successfully authenticate and gain access while posing as the original client.
+-   **Session Hijacking (Side jacking):** Attackers target **browser cookies**, which store session IDs and tracking information. If an attacker gains access to a valid session ID, they can connect to a web server without needing any login credentials, effectively taking over the victim's active session.
+
+### Methods and Tools for Data Collection
+To perform these attacks, an attacker must first obtain sensitive traffic or files using various techniques:
+-   **Network Redirection/Monitoring:** This includes using physical network taps, **ARP poisoning** to redirect traffic, or packet capture software like **Wireshark** and **Kismet**.
+-   **Malware and Exploits:** Attackers may place malware on a victim's computer or use **cross-site scripting (XSS)** to steal session details and send them to the attacker's system.
+-   **Header and Cookie Manipulation:** Tools such as **Tamper**, **Firesheep**, and **Scapy** allow attackers to view or modify headers and cookie information.
+
+### Prevention and Mitigation
+There are some strategies to defend against these attacks:
+-   **Encryption:** The most effective defense is to **encrypt all traffic end-to-end** using **HTTPS**. If end-to-end encryption isn't possible, using a **VPN** provides encryption for at least the first part of the data's journey.
+-   **Salting and Hash Management:** Adding a unique "salt" to passwords ensures that a different hash is generated every time authentication occurs. Additionally, servers can be configured to **reject the same hash twice in a row**.
+-   **Browser Security:** Users can use browser extensions that force HTTPS connections and prevent data from being sent in the clear.
