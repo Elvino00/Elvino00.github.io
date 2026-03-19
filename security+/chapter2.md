@@ -705,3 +705,46 @@ There are some strategies to defend against these attacks:
 -   **Encryption:** The most effective defense is to **encrypt all traffic end-to-end** using **HTTPS**. If end-to-end encryption isn't possible, using a **VPN** provides encryption for at least the first part of the data's journey.
 -   **Salting and Hash Management:** Adding a unique "salt" to passwords ensures that a different hash is generated every time authentication occurs. Additionally, servers can be configured to **reject the same hash twice in a row**.
 -   **Browser Security:** Users can use browser extensions that force HTTPS connections and prevent data from being sent in the clear.
+
+## Malicious Code
+
+There are various methods the attackers can use to gain access to systems by using **malicious code**. While some attacks rely on non-technical methods like **social engineering**, **default credentials**, or **misconfigurations**, malicious code requires a higher level of technical expertise.
+
+### Forms and Delivery of Malicious Code
+Malicious code can be delivered and executed through several different methods, including:
+-   **Executables** and **scripts** running on a system.
+-   **Macro viruses** and **Trojan horses**.
+-   Exploiting vulnerabilities like **SMB (Server Message Block) version 1**, which was used in the **WannaCry ransomware** attacks to allow **arbitrary code execution** and gain access to the operating system.
+-   **Cross-site scripting (XSS)**, such as the 22 lines of malicious **JavaScript** placed on the British Airways website to steal credit card information from approximately 380,000 victims.
+-   **SQL injection**, which was used to breach the **Estonian Central Health Database** and access the health information of the entire country's citizens.
+
+### Defense Strategies
+There are many ways malicious code can be used so, a **strong, multi-layered defense** is advised :
+-   **Anti-malware software**: Used to block malicious executables, scripts, and macro viruses.
+-   **Firewalls**: Implemented to block known malicious traffic from passing through the network.
+-   **Continuous updates and patches**: Essential for closing security vulnerabilities that attackers might exploit.
+-   **User training**: Educating users on **secure computing habits**, such as not sharing information over the phone or clicking unknown links in emails, to prevent successful social engineering and malware delivery.
+
+## Application attacks
+
+### Injection Attacks
+An **injection attack** occurs when an attacker adds malicious code to input sent to a server or client. These attacks succeed when an application fails to perform proper input validation. While **SQL injection** is the most common type, others include **HTML, XML, and LDAP** injections.
+
+### Buffer Overflows
+A **buffer overflow** happens when an attacker inputs more information than a variable's reserved memory area can hold, causing the data to spill over into adjacent memory buffers. This is enabled by a lack of input checks within the application. Although these attacks often simply crash an application, a consistent and repeatable buffer overflow can be a very powerful exploit.
+
+### Replay Attacks
+In a **replay attack**, an attacker captures information (such as **username/password hashes or session IDs**) from a network or a victim's computer and "replays" it to a server to gain unauthorized access. Attackers may gather this data via network taps, ARP poisoning, malware, or by combining it with an **on-path attack**.
+
+### Privilege Escalation
+This attack involves exploiting a bug or vulnerability to gain higher-level permissions than originally granted. 
+-   **Vertical Privilege Escalation:** Attempting to gain administrator or "system" level access.
+-   **Horizontal Privilege Escalation:** Moving from one standard user's access level to another (e.g., from User A to User B).
+
+**Prevention methods** include patching vulnerabilities, updating antivirus signatures, and using **Data Execution Prevention (DEP)** to limit where executables can run in memory. Additionally, operating systems can **randomize data storage locations** in memory to make vulnerabilities harder to find.
+
+### Cross-Site Request Forgery (CSRF/XSRF)
+Commonly called "**sea surf**," "session riding," or a "one-click attack," this exploit takes advantage of the trust a web server has in a user’s browser. Because browsers often load content from multiple servers (like YouTube or Instagram) without re-authentication, an attacker can trick a logged-in user into clicking a malicious link. This causes the browser to <ins>send unauthorized requests</ins>—such as transferring bank funds—to a server that already trusts the user's session. Applications can defend against this using **cryptographic tokens** for each transaction.
+
+### Directory Traversal
+Often resulting from a web server **misconfiguration**, a directory traversal allows an attacker to read or write files outside the designated web directory. Attackers use the `../` **command** in a URL request to move backward through the file system to access restricted areas, such as the Windows system directory.
