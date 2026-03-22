@@ -748,3 +748,83 @@ Commonly called "**sea surf**," "session riding," or a "one-click attack," this 
 
 ### Directory Traversal
 Often resulting from a web server **misconfiguration**, a directory traversal allows an attacker to read or write files outside the designated web directory. Attackers use the `../` **command** in a URL request to move backward through the file system to access restricted areas, such as the Windows system directory.
+
+## Cryptographic Attacks
+
+In most cryptography, the **key** is the critical factor that determines whether data is secure. When attackers cannot access the key, they instead <ins>attack</ins> the <ins>cryptography itself</ins> by looking for <ins>weaknesses</ins> in <ins>protocols</ins> and algorithms</ins>. Because these algorithms are typically public, they can be scrutinized for workarounds; those that withstand this testing over time are considered trustworthy. If an algorithm is secure, attackers often pivot to targeting its **implementation**, which is frequently the weakest link.
+
+### Algorithm Attacks: The Birthday Attack
+One primary attack against algorithms is the **birthday attack**, which is based on the statistical probability of matches within a set. 
+-   **The Probability:** In a room of 23 people, there is a 50% chance that two people share a birthday; with 30 people, that chance rises to 70%.
+-   **Hash Collisions:** In cryptography, this concept is applied to find a **hash collision**, where two different plaintexts result in the exact same hash.
+-   **Discovery and Prevention:** Collisions are typically found through **brute-force** processes, where an attacker tries every possible plaintext to find duplicates. Using a **very large hash output size** makes it significantly more difficult for an attacker to find a duplicate.
+
+### Case Study: MD5 (Message Digest Algorithm 5)
+The MD5 algorithm is a notable example of a failed cryptographic standard. Although published in 1992, researchers discovered collisions by 1996. By 2008, researchers successfully used MD5 collisions to create a fraudulent, yet seemingly legitimate, digital certificate from a **Certificate Authority (CA)**. Because MD5 could produce identical hashes for plaintexts with minor differences, the industry transitioned to more secure hashing algorithms.
+
+### Implementation Attacks: Downgrade Attacks and SSL Stripping
+A **downgrade attack** occurs when the <ins>implementation</ins> of a secure algorithm is <ins>flawed</ins>, allowing an attacker to force two devices into using weaker encryption or no encryption at all. 
+
+**SSL Stripping** is a common form of downgrade attack that functions as an **on-path attack**.
+
+[SSL Stripping](https://res.cloudinary.com/dnhgctqsu/image/upload/v1773920868/SSL_Stripping_ngtmp2.png)
+
+The process works as follows:
+-   **Interception:** An attacker sits in the middle of the communication between a visitor and a web server.
+-   **The Request:** When a visitor makes an initial HTTP request, the attacker acts as a **proxy**, passing the request to the server but intercepting the server’s attempt to redirect the user to the secure **HTTPS** version of the site.
+-   **The Split Connection:** The attacker establishes a secure HTTPS connection with the web server while maintaining an unencrypted **HTTP** connection with the victim.
+-   **Data Theft:** Because the victim is communicating in the clear, the attacker can read sensitive information, such as **usernames and passwords**, and use them to log in to the server on the victim's behalf.
+-   **Ongoing Monitoring:** All subsequent communication between the visitor and the server is captured, viewed, or potentially modified by the attacker.
+
+## Password Attacks
+
+Storing credentials in a **non-encrypted form**, known as **plain text** or "in the clear," is a significant security risk. If an attacker gains access to a file or database containing plain-text passwords, they can take advantage of that information immediately. If an application uses this method, it's advised to either **discontinue its use** or have the developer rewrite it to store passwords as **hashes**.
+
+**Hashing** takes a variable-length input (the password) and represents it as a **fixed-length string** of text, often called a "message digest" or a "fingerprint". Key characteristics of hashing include:
+-   **Unique Outputs:** Different inputs produce very different outputs; even a single-character change in a password results in a completely different hash.
+-   **Non-Reversibility:** It is impossible to **reverse-engineer** a password from its hash.
+-   **Security:** Hashes stored in an operating system or file do not contain the original plain-text password.
+
+### Password Spraying Attacks
+Because many systems implement **account lockouts** after several failed login attempts, attackers use **spraying attacks** to avoid detection. In a spraying attack, an attacker tries the most **common passwords** (such as "123456," "password," or "qwerty") against a large number of different accounts. By only trying a few common passwords per account, they can often find weak credentials without triggering lockouts, alarms, or security reports.
+
+### Brute Force Attacks
+A **brute force attack** is a more intensive method where an attacker tries every possible iteration of letters, numbers, and special characters until the right password is found. 
+-   **Process:** The attacker takes a guess, hashes it, and compares that hash to the one stored in the password file. They repeat this until they find a match.
+-   **Time-Consuming:** This process can take a significant amount of time if the passwords are long and the hashing algorithm is strong.
+
+### Online vs. Offline Attacks
+-   **Online Attacks:** These occur when an attacker attempts to log in to a live system. They are typically very **slow** because the attacker can only make a few requests a day to avoid locking out the account.
+-   **Offline Attacks:** This is the preferred method for most attackers. The attacker **downloads the file** containing hashed passwords and usernames. Once offline, they can use their own **computational resources** to perform as many brute-force attempts as they want without any risk of being locked out. As long as they have enough time and hardware, they can eventually find matches for the stored hashes.
+
+
+## Indicators of compromise
+
+**Indicators of Compromise (IOCs)** are pieces of evidence that suggest a system has been breached or accessed by an unauthorized party. An IOC describes a situation where there is **high confidence that a compromise has occurred**.
+
+### Network and File Anomalies
+-   **Unusual Traffic Patterns:** This includes an **unusually large amount of traffic** on a particular network or an **uptick in traffic from international sites** when the majority of traffic is typically domestic.
+-   **File Modifications:** Changes in the **hash values** of files indicate they have been modified. Additionally, files being read much more frequently than normal can be an indicator.
+-   **DNS Changes:** If **DNS information** on servers has been modified, it may indicate someone is trying to manipulate where network traffic is directed.
+
+### Authentication and Account Issues
+-   **Account Lockouts:** An account being locked due to **too many failed login attempts**—especially if the user did not make those attempts—is a telling indicator. 
+-   **Disabled Accounts:** Accounts being **administratively disabled** without a corresponding organizational task may be part of an attacker's plan to impersonate the user and trick a help desk into resetting a password.
+-   **Impossible Logins:** This refers to instances where a single user account is logged in from **two different locations simultaneously**. A specific example is a user logging in from Omaha, Nebraska, and then appearing in Australia just minutes later; these geographical anomalies are easily identifiable in authentication logs.
+
+### System and Security Software Interference
+-   **Disabled Updates:** Viruses and malware often **disable antivirus updates and security patches** to prevent the vulnerability they used from being closed, allowing them to remain on the system longer.
+-   **Restricted Access:** An inability to connect to security websites or download security patches is a strong indicator of compromise.
+
+### Resource Consumption and Unavailability
+-   **Unexpected Resource Spikes:** Attackers transferring files or data often create a **spike in traffic**, particularly at unusual times, such as 3:00 in the morning.
+-   **Service Disruptions:** A server may become inaccessible because an attacker **caused it to crash** while trying to exploit a vulnerability.
+-   **Data Encryption:** If data is suddenly **encrypted and unavailable**, the system may be infected with **ransomware**.
+
+### Log Irregularities
+-   **Out-of-Cycle Logging:** This occurs when logs show activity—such as **security patches or applications being installed**—at times when they are not scheduled.
+-   **Missing or Deleted Logs:** Attackers often **delete log information** to hide their presence. The sources recommend setting up notifications for missing logs to detect this activity.
+
+### Data Exfiltration
+-   **Public Exposure of Private Data:** A very clear indicator is when sensitive organizational data **suddenly appears on the internet**. 
+-   **Extortion Tactics:** In some ransomware cases, attackers **exfiltrate data before encrypting it**, later threatening to release the private information publicly if a payment is not made. Researchers often have to sift through this publicly leaked data to identify the original owner.
