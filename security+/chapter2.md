@@ -823,8 +823,41 @@ A **brute force attack** is a more intensive method where an attacker tries ever
 
 ### Log Irregularities
 -   **Out-of-Cycle Logging:** This occurs when logs show activity—such as **security patches or applications being installed**—at times when they are not scheduled.
--   **Missing or Deleted Logs:** Attackers often **delete log information** to hide their presence. The sources recommend setting up notifications for missing logs to detect this activity.
+-   **Missing or Deleted Logs:** Attackers often **delete log information** to hide their presence. It's recommended setting up notifications for missing logs to detect this activity.
 
 ### Data Exfiltration
 -   **Public Exposure of Private Data:** A very clear indicator is when sensitive organizational data **suddenly appears on the internet**. 
 -   **Extortion Tactics:** In some ransomware cases, attackers **exfiltrate data before encrypting it**, later threatening to release the private information publicly if a payment is not made. Researchers often have to sift through this publicly leaked data to identify the original owner.
+
+## Segmentation and Access Control
+
+**Network segmentation** and **Access control** methods are used to enhance security and performance.
+
+### Network Segmentation
+Network segmentation involves <ins>breaking</ins> a <ins>network</ins> into <ins>smaller pieces</ins> to <ins>limit</ins> the <ins>scope of security events</ins>. It can be implemented in three primary ways:
+-   **Physical segmentation:** Physically separating hardware devices.
+-   **Logical segmentation:** Using technologies like **VLANs** (Virtual Local Area Networks) on network switches.
+-   **Virtual segmentation:** Utilizing virtual machine or cloud-based architectures.
+
+Reasons for segmentation include:
+-   **Performance:** Dedicating a single subnet to a high-bandwidth application ensures it runs efficiently without being affected by other network traffic.
+-   **Security Strategy:** Creating rules to <ins>prevent direct communication</ins> between users and sensitive resources, such as requiring users to <ins>go through an application server</ins> to reach a database.
+-   **Compliance:** Meeting mandates like **PCI DSS** (Payment Card Industry Data Security Standard), which may require credit card information to be kept completely separate from the rest of the network.
+
+### Access Control Lists (ACLs)
+An **ACL** is a mechanism used to <ins>allow</ins> or <ins>disallow traffic</ins> through networks, operating systems, or other technologies.
+-   **Control Criteria:** Traffic can be controlled based on source/destination IP addresses, port numbers, time of day, or specific user identities.
+-   **Granularity:** ACLs allow for very specific rules, such as limiting a user to certain TCP ports on a specific network range.
+-   **Operating Systems:** ACLs are also used within OSs to manage permissions for files, folders, and user groups.
+-   **Configuration Warning:** When building ACLs, administrators must be careful not to create rules that accidentally lock them out of the system.
+
+### Application Allow Lists and Deny Lists
+Organizations use application filtering to ensure only legitimate software runs while blocking malicious software like Trojans and viruses. There are two main philosophies for this:
+-   **Allow List:** A restricted approach where **nothing runs** unless it is specifically approved.
+-   **Deny List:** A more flexible approach where **everything runs** except for items specifically identified as "bad," such as how antivirus software identifies known viruses.
+
+Windows-specific controls for applications include
+-   **Application Hash:** Identifying an app by a unique hash; if the application changes, the hash no longer matches and the rule will not apply.
+-   **Digital Signatures:** Allowing apps based on trusted certificates from specific organizations like Microsoft or Google.
+-   **Path-based Rules:** Allowing or disallowing applications based on the specific directory or area of the drive they are running from.
+-   **Network Zones:** Setting rules that allow certain applications to work only when the device is on a specific network zone, such as a private versus a public network.
