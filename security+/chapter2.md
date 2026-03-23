@@ -29,7 +29,7 @@ Threat actors are categorized into several specific types:
 ### Insider Threat
 -   **Attributes:** Internal to the organization with a medium level of sophistication.
 -   **Advantage:** They excel because they know exactly where data is located and how to circumvent existing security controls.
--   **Motivation:** Often financial gain or revenge. The source emphasizes the importance of vetting during the hiring process to prevent these threats.
+-   **Motivation:** Often financial gain or revenge. It's important to vet during the hiring process to prevent these threats.
 
 ### Organized Crime
 -   **Attributes:** Usually external, highly sophisticated, and well-funded.
