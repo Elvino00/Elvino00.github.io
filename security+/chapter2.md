@@ -867,18 +867,18 @@ Windows-specific controls for applications include
 **Mitigation** is the process of **reducing the impact** of a potential or active security event.
 
 ### Patching and Vulnerability Management
--   **Proactive Security:** Patching known vulnerabilities is a primary method to stop attacks before they occur, often making systems <ins>more stable</ins> in the process.
+-   **Proactive Security:** <ins>Patching</ins> known vulnerabilities is a <ins>primary method</ins> to <ins>stop attacks</ins> before they occur, often making systems more stable in the process.
 -   **Deployment Methods:** While home operating systems often **patch automatically**, large organizations usually have IT departments **test patches** for stability before pushing them out to the network. 
--  **Emergency Patches:** Organizations may deploy patches outside of regular schedules if a significant vulnerability is being actively exploited.
+-  **Emergency Patches:** Organizations may <ins>deploy</ins> patches <ins>outside</ins> of regular <ins>schedules</ins> if a <ins>significant</ins> vulnerability is being <ins>actively exploited</ins>.
 
 ### Encryption
-Encryption is used to limit the amount of data an attacker can access.
+Encryption is used to <ins>limit</ins> the amount of <ins>data</ins> an attacker can <ins>access</ins>.
 -   **File-Level Encryption:** This allows for the encryption of specific files or folders, such as **Windows EFS (Encrypting File System)**.
--   **Full Disk Encryption (FDE):** This protects the entire storage volume, including the OS and user files, which is critical for devices leaving a building. Examples include **BitLocker** for Windows and **FileVault** for Mac OS.
+-   **Full Disk Encryption (FDE):** This <ins>protects</ins> the <ins>entire storage</ins> volume, including the OS and user files, which is critical for devices leaving a building. Examples include **BitLocker** for Windows and **FileVault** for Mac OS.
 -   **Application-Level Encryption:** Some applications encrypt data internally, independent of the operating system's encryption status.
 
 ### Monitoring and Logging
--   **Continuous Identification:** Constant monitoring through sensors or built-in technologies in routers, switches, and firewalls is necessary to identify security events.
+-   **Continuous Identification:** Constant monitoring through <ins>sensors</ins> or built-in technologies in <ins>routers, switches, and firewalls</ins> is necessary to <ins>identify security events</ins>.
 -   **Log Consolidation:** Because logs are often spread across many systems, organizations use a **SIEM (Security Information and Event Manager)** to consolidate data into a single source for reporting and monitoring.
 
 ### Least Privilege
@@ -886,10 +886,41 @@ Encryption is used to limit the amount of data an attacker can access.
 -   **Permission Elevation:** Users should ideally not run with administrative permissions; instead, they should **elevate permissions temporarily** only when needed. This limits the scope of a potential data breach or malware infection.
 
 ### Posture Assessment
--   **Configuration Enforcement:** Systems connecting to a network undergo a posture assessment to ensure they meet security standards.
+-   **Configuration Enforcement:** Systems connecting to a network undergo a <ins>posture assessment</ins> to ensure they meet <ins>security standards</ins>.
 -   **Verification Checks:** These assessments check for the latest OS versions, patches, up-to-date antivirus/EDR signatures, local firewall configurations, and trusted certificates.
 -   **Quarantine:** If a system fails the assessment, it may be placed in a **quarantine or private VLAN** until it is brought up to date.
 
 ### Decommissioning
--   **Data Removal:** When equipment reaches the end of its life, sensitive information must be removed from storage devices like SSDs and hard drives.
+-   **Data Removal:** When equipment reaches the <ins>end of</ins> its <ins>life</ins>, <ins>sensitive information must be removed</ins> from storage devices like SSDs and hard drives.
 -   **Disposal Options:** While drives can be formatted and recycled for internal use, **physical destruction** is recommended for drives containing sensitive data to ensure it can never be accessed.
+
+
+## Hardening Techniques
+
+**Hardening techniques** involve implementing best practices to make devices <ins>more resilient</ins> against attacks.
+
+### Operating System and Account Hardening
+-   **Security Updates:** One of the most critical steps is <ins>consistently applying security patches and updates</ins> for the operating system and installed applications.
+-   **Password Policies:** Systems should enforce rules for **password length and complexity**, such as requiring at least eight characters and a mix of uppercase, lowercase, numbers, and special characters.
+-   **Principle of Least Privilege:** User accounts should have <ins>limited access</ins>; not every user should be an administrator, and individuals should only have the specific rights necessary to perform their jobs.
+-   **Access Control:** Access can be restricted by limiting it to specific **IP address ranges**, denying anyone outside those ranges.
+
+### Data and Network Security
+-   **Encryption:** To protect data, you can use **Encrypting File System (EFS)** for specific files or **Full Disk Encryption (FDE)**—such as Windows BitLocker or macOS FileVault—to secure entire drives.
+-   **Communication Security:** Network traffic should be encrypted using **Virtual Private Networks (VPNs)** or application-level encryption like **HTTPS**.
+-   **Port Management:** It is vital to **close unnecessary ports** to reduce the attack surface. Tools like **Nmap** can be used to scan for and identify open ports that might have been opened unknowingly by software installations.
+
+### Endpoint Detection and Response (EDR)
+Because of the massive scale of new malware variants, the industry has moved toward **EDR** solutions. Unlike traditional antivirus, EDR provides:
+-   **Behavioral Analysis:** It <ins>monitors what users and applications do</ins> to <ins>identify malicious activity</ins> even without a known signature.
+-   **Machine Learning and Process Monitoring:** These tools rapidly <ins>identify malicious software</ins> and constantly <ins>watch running processes</ins>.
+-   **Automated Response:** EDR can perform **root-cause analysis**, <ins>isolate</ins> infected systems, </ins>quarantine</ins> threats, and <ins>roll back to previous configurations autonomously</ins> via **APIs**.
+
+### Host-Based Security Tools
+-   **Host-Based Firewalls:** These software-based firewalls run on the OS and can <ins>see data before or after encryption</ins>, allowing them to <ins>block unknown or unusual processes</ins>.
+-   **Host-Based IPS (HIPS):** Often built into EDR or anti-malware, HIPS <ins>monitors inbound traffic</ins> for <ins>known vulnerabilities</ins>. It can also protect OS configurations and block actions like **buffer overflows** or unauthorized **registry changes**.
+
+### Device and Application Maintenance
+-   **Default Configurations:** You must manually change **default usernames and passwords** on management interfaces for routers, switches, and firewalls, as attackers easily find these defaults.
+-   **Multifactor Authentication (MFA):** Implementing MFA or centralized authentication helps synchronize and secure accounts across the network.
+-   **Application Hygiene:** To simplify security, you should **delete unused applications**. This removes potential vulnerabilities and the burden of keeping those applications updated.
