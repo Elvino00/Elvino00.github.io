@@ -861,3 +861,35 @@ Windows-specific controls for applications include
 -   **Digital Signatures:** Allowing apps based on trusted certificates from specific organizations like Microsoft or Google.
 -   **Path-based Rules:** Allowing or disallowing applications based on the specific directory or area of the drive they are running from.
 -   **Network Zones:** Setting rules that allow certain applications to work only when the device is on a specific network zone, such as a private versus a public network.
+
+## Mitigation Techniques
+
+**Mitigation** is the process of **reducing the impact** of a potential or active security event.
+
+### Patching and Vulnerability Management
+-   **Proactive Security:** Patching known vulnerabilities is a primary method to stop attacks before they occur, often making systems <ins>more stable</ins> in the process.
+-   **Deployment Methods:** While home operating systems often **patch automatically**, large organizations usually have IT departments **test patches** for stability before pushing them out to the network. 
+-  **Emergency Patches:** Organizations may deploy patches outside of regular schedules if a significant vulnerability is being actively exploited.
+
+### Encryption
+Encryption is used to limit the amount of data an attacker can access.
+-   **File-Level Encryption:** This allows for the encryption of specific files or folders, such as **Windows EFS (Encrypting File System)**.
+-   **Full Disk Encryption (FDE):** This protects the entire storage volume, including the OS and user files, which is critical for devices leaving a building. Examples include **BitLocker** for Windows and **FileVault** for Mac OS.
+-   **Application-Level Encryption:** Some applications encrypt data internally, independent of the operating system's encryption status.
+
+### Monitoring and Logging
+-   **Continuous Identification:** Constant monitoring through sensors or built-in technologies in routers, switches, and firewalls is necessary to identify security events.
+-   **Log Consolidation:** Because logs are often spread across many systems, organizations use a **SIEM (Security Information and Event Manager)** to consolidate data into a single source for reporting and monitoring.
+
+### Least Privilege
+-   **Access Control:** This best practice limits user rights and permissions strictly to what is required for their specific job role.
+-   **Permission Elevation:** Users should ideally not run with administrative permissions; instead, they should **elevate permissions temporarily** only when needed. This limits the scope of a potential data breach or malware infection.
+
+### Posture Assessment
+-   **Configuration Enforcement:** Systems connecting to a network undergo a posture assessment to ensure they meet security standards.
+-   **Verification Checks:** These assessments check for the latest OS versions, patches, up-to-date antivirus/EDR signatures, local firewall configurations, and trusted certificates.
+-   **Quarantine:** If a system fails the assessment, it may be placed in a **quarantine or private VLAN** until it is brought up to date.
+
+### Decommissioning
+-   **Data Removal:** When equipment reaches the end of its life, sensitive information must be removed from storage devices like SSDs and hard drives.
+-   **Disposal Options:** While drives can be formatted and recycled for internal use, **physical destruction** is recommended for drives containing sensitive data to ensure it can never be accessed.
