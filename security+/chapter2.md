@@ -688,10 +688,9 @@ Also known as a **man-in-the-browser attack**, this version takes place on the v
 
 A **replay attack** occurs when an attacker <ins>captures information</ins> sent between a client and a server and subsequently reuses that information to <ins>impersonate</ins> the victim. While the replay itself is not an "on-path" attack, attackers frequently use on-path methods to gather the necessary data.
 
-There are two primary forms of replay attacks, the methods used to execute them, and how to prevent them.
 
 ### Common Types of Replay Attacks
--   **Pass the Hash:** During a normal authentication process, an attacker captures the victim's username and hashed password. By replaying these credentials to the server, the attacker can successfully authenticate and gain access while posing as the original client.
+-   **Pass the Hash:** During a normal authentication process, an attacker <ins>captures</ins> the <ins>victim's username and hashed password</ins>. By replaying these credentials to the server, the attacker can successfully authenticate and gain access while posing as the original client.
 -   **Session Hijacking (Side jacking):** Attackers target **browser cookies**, which store session IDs and tracking information. If an attacker gains access to a valid session ID, they can connect to a web server without needing any login credentials, effectively taking over the victim's active session.
 
 ### Methods and Tools for Data Collection
