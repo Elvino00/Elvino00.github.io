@@ -42,19 +42,19 @@ In a **serverless** environment, the application is broken down into **individua
 ## Network Infrastructures
 
 ### Network Isolation and Air Gaps
--   **Physical Isolation:** To prevent an attacker from moving laterally between devices, a network can be designed with an **air gap**, meaning devices are physically separated and have no connection between them.
--   **Use Cases:** Air gaps are used for high-security environments, such as separating web servers from database servers or keeping different customers' data separate in a managed service provider (MSP) environment.
--   **Connectivity Requirements:** If air-gapped devices must eventually communicate, they require a direct connection or must pass data through a router or another switch.
+-   **Physical Isolation:** To prevent an attacker from moving laterally between devices, a network can be designed with an **air gap**, meaning devices are <ins>physically separated</ins> and have <ins>no connection between them</ins>.
+-   **Use Cases:** Air gaps are used for high-security environments, such as <ins>separating web servers from database servers</ins> or keeping <ins>different customers' data separate</ins> in a managed service provider (MSP) environment.
+-   **Connectivity Requirements:** If air-gapped devices must eventually communicate, they require a <ins>direct connection</ins> or must <ins>pass</ins> data <ins>through</ins> a <ins>router</ins> or another switch.
 
 ### Segmentation and VLANs
--   **Scalability Issues:** While physical isolation is secure, it does not scale well because every new segment or customer would require a new physical switch.
--   **Virtual Local Area Networks (VLANs):** Switches use VLANs to provide segmentation on a single physical device. By assigning specific interfaces to different VLANs, a network admin can achieve the **same effect as having separate physical switches**. This simplifies network design and reduces the amount of hardware needed.
+-   **Scalability Issues:** While physical isolation is secure, it <ins>does not scale well</ins> because every new segment or customer would <ins>require</ins> a new <ins>physical switch</ins>.
+-   **Virtual Local Area Networks (VLANs):** Switches use VLANs to provide <ins>segmentation</ins> on a single physical device. By assigning specific interfaces to different VLANs, a network admin can achieve the **same effect as having separate physical switches**. This simplifies network design and <ins>reduces the amount of hardware needed</ins>.
 
 ### Software Defined Networking (SDN) and Planes of Operation
-SDN allows physical networking functions to be turned into software that can be used in cloud environments. This is achieved by separating a device's functions into **three planes of operation**:
+SDN allows physical networking functions to be <ins>turned into software</ins> that can be used in cloud environments. This is achieved by separating a device's functions into **three planes of operation**:
 
-1.  **Data Plane (Infrastructure Layer):** This is the "heavy lifter" responsible for **forwarding traffic** from one device to another. It handles tasks like Network Address Translation (NAT), encryption, and trunking.
-2.  **Control Plane:** This plane manages the data plane by maintaining **routing tables**, session tables, and dynamic routing updates. It essentially tells the data plane how to get data from point A to point B.
+1.  **Data Plane (Infrastructure Layer):** It's responsible for **forwarding traffic** from one device to another. It handles tasks like <ins>Network Address Translation</ins> (NAT), encryption, and trunking.
+2.  **Control Plane:** This plane manages the data plane by maintaining **routing tables**, session tables, and dynamic routing updates. It essentially tells the data plane <ins>how to get data from point A to point B</ins>.
 3.  **Management Plane:** This is where **configuration changes** are made. Administrators connect to this plane via SSH, SNMP, or APIs to dictate how the control plane should operate.
 
 ### Cloud Infrastructure
@@ -65,18 +65,18 @@ SDN allows physical networking functions to be turned into software that can be 
 ## Infrastructure Considerations
 
 ### Availability and Resilience
-**Availability** is the expectation that systems and resources are up, running, and accessible to the right people. Organizations prioritize this by investing in redundant systems and complex monitoring tools to track "uptime," often measured as a percentage (e.g., 99.999%). When outages occur, a key metric for resilience is **Mean Time to Repair (MTTR)**, which measures how long it takes to replace or fix unavailable components. Determining recovery time requires identifying the root cause, such as hardware failure or software bugs. Efficient recovery processes, such as using **image backups** instead of manual OS reinstallation, can significantly reduce downtime and costs.
+**Availability** is the expectation that <ins>systems</ins> and resources <ins>are up</ins>, running, and accessible to the right people. Organizations prioritize this by investing in redundant systems and complex monitoring tools to track "uptime," often measured as a percentage (e.g., 99.999%). When outages occur, a key metric for resilience is **Mean Time to Repair (MTTR)**, which measures <ins>how long</ins> it takes to <ins>replace or fix</ins> unavailable <ins>components</ins>. Determining recovery time requires identifying the root cause, such as hardware failure or software bugs. Efficient recovery processes, such as using **image backups** instead of manual OS reinstallation, can significantly <ins>reduce</ins> downtime and costs.
 
 ### Cost and Risk Management
 Calculating the **cost** of technology is complex and includes initial installation, ongoing maintenance (internal or manufacturer-led), and replacement expenses. Financial planning must also account for **depreciation, capital expenses, operational costs, and tax implications**. To manage the financial risk of security events like ransomware, organizations often use **cybersecurity insurance**. This insurance can help recoup losses from business downtime and cover legal fees resulting from customer-related proceedings.
 
 ### Performance and Scalability
--   **Responsiveness:** This refers to how quickly a service responds to a request, which is a critical metric for interactive applications. Responsiveness varies based on the specific function being performed and may involve multiple internal steps.
--   **Elasticity and Scalability:** To handle varying usage loads, organizations use **elasticity** to expand or contract an application's footprint. **Orchestration** allows for the automated, programmatic building of cloud-based infrastructure on demand. 
--   **Security Monitoring:** As applications scale, security tools must be extended to monitor the entire instance, including all added resources.
+-   **Responsiveness:** This refers to <ins>how quickly a service responds to a request</ins>, which is a critical metric for interactive applications. Responsiveness varies based on the specific function being performed and may involve multiple internal steps.
+-   **Elasticity and Scalability:** To handle varying usage loads, organizations use **elasticity** to expand or contract an application's resources. **Orchestration** allows for the automated, programmatic building of cloud-based infrastructure on demand. 
+-   **Security Monitoring:** As applications scale, <ins>security tools</ins> must be </ins>extended to monitor the entire instance, including all added resources.
 
 ### Maintenance and Patching
-The **patching process** is essential for fixing bugs and providing security updates. Organizations typically test patches in a non-production environment before deploying them to prevent breaking existing systems. Systems that are not patched are left vulnerable to exploits. Some **embedded systems** (like HVAC controls or time clocks) are difficult to patch because they lack easy connectivity or manufacturer support; these systems require additional layers of security, such as **firewalls**, to mitigate risk.
+The **patching process** is essential for <ins>fixing bugs</ins> and providing <ins>security updates</ins>. Organizations typically test patches in a non-production environment before deploying them to prevent breaking existing systems. Systems that are not patched are left vulnerable to exploits. Some **embedded systems** (like HVAC controls or time clocks) are difficult to patch because they lack easy connectivity or manufacturer support; these systems require additional layers of security, such as **firewalls**, to mitigate risk.
 
 ### Core Infrastructure: Power and Compute
 -   **Power:** Electricity is a fundamental requirement that must be monitored and planned for with the help of licensed electricians. To protect against power loss, organizations use **Uninterruptible Power Supplies (UPS)** or generators.
