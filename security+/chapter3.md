@@ -84,3 +84,85 @@ The **patching process** is essential for <ins>fixing bugs</ins> and providing <
 
 ### Operational Planning
 Successful deployment requires careful **project management and change control**. Applications are rarely single entities; they consist of many moving parts, including web servers, databases, caching servers, and firewalls. Missing any resource or step during the planning phase can delay the entire implementation.
+
+## Secure Infrastructures
+
+There are various strategies and technologies used to design and maintain **secure network infrastructures**. While every network is unique based on its organizational goals—such as those in manufacturing versus medical environments—they share common security elements like the use of **firewalls** for network segmentation.
+
+### Security Technologies and Zones
+Beyond firewalls, several other devices contribute to a secure computing environment, including **honeypots, jump servers, sensors, and load balancers**. A key concept in secure design is the [security zone](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774881710/Security_Zones_ygw3pf.png), which logically <ins>separates</ins> devices based on their <ins>use</ins> or <ins>access type</ins> rather than just their IP address range.
+
+-   **Zone Types:** Common designations include **trusted vs. untrusted** or **internal vs. external**. Organizations can create more granular zones for specific needs, such as **inside, internet, servers, databases, or screened** zones.
+-   **Rule Bases:** These zones make it easier to <ins>maintain</ins> large rule bases</ins> that dictate <ins>how data moves</ins>. For instance, a rule might allow data to flow from a trusted zone to an untrusted zone, or from the internet to a **screened subnet** (screened zone).
+-   **Granularity:** Increasing the number of zones allows for more precise security rules, making it harder for attackers to find openings.
+
+### Managing the Attack Surface
+The **attack surface** is the combination of all <ins>potential openings</ins> an attacker <ins>might exploit</ins> to <ins>enter a network</ins>. These openings include:
+-   **Application code** and **open ports** on a server.
+-   The **authentication process**.
+-   **Human error**, such as an improperly configured firewall rule.
+
+To minimize the attack surface, organizations should **audit code**, **block unnecessary ports**, and **monitor traffic in real time** to identify who is entering the network and what applications are in use.
+
+### Secure Connectivity
+Security must also be integrated into the physical and logical connectivity of the network:
+-   **Cabling Protections:** Physical and logical protections should be applied to network cabling and drops in facilities to prevent unauthorized "tapping" into the network.
+-   **Encryption:** Because attackers who tap into a network can watch traffic, **application-level encryption** is essential to ensure that captured packets remain unreadable.
+-   **Remote Access:** For remote sites or off-site users, additional encryption is used through **IPsec tunnels** or **VPN concentrators** to provide secure connections to the corporate office.
+
+## Intrusion Prevention
+
+An **Intrusion Prevention System (IPS)** is designed to monitor network traffic in **real time** and **immediately block** anything identified as a dangerous exploit, such as known vulnerabilities, buffer overflows, or SQL injections. This differs from an **Intrusion Detection System (IDS)**, which can alert you to these vulnerabilities but **cannot block** the traffic.
+
+There are two primary ways to deploy these systems.
+
+### Active Monitoring (Inline)
+In an **active monitoring** [configuration](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774885333/Active_Monitoring_IPS_ul8nhz.png), the IPS is placed **inline**—for example, positioned between a firewall and a core switch—so that all traffic must pass through it. The IPS evaluates the traffic and, if it identifies an attack, **removes it from the network** before it reaches the destination. While this is often the default configuration, it presents challenges if the device fails due to power loss, hardware issues, or software bugs. There are two ways an inline device might handle failure:
+-   **Fail-open:** Data continues to flow through the connection even if the device crashes. This keeps the network running, but **security processes will not occur**.
+-   **Fail-closed:** The **network connection is severed** if the device fails, meaning no communication can pass through that link.
+
+### Passive Monitoring (Out-of-Band)
+Organizations may prefer **passive monitoring** if they are concerned that an inline IPS might cause downtime or mistakenly block legitimate traffic. In this [setup](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774885333/Passive_Monitoring_IPS_kyndof.png), often referred to as an **IDS design**, the IPS is not inline with the normal network communication. Instead, it receives a **copy of the traffic** through one of the following methods:
+-   **Port mirror or SPAN** (Switch Port Analyzer): A function built into a switch to duplicate traffic.
+-   **Network tap:** A physical device used to break into a connection to copy data.
+
+While passive monitoring ensures that an IPS failure **cannot cause network downtime**, it also means the system has **limited capabilities for blocking traffic** in real time; it can identify and alert on malicious activity, but the traffic will still reach its destination.
+
+## Network Appliances
+
+### Jump Servers
+A **jump server** is a hardened and secured device located inside a private network that is accessible from the outside. Its primary purpose is to allow authorized individuals to **connect to and manage internal devices** from an external location. This typically involves a two-step process: an external client connects to the jump server first, and from there, they can use protocols like SSH to access and configure internal servers. Because it acts as a gateway, it is critical that jump servers are properly secured to prevent unauthorized external actors from gaining access to the rest of the internal network.
+
+### Proxy Servers
+A **proxy server** acts as an intermediary between two devices, making requests on behalf of a user. They provide several benefits and come in various configurations:
+
+-   **Primary Functions:** Proxies can provide **caching**, which saves bandwidth by storing and serving identical requests locally rather than fetching them from the internet every time. They also offer security features like **URL filtering** and **content scanning** to block malicious traffic or exploits.
+-   **Configuration Types:**
+    -   **Explicit Proxy:** Requires the user to explicitly name the proxy's IP address or name within their application or operating system.
+    -   **Transparent Proxy:** Operates invisibly to the end user, automatically intercepting requests without requiring any client-side configuration.
+-   **Directional Types:**
+    -   **Forward (Internal) Proxy:** Sits inside the network and manages outbound traffic from internal users to the internet. It examines the response from the internet and forwards it to the user only if it is legitimate.
+    -   **Reverse Proxy:** Manages inbound traffic from the internet to internal services, such as a web server. It provides additional security by dropping malicious traffic before it reaches the server and can also use caching to reduce the server's load.
+-   **Protocol-Specific Proxies:**
+    -   **NAT (Network Address Translation):** A simple proxy that converts between internal and external IP addresses on routers.
+    -   **Application-Level Proxy:** Understands specific protocols (e.g., HTTP, HTTPS, FTP) to provide more specialized handling.
+-   **Open Proxies:** These are available to anyone on the internet and are often used to bypass security controls. However, they pose significant risks because they are managed by unknown third parties who could inject advertisements or **malicious code** into the traffic. Most organizations block access to open proxies to mitigate these risks.
+
+### Load Balancers
+A **load balancer** distributes incoming traffic across multiple servers, such as a web server farm, to maintain efficiency and ensure the load remains even.
+
+-   **Fault Tolerance:** If a server fails, the load balancer identifies the failure and quickly redistributes the traffic to the remaining healthy servers.
+-   **Operational Modes:** 
+    -   **Active-Active:** All servers connected to the load balancer are used simultaneously.
+    -   **Active-Passive:** Some servers are active while others remain on standby (passive). If an active server fails, the load balancer automatically switches a standby server to active status.
+-   **Advanced Features:**
+    -   **TCP Offloading:** The load balancer maintains a single open TCP connection instead of creating new ones for every user request, improving efficiency.
+    -   **SSL Offloading:** The load balancer handles the heavy task of encryption and decryption centrally, sending decrypted traffic to the internal servers.
+    -   **Content Switching:** The load balancer can identify the type of request and direct it to a specific server optimized for that task.
+
+### Sensors and Collectors
+For network management and monitoring, organizations use **sensors** and **collectors**.
+
+-   **Sensors:** These can be built into existing devices like switches and firewalls, or they can be standalone devices. Their job is to gather statistics and data from network traffic, logs, and security systems like IPS.
+-   **Collectors:** This is a central database where all sensor data is sent for storage and analysis.
+-   **SIEM (Security Information and Event Manager):** A SIEM acts as a powerful collector that consolidates data from diverse devices into a single database. It provides reporting tools that allow administrators to **correlate and compare data** to identify events like failed authentications or port scans across the entire network.
