@@ -131,34 +131,34 @@ While passive monitoring ensures that an IPS failure **cannot cause network down
 ## Network Appliances
 
 ### Jump Servers
-A **jump server** is a hardened and secured device located inside a private network that is accessible from the outside. Its primary purpose is to allow authorized individuals to **connect to and manage internal devices** from an external location. This typically involves a two-step process: an external client connects to the jump server first, and from there, they can use protocols like SSH to access and configure internal servers. Because it acts as a gateway, it is critical that jump servers are properly secured to prevent unauthorized external actors from gaining access to the rest of the internal network.
+A **jump server** is a <ins>hardened</ins> and secured <ins>device</ins> located inside a private network that is <ins>accessible from the outside</ins>. Its primary purpose is to allow authorized individuals to **connect to and manage internal devices** from an external location. This typically involves a two-step process: an external <ins>client connects to</ins> the <ins>jump server</ins> first, and from there, they can <ins>use protocols</ins> like SSH to <ins>access</ins> and <ins>configure internal servers</ins>. Because it acts as a gateway, it is critical that jump servers are properly secured to prevent unauthorized external actors from gaining access to the rest of the internal network.
 
 ### Proxy Servers
-A **proxy server** acts as an intermediary between two devices, making requests on behalf of a user. They provide several benefits and come in various configurations:
+A **proxy server** acts as an <ins>intermediary</ins> between two devices, making requests on behalf of a user. They provide several benefits and come in various configurations:
 
--   **Primary Functions:** Proxies can provide **caching**, which saves bandwidth by storing and serving identical requests locally rather than fetching them from the internet every time. They also offer security features like **URL filtering** and **content scanning** to block malicious traffic or exploits.
+-   **Primary Functions:** Proxies can provide **caching**, which saves bandwidth by <ins>storing</ins> and <ins>serving</ins> identical <ins>requests locally</ins> rather than fetching them from the internet every time. They also offer security features like **URL filtering** and **content scanning** to block malicious traffic or exploits.
 -   **Configuration Types:**
     -   **Explicit Proxy:** Requires the user to explicitly name the proxy's IP address or name within their application or operating system.
     -   **Transparent Proxy:** Operates invisibly to the end user, automatically intercepting requests without requiring any client-side configuration.
 -   **Directional Types:**
-    -   **Forward (Internal) Proxy:** Sits inside the network and manages outbound traffic from internal users to the internet. It examines the response from the internet and forwards it to the user only if it is legitimate.
-    -   **Reverse Proxy:** Manages inbound traffic from the internet to internal services, such as a web server. It provides additional security by dropping malicious traffic before it reaches the server and can also use caching to reduce the server's load.
+    -   [Forward (Internal) Proxy](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774950824/Forward_Proxy_ge66f8.png): Sits inside the network and manages outbound traffic from internal users to the internet. It examines the response from the internet and forwards it to the user only if it is legitimate.
+    -   [Reverse Proxy](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774950824/Reverse_Proxy_le8gzv.png): Manages inbound traffic from the internet to internal services, such as a web server. It provides additional security by dropping malicious traffic before it reaches the server and can also use caching to reduce the server's load.
 -   **Protocol-Specific Proxies:**
     -   **NAT (Network Address Translation):** A simple proxy that converts between internal and external IP addresses on routers.
     -   **Application-Level Proxy:** Understands specific protocols (e.g., HTTP, HTTPS, FTP) to provide more specialized handling.
--   **Open Proxies:** These are available to anyone on the internet and are often used to bypass security controls. However, they pose significant risks because they are managed by unknown third parties who could inject advertisements or **malicious code** into the traffic. Most organizations block access to open proxies to mitigate these risks.
+-   [Open Proxies](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774950824/Open_Proxy_n2g6i9.png): These are available to anyone on the internet and are often used to bypass security controls. However, they pose significant risks because they are managed by unknown third parties who could inject advertisements or **malicious code** into the traffic. Most organizations block access to open proxies to mitigate these risks.
 
 ### Load Balancers
-A **load balancer** distributes incoming traffic across multiple servers, such as a web server farm, to maintain efficiency and ensure the load remains even.
+A **load balancer** <ins>distributes</ins> incoming <ins>traffic</ins> across multiple servers, such as a web server farm, to maintain efficiency and <ins>ensure</ins> the <ins>load</ins> remains <ins>even</ins>.
 
--   **Fault Tolerance:** If a server fails, the load balancer identifies the failure and quickly redistributes the traffic to the remaining healthy servers.
+-   **Fault Tolerance:** If a server <ins>fails</ins>, the load balancer identifies the failure and quickly <ins>redistributes</ins> the <ins>traffic</ins> to the remaining <ins>healthy servers</ins>.
 -   **Operational Modes:** 
     -   **Active-Active:** All servers connected to the load balancer are used simultaneously.
     -   **Active-Passive:** Some servers are active while others remain on standby (passive). If an active server fails, the load balancer automatically switches a standby server to active status.
 -   **Advanced Features:**
-    -   **TCP Offloading:** The load balancer maintains a single open TCP connection instead of creating new ones for every user request, improving efficiency.
-    -   **SSL Offloading:** The load balancer handles the heavy task of encryption and decryption centrally, sending decrypted traffic to the internal servers.
-    -   **Content Switching:** The load balancer can identify the type of request and direct it to a specific server optimized for that task.
+    -   **TCP Offloading:** The load balancer maintains a <ins>single open TCP connection</ins> instead of creating new ones for every user request, improving efficiency.
+    -   **SSL Offloading:** The load balancer <ins>handles</ins> the heavy task of <ins>encryption and decryption centrally</ins>, sending decrypted traffic to the internal servers.
+    -   **Content Switching:** The load balancer can <ins>identify</ins> the <ins>type</ins> of <ins>request</ins> and <ins>direct</ins> it to a <ins>specific server</ins> optimized for that task.
 
 ### Sensors and Collectors
 For network management and monitoring, organizations use **sensors** and **collectors**.
@@ -166,3 +166,54 @@ For network management and monitoring, organizations use **sensors** and **colle
 -   **Sensors:** These can be built into existing devices like switches and firewalls, or they can be standalone devices. Their job is to gather statistics and data from network traffic, logs, and security systems like IPS.
 -   **Collectors:** This is a central database where all sensor data is sent for storage and analysis.
 -   **SIEM (Security Information and Event Manager):** A SIEM acts as a powerful collector that consolidates data from diverse devices into a single database. It provides reporting tools that allow administrators to **correlate and compare data** to identify events like failed authentications or port scans across the entire network.
+
+## Port Security
+
+Security measures can be applied to individual interfaces on a network switch or connections to a wireless access point. This type of security is highly effective because it requires **authentication** before any user or device can access network resources. While common in wireless environments, it is also implemented on traditional wired switches.
+
+The technological framework behind port security includes:
+-   **EAP (Extensible Authentication Protocol):** A framework for authentication that works across many different network types and manufacturers.
+-   **802.1X:** An IEEE standard often integrated with EAP to manage the authentication process. It is also known as **NAC (Network Access Control)** or **Port-based Network Access Control**. This standard ensures that if a device plugs into a switch interface, it cannot access the network until it has successfully authenticated.
+
+The authentication process involves **three primary components**:
+1.  **Supplicant:** The end-user device or client trying to gain access.
+2.  **Authenticator:** The switch or wireless access point that the supplicant connects to.
+3.  **Authentication Server:** A backend database that contains login credentials, such as **RADIUS, LDAP, TACACS+, or Kerberos** (often managed through an Active Directory database).
+
+[This video](https://www.youtube.com/watch?v=QhLQ6J4satw&list=PLG49S3nxzAnl4QDVqK-hOnoqcSKEIDDuv&index=66&t=120s) explains the authentication workflow:
+-   When a supplicant first connects, the authenticator **blocks all network access** until authentication is complete.
+-   The authenticator initiates the process by sending an **EAP request** for credentials to the supplicant.
+-   The supplicant provides an **EAP response** identifying itself, which the authenticator passes to the authentication server.
+-   If the server is accepting logins, it asks for additional details (like a username and password) via the authenticator.
+-   The supplicant provides the required credentials to the authenticator, which then forwards them to the authentication server for verification.
+-   If the credentials match the database, the server sends a **successful login reply**, and the authenticator grants the user **access to the network**.
+
+
+## Firewall Types
+
+### General Purpose and Functionality
+Firewalls are used in homes, offices, and within operating systems to **control the flow of traffic between two points**. They are essential in large environments for managing thousands of users and can be used to **restrict website access**, provide parental controls, or host additional security like **antivirus and anti-malware**.
+
+### Network-Based Firewalls
+These are purpose-built appliances used to manage network flows. They can operate at different levels of the OSI model:
+-   **Traditional Firewalls:** These typically control traffic based on **OSI Layer 4**, using TCP or UDP port numbers.
+-   **Layer 3 Integration:** Many firewalls also operate as **routers**, providing **network address translation (NAT)** and other routing protocols at the edge of the network.
+
+### Unified Threat Management (UTM)
+UTM devices are older **all-in-one security appliances** that bundle multiple services into a single device. Their features include:
+-   **Filtering and Inspection:** URL filtering, content inspection, and **spam filtering** to block unwanted emails.
+-   **Security and Connectivity:** Malware identification, **IDS/IPS** (Intrusion Detection/Prevention Systems), and acting as a **VPN concentrator**.
+-   **Network Management:** They can provide wide area network (WAN) connectivity, routing, switching, and **bandwidth shaping** for quality of service.
+-   **Drawbacks:** Because they handle so many tasks and often only operate at **Layer 4**, they can suffer from **performance issues** if too many capabilities are enabled at once.
+
+### Next-Generation Firewalls (NGFW)
+NGFWs are modern devices that operate at **OSI Layer 7 (the application layer)**. 
+-   **Deep Packet Inspection:** They use **full packet decoding** to see who is sending traffic and what application content is inside, rather than just looking at port numbers.
+-   **Granular Control:** Because they are application-aware, they can allow specific actions within an app—for example, allowing someone to **view Twitter but not post to it**, or allowing Microsoft SQL Server traffic regardless of the port used.
+-   **Integrated Security:** They often include **URL categorization** (e.g., blocking all gambling sites) and can act as an **intrusion prevention system** by blocking known vulnerabilities.
+
+### Web Application Firewalls (WAF)
+A WAF is a specialized category of firewall designed to **analyze input into web-based applications** using HTTP or HTTPS.
+-   **Attack Prevention:** They are specifically used to identify and block web-based attacks such as **SQL injections** and **cross-site scripting**.
+-   **Compliance:** They are often mandated by security standards like the **Payment Card Industry Data Security Standard (PCI DSS)** to protect credit card-based applications.
+-   **Monitoring:** WAF logs can track the time, date, source IP, country, and the specific security policy that blocked a malicious attempt.
