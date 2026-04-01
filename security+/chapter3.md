@@ -217,3 +217,25 @@ A WAF is a specialized category of firewall designed to **analyze input into web
 -   **Attack Prevention:** They are specifically used to identify and block web-based attacks such as **SQL injections** and **cross-site scripting**.
 -   **Compliance:** They are often mandated by security standards like the **Payment Card Industry Data Security Standard (PCI DSS)** to protect credit card-based applications.
 -   **Monitoring:** WAF logs can track the time, date, source IP, country, and the specific security policy that blocked a malicious attempt.
+
+## Secure Communications
+
+### Virtual Private Networks (VPNs)
+A VPN provides a secure form of communication by **encrypting private data** and sending it across a public network like the internet.
+-   **VPN Concentrators:** These are purpose-built devices designed to be the endpoint for encrypted links. They can be standalone hardware appliances, integrated into next-generation firewalls, or software-based solutions.
+-   **The Encryption Process:** To protect data, the original packet and its IP header are encrypted and wrapped (tunneled) within an **IPsec header** and **IPsec trailer**. A new IP header is then added to route the packet to the VPN concentrator. Upon arrival, the concentrator strips these headers, decrypts the original information, and sends it into the corporate network. For better understanding watch [this Professor Messer's video](https://www.youtube.com/watch?v=uU3e_ntg-3g&list=PLG49S3nxzAnl4QDVqK-hOnoqcSKEIDDuv&index=67&t=112).
+-   **SSL/TLS VPNs (Remote Access):** Often used by individual devices like laptops, [these VPNs](https://res.cloudinary.com/dnhgctqsu/image/upload/q_auto/f_auto/v1775039957/SSL_VPN_kpbism.png) typically run over **TCP port 443**. Because they use the same port as encrypted web traffic, they easily pass through most firewalls. They can be installed as software, built into the operating system, or even run directly inside a web browser. Some are configured as **"always on"** meaning they connect automatically when the device starts up. 
+-   **Site-to-Site VPNs:** [These](https://res.cloudinary.com/dnhgctqsu/image/upload/q_auto/f_auto/v1775039957/Site-to-site_IPsec_VPN_e1dtz7.png) connect entire remote locations to a corporate network. In this setup, firewalls at each location act as the VPN endpoints, meaning individual devices do not need any special software to communicate securely.
+
+### SD-WAN (Software Defined Wide Area Network)
+SD-WAN is designed to address the challenges of connecting to **cloud-based applications**. 
+-   **Efficiency:** Traditional networks were centralized, requiring all remote traffic to hop through a main data center before reaching the cloud, which was inefficient.
+-   **Dynamic Connectivity:** SD-WAN allows for more flexible, dynamic networks that can connect users directly to web-based applications and various cloud services from wherever they are.
+
+### SASE (Secure Access Service Edge)
+[SASE](https://res.cloudinary.com/dnhgctqsu/image/upload/q_auto/f_auto/v1775039957/Secure_Access_Service_Edge_SASE_dses6o.png) is a cloud-delivered framework that converges essential networking and security functions into a unified platform.
+-   **Cloud-Based Security:** Instead of security living in a physical data center, SASE places security technologies in the cloud, near the services being used. 
+-   **Unified Access:** Users (whether in an office, at home, or mobile) use a SASE client to connect to the cloud, allowing them to jump securely to any needed cloud-based service.
+
+### Implementation in Organizations
+Organizations often use these technologies together depending on their needs. For instance, they might use **SSL VPNs** for mobile users, **IPsec site-to-site VPNs** for branch offices, **SD-WAN** for efficient cloud connectivity, and **SASE** to provide security across the entire infrastructure.
