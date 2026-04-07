@@ -239,3 +239,29 @@ SD-WAN is designed to address the challenges of connecting to **cloud-based appl
 
 ### Implementation in Organizations
 Organizations often use these technologies together depending on their needs. For instance, they might use **SSL VPNs** for mobile users, **IPsec site-to-site VPNs** for branch offices, **SD-WAN** for efficient cloud connectivity, and **SASE** to provide security across the entire infrastructure.
+
+
+## Data Typed and Classifications
+
+### Regulated and Sensitive Data Types
+Data is often subject to specific rules and protections based on its type:
+-   **Regulated Data:** This includes information where a third party sets the rules for protection, such as **credit card data**, which must comply with the Payment Card Industry (PCI) standards. Government laws also dictate how data is stored and for how long.
+-   **Trade Secrets and Intellectual Property:** Trade secrets are unique processes <ins>known only to an organization</ins> and <ins>require high security</ins>. **Intellectual property** is protected through copyrights and trademarks, even though it is often visible to the public.
+-   **Legal and Financial Information:** Legal records often balance public transparency (like court records) with the need to protect **personally identifiable information (PII)**. Financial details, both internal corporate data and personal bank account information, are classified as <ins>sensitive</ins> and should remain <ins>private</ins>.
+-   **Healthcare Information (PHI):** Protected Health Information includes health status, medical records, and healthcare-related payments, all of which are specific to an individual and must be kept secure.
+
+### Data Readability and Accessibility
+Data can be presented in various ways:
+-   **Human Readable:** Data that humans can easily understand, such as documents or spreadsheets.
+-   **Non-Human Readable:** Encoded data, like **barcodes** or images, that computers process but humans cannot easily recognize.
+-   **Combinations:** Some formats use both, such as a barcode that includes numbers at the bottom for human interpretation.
+
+### Classifications and Sensitivity Levels
+To manage security, organizations assign **sensitivity levels** and classifications to their data:
+-   **Public or Unclassified:** Information that anyone is permitted to view.
+-   **Sensitive:** A broad category often including intellectual property, PII, and PHI.
+-   **Confidential:** More sensitive data that requires additional access rights to view.
+-   **Private, Classified, or Restricted:** Data requiring specific permissions or even a **non-disclosure agreement (NDA)** for access.
+-   **Critical:** Data that must always be available. Organizations must create specific procedures to ensure the **uptime and availability** of this information.
+
+For highly sensitive information, organizations may implement **restricted network areas** or specific permissions to ensure only authorized individuals can access the data. These classifications allow for different levels of access and control based on the data's importance and potential risk.
