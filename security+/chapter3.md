@@ -333,3 +333,54 @@ Organizations use recovery sites to <ins>maintain operations during disasters</i
 -   **Platform Diversity:** To avoid a single vulnerability affecting all systems, organizations may use **different operating systems** (e.g. Windows and Linux) across their environment.
 -   **Cloud Resiliency:** Utilizing **multiple cloud providers** (such as AWS, Azure, or Google Cloud) prevents a single provider's outage or security issue from taking down all services.
 -   **Continuity of Operations (COOP):** If all technology fails, organizations rely on **manual, non-technical processes**, such as paper receipts or phone-based credit card approvals, to keep services running. These procedures must be designed and practiced before a disaster occurs.
+
+## Capacity planning
+
+Capacity planning is the ongoing process of predicting the amount of resources needed to meet the demand for a specific service. The ultimate goal is to **balance supply and demand** by having the right number of people, appropriate technology, and the necessary infrastructure in place.
+
+### Consequences of Miscalculation
+-   **Under-provisioning:** If there is not enough supply to meet demand, the service will likely experience **application slowdowns and potential outages**.
+-   **Over-provisioning:** If you build out too much infrastructure, the organization **spends more money than necessary**.
+
+### The Human Component
+Managing personnel is one of the most difficult aspects of capacity planning because humans are a **resource that is hard to ramp up or down quickly**.
+-   **Too few employees:** Requires hiring and training, which is both **time-consuming and expensive**.
+-   **Too many employees:** Requires shifting staff to other parts of the organization or **downsizing**.
+
+### Technology and Scaling Strategies
+It is vital to choose technology that can scale based on demand, and this should be considered during the **early engineering stages**. 
+-   **Web Services:** Using **load balancers** allows an organization to add or remove servers invisibly to the user as demand fluctuates.
+-   **Databases:** Capacity can be managed by using multiple SQL servers or by **splitting databases into smaller pieces** distributed across several servers.
+
+### Physical vs. Cloud Infrastructure
+The method of deployment significantly impacts how quickly an organization can respond to capacity needs:
+-   **Physical Data Centers:** Scaling is a manual, slow process involving purchasing hardware, shipping, unboxing, configuring, and testing before deployment.
+-   **Cloud Services:** These offer seemingly **unlimited resources** that can be deployed instantly via a management console. This allows for easy "rightsizing" of infrastructure, though costs increase as more resources are consumed.
+
+## Recovery testing
+
+### Overview of Recovery Testing
+Recovery testing should be performed on a **regular basis** so that all personnel understand the necessary procedures before an actual disaster occurs. These tests must have a **specific scope** to ensure that they do not negatively affect **actual production systems**. Following a test, organizations must **evaluate their performance** and update their recovery plans based on the results.
+
+### Tabletop Exercises
+Because building out a complete infrastructure at a recovery site can be **expensive and involved**, organizations often use **tabletop exercises** to minimize costs. In these exercises:
+-   Staff members gather to **walk through the recovery steps** outlined in their plans.
+-   Participants coordinate with other departments to ensure their individual plans work together perfectly.
+-   The process helps identify **logistics, shortcomings, or missed steps** in existing recovery plans.
+
+### Failover Testing
+**Failover testing** is used to verify that **redundant configurations** can successfully switch over if a primary system fails. 
+-   **Redundant hardware** such as switches, firewalls, and routers often have failover functionality built directly into their software.
+-   A robust infrastructure may include **multiple internet connections** from different providers, redundant routers and firewalls, and multiple links from individual servers.
+-   In an ideal failover scenario, the switch happens **automatically**, and users are redirected behind the scenes without realizing they are running on **backup systems**.
+-   **Load balancers** can also be added to manage multiple servers for these connections.
+
+### Simulations
+Organizations use **simulations** to test security responses to specific threats, such as **phishing attacks, password resets, or data exfiltration**. 
+-   In a **phishing simulation**, a fake attack is sent to everyone in the company to see if users click on suspicious links.
+-   These tests evaluate whether **internal automated systems** can detect the phishing attempt and identify which users may require **additional training**.
+
+### Parallel Processing
+**Parallel processing** provides both efficiency and **resiliency** by using multiple CPUs or computers to handle transactions simultaneously.
+-   Complex transactions can be spread across **multiple cores or separate computers** rather than relying on a single CPU.
+-   If one processor becomes unavailable, the system remains functional by spreading the remaining load across the **available processors** in the infrastructure.
