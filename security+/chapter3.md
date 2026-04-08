@@ -35,7 +35,7 @@ In a **serverless** environment, the application is broken down into **individua
 -   **Monolithic Applications:** Traditional applications where all functions—such as the user interface, logic, and login—are contained within **one single executable**. These are often large and require complex change control processes for updates.
 -   **Microservices:** Applications are broken into independent services that communicate via **APIs** (Application Programming Interfaces).
 -   **Benefits:** This model offers better **scalability**, as individual services can be scaled based on demand, and improved **resilience**, because the rest of the app continues to function even if one microservice fails.
--   **Security:** Microservices allow for **granular security**, where specific security processes are tailored to the function of each service (e.g., one set of rules for authentication and another for database access).
+-   **Security:** Microservices allow for **granular security**, where specific security processes are tailored to the function of each service (e.g. one set of rules for authentication and another for database access).
 
 [Monolithic Architecture](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774545878/Monolithic_Architecture_gnezj6.png) vs [Microservices Architecture](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774545884/Microservice_Architecture_u65kqr.png)
 
@@ -65,7 +65,7 @@ SDN allows physical networking functions to be <ins>turned into software</ins> t
 ## Infrastructure Considerations
 
 ### Availability and Resilience
-**Availability** is the expectation that <ins>systems</ins> and resources <ins>are up</ins>, running, and accessible to the right people. Organizations prioritize this by investing in redundant systems and complex monitoring tools to track "uptime," often measured as a percentage (e.g., 99.999%). When outages occur, a key metric for resilience is **Mean Time to Repair (MTTR)**, which measures <ins>how long</ins> it takes to <ins>replace or fix</ins> unavailable <ins>components</ins>. Determining recovery time requires identifying the root cause, such as hardware failure or software bugs. Efficient recovery processes, such as using **image backups** instead of manual OS reinstallation, can significantly <ins>reduce</ins> downtime and costs.
+**Availability** is the expectation that <ins>systems</ins> and resources <ins>are up</ins>, running, and accessible to the right people. Organizations prioritize this by investing in redundant systems and complex monitoring tools to track "uptime," often measured as a percentage (e.g. 99.999%). When outages occur, a key metric for resilience is **Mean Time to Repair (MTTR)**, which measures <ins>how long</ins> it takes to <ins>replace or fix</ins> unavailable <ins>components</ins>. Determining recovery time requires identifying the root cause, such as hardware failure or software bugs. Efficient recovery processes, such as using **image backups** instead of manual OS reinstallation, can significantly <ins>reduce</ins> downtime and costs.
 
 ### Cost and Risk Management
 Calculating the **cost** of technology is complex and includes initial installation, ongoing maintenance (internal or manufacturer-led), and replacement expenses. Financial planning must also account for **depreciation, capital expenses, operational costs, and tax implications**. To manage the financial risk of security events like ransomware, organizations often use **cybersecurity insurance**. This insurance can help recoup losses from business downtime and cover legal fees resulting from customer-related proceedings.
@@ -145,7 +145,7 @@ A **proxy server** acts as an <ins>intermediary</ins> between two devices, makin
     -   [Reverse Proxy](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774950824/Reverse_Proxy_le8gzv.png): Manages inbound traffic from the internet to internal services, such as a web server. It provides additional security by dropping malicious traffic before it reaches the server and can also use caching to reduce the server's load.
 -   **Protocol-Specific Proxies:**
     -   **NAT (Network Address Translation):** A simple proxy that converts between internal and external IP addresses on routers.
-    -   **Application-Level Proxy:** Understands specific protocols (e.g., HTTP, HTTPS, FTP) to provide more specialized handling.
+    -   **Application-Level Proxy:** Understands specific protocols (e.g. HTTP, HTTPS, FTP) to provide more specialized handling.
 -   [Open Proxies](https://res.cloudinary.com/dnhgctqsu/image/upload/v1774950824/Open_Proxy_n2g6i9.png): These are available to anyone on the internet and are often used to bypass security controls. However, they pose significant risks because they are managed by unknown third parties who could inject advertisements or **malicious code** into the traffic. Most organizations block access to open proxies to mitigate these risks.
 
 ### Load Balancers
@@ -210,7 +210,7 @@ UTM devices are older **all-in-one security appliances** that bundle multiple se
 NGFWs are modern devices that operate at **OSI Layer 7 (the application layer)**. 
 -   **Deep Packet Inspection:** They use **full packet decoding** to see who is sending traffic and what application content is inside, rather than just looking at port numbers.
 -   **Granular Control:** Because they are application-aware, they can allow specific actions within an app—for example, allowing someone to **view Twitter but not post to it**, or allowing Microsoft SQL Server traffic regardless of the port used.
--   **Integrated Security:** They often include **URL categorization** (e.g., blocking all gambling sites) and can act as an **intrusion prevention system** by blocking known vulnerabilities.
+-   **Integrated Security:** They often include **URL categorization** (e.g. blocking all gambling sites) and can act as an **intrusion prevention system** by blocking known vulnerabilities.
 
 ### Web Application Firewalls (WAF)
 A WAF is a specialized category of firewall designed to **analyze input into web-based applications** using HTTP or HTTPS.
@@ -265,3 +265,71 @@ To manage security, organizations assign **sensitivity levels** and classificati
 -   **Critical:** Data that must always be available. Organizations must create specific procedures to ensure the **uptime and availability** of this information.
 
 For highly sensitive information, organizations may implement **restricted network areas** or specific permissions to ensure only authorized individuals can access the data. These classifications allow for different levels of access and control based on the data's importance and potential risk.
+
+
+## States of Data
+
+There are three primary states of data:
+
+-   **Data at Rest:** This is **data stored on a storage device**, such as a hard drive, SSD, or flash drive. Even if the data is not encrypted, it is still considered at rest. Protection methods include **full disk encryption**, database encryption, or operating system-level encryption for specific files and folders. Access to data at rest is typically managed through **rights and permissions** assigned to individuals or groups.
+-   **Data in Transit (Data in Motion):** This is **data being transferred across a network**. If unencrypted, this data is vulnerable to being intercepted at network points like switches, routers, and firewalls. Security measures include using **firewalls and intrusion prevention systems (IPS)** to filter traffic, or encryption technologies like **TLS** (for web servers) and **VPNs** (using IPsec) to secure all traffic.
+-   **Data in Use:** This is data currently in a system's **memory (RAM) or being processed by the CPU**. Because the CPU must be able to read the data to perform operations, it is **almost always unencrypted** while in use. This makes it a prime target for attackers. A notable example is the **2013 Target breach**, where attackers stole 110 million credit card numbers from the RAM of point-of-sale terminals, even though Target had encrypted its data at rest and in transit.
+
+### Data Sovereignity and Geolocation
+
+-   **Data Sovereignity:** **Data is subject to the laws and regulations of the country where it is stored**. Legal proceedings and court orders follow the local laws of that jurisdiction. For example the **GDPR (General Data Protection Regulation)** requires that data collected on EU citizens must be stored within the European Union.
+-   **Geolocation:** Technologies like **GPS, Wi-Fi (802.11), or mobile provider data** can be used to determine a user's physical location. Geolocation can be used to **restrict or grant access to data**. For instance, streaming media may be prohibited if a user is in a different country, or an organization might grant a user more data access when they are physically inside a corporate building compared to when they are outside.
+
+
+## Protect Data
+
+### Geographic Restrictions and Geofencing
+One method of protecting data is by making policy decisions based on the physical location of the data or the user. 
+-   **Location Tracking:** A user's location can be determined via their **IP address subnet** (most accurate on internal private networks), **GPS** (highly accurate on mobile devices), or **802.11 wireless SSID databases**.
+-   **Geofencing:** Once a location is determined, administrators can implement **geofencing**, which applies security policies based on that location. For example, certain corporate data might only be accessible if the user is physically inside a corporate facility.
+
+### Encryption
+**Encryption** is a fundamental tool that converts readable **plaintext** into unreadable **ciphertext**.
+-   **Confusion:** The encryption process should create a dramatic change between the original and the resulting data, a concept known as **confusion**.
+-   **Decryption:** To revert the ciphertext back into its original form, the correct implementation and **decryption key** are required.
+
+### Hashing
+**Hashing** represents data as a unique string of text, often called a **message digest** or **fingerprint**.
+-   **Integrity:** Hashing is a one-way process; you cannot recreate the original data from a hash. It is used to verify file integrity (e.g. during Linux distribution downloads) and for secure password storage.
+-   **Digital Signatures:** Combined with public key cryptography, hashing creates digital signatures that authenticate a sender and ensure message integrity.
+-   **Collisions:** A **collision** occurs if two different inputs produce the same hash. Strong algorithms, like **SHA-256**, are used to ensure that even small changes to input result in very different outputs.
+
+### Obfuscation and Data Masking
+These techniques aim to hide the true meaning of data while allowing it to remain functional.
+-   **Obfuscation:** This process takes something understandable (like source code) and makes it <ins>difficult</ins> for <ins>humans</ins> to <ins>read</ins>, though it still functions the same way. It is used by developers to protect their code and by attackers to hide malicious scripts.
+-   **Data Masking:** This involves hiding specific parts of sensitive information, such as showing only the last four digits of a credit card number on a receipt. Behind the scenes, the full data remains available to authorized systems.
+
+### Tokenization
+**Tokenization** replaces sensitive information, like Social Security or credit card numbers, with a **token**.
+-   **One-Time Use:** In mobile payments (using NFC), a **remote token service server** provides temporary, one-time-use tokens.
+-   **Security:** Because the token is not derived from the original data using an algorithm, the original number cannot be calculated from the token. If a token is captured by an attacker, it cannot be reused.
+
+### Segmentation and Permissions
+-   **Segmentation:** Instead of storing all data in one massive database, which is vulnerable to total theft in a single breach, **segmentation** splits data into smaller pieces in different locations. This requires attackers to breach multiple systems and allows for varying security levels based on data sensitivity.
+-   **Permission Restrictions:** Access is controlled through **authentication** (requiring passwords and additional factors) and **authorization** (using file permissions and groups to limit what a user can see after they log in).
+
+## Resiliency
+
+### High Availability and Redundancy
+-   **Redundancy vs. High Availability:** While some administrators simply purchase multiple components to replace failed ones manually, **High Availability (HA)** ensures that systems are always turned on and ready to take over a load immediately if one fails.
+-   **Costs:** Engineering for HA often involves **additional costs** due to the need for duplicate systems, upgraded power requirements, and higher-quality components.
+
+### Server Clustering and Load Balancing
+-   **Server Clustering:** This involves multiple servers working together as a **single logical unit**. It offers <ins>scalability</ins>, allowing devices to be <ins>added</ins> or <ins>removed</ins> in <ins>real time</ins>. To maintain synchronization, these servers typically use **shared storage** rather than local drives.
+-   **Load Balancing:** A central load balancer <ins>distributes requests</ins> across individual servers. Unlike clustering, these servers often do not know others exist. The load balancer can **automatically identify and remove** a failed server from the rotation, spreading the remaining load among functional devices.
+
+### Site Resiliency
+Organizations use recovery sites to <ins>maintain operations during disasters</ins>. These are often **geographically dispersed** to ensure a single event, like a hurricane, does not affect both the primary and backup locations.
+-   **Hot Site:** An **exact replica** of the primary data center with synchronized data and updated applications, ready for <ins>immediate switchover</ins>.
+-   **Warm Site:** A midrange option that has **some equipment and data** available but requires additional resources to become fully operational.
+-   **Cold Site:** An **empty building** with power and lights, requiring the organization to bring all equipment, data, and personnel.
+
+### Diversity and Failback
+-   **Platform Diversity:** To avoid a single vulnerability affecting all systems, organizations may use **different operating systems** (e.g. Windows and Linux) across their environment.
+-   **Cloud Resiliency:** Utilizing **multiple cloud providers** (such as AWS, Azure, or Google Cloud) prevents a single provider's outage or security issue from taking down all services.
+-   **Continuity of Operations (COOP):** If all technology fails, organizations rely on **manual, non-technical processes**, such as paper receipts or phone-based credit card approvals, to keep services running. These procedures must be designed and practiced before a disaster occurs.
