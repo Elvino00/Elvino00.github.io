@@ -363,7 +363,7 @@ The method of deployment significantly impacts how quickly an organization can r
 Recovery testing should be performed on a **regular basis** so that all personnel understand the necessary procedures before an actual disaster occurs. These tests must have a **specific scope** to ensure that they do not negatively affect **actual production systems**. Following a test, organizations must **evaluate their performance** and update their recovery plans based on the results.
 
 ### Tabletop Exercises
-Because building out a complete infrastructure at a recovery site can be **expensive and involved**, organizations often use **tabletop exercises** to minimize costs. In these exercises:
+Because building out a complete infrastructure at a recovery site can be **expensive and complex**, organizations often use **tabletop exercises** (in italiano: esercitazioni simulate) to minimize costs. In these exercises:
 -   Staff members gather to **walk through the recovery steps** outlined in their plans.
 -   Participants coordinate with other departments to ensure their individual plans work together perfectly.
 -   The process helps identify **logistics, shortcomings, or missed steps** in existing recovery plans.
@@ -384,3 +384,47 @@ Organizations use **simulations** to test security responses to specific threats
 **Parallel processing** provides both efficiency and **resiliency** by using multiple CPUs or computers to handle transactions simultaneously.
 -   Complex transactions can be spread across **multiple cores or separate computers** rather than relying on a single CPU.
 -   If one processor becomes unavailable, the system remains functional by spreading the remaining load across the **available processors** in the infrastructure.
+
+
+## Backups
+
+### Backup Planning and Configuration
+There are several variables to consider during a backup, including the **volume of data** (megabytes to terabytes), the **type of media** used (local tape, hard drive, or cloud), and the **software** required for both backing up and restoring information. Organizations must also decide on a **schedule**—whether to back up everything daily or perform full updates weekly with daily incremental changes.
+
+### On-site vs. Off-site Backups
+-   **On-site Backups:** These are located at the <ins>same facility</ins> as the data. They do not require a WAN link for transfer, making data **immediately available** and generally less expensive than off-site options.
+-   **Off-site Backups:** Data is transferred to a <ins>different location</ins> or physical media is shipped to a third-party site. Because these locations are network-connected, they allow for recovery from any location, making them ideal for **long-term storage** and disaster recovery.
+
+### Security and Encryption
+Backups often contain sensitive or private information, necessitating strict access controls. To protect against theft—such as a third party stealing backup tapes from an employee's vehicle—organizations should **encrypt** all backed-up data. Encryption is particularly critical for **cloud storage**, as it ensures the data remains unreadable even if unauthorized users gain access.
+
+### Backup Methods and Technologies
+-   **Snapshots:** Common in virtual machine (VM) and cloud environments, snapshots allow administrators to back up an entire system with one click. They function similarly to incremental backups, where <ins>only</ins> the <ins>daily changes</ins> are <ins>saved</ins>, allowing for <ins>quick rollbacks</ins> to previous configurations.
+-   **Replication:** This method copies data in **near real-time** to one or more remote locations simultaneously. It is especially useful for **hot sites**, where a disaster at the primary location requires an immediate switch-over to a site with the latest version of the data.
+-   **Journaling:** To prevent data corruption during power outages, journaling first writes data to a **journal** on the drive before updating the final database. If power is lost, the system uses the journal to correct or complete missing information during startup.
+
+### Testing and Maintenance
+A backup strategy is incomplete without **regular testing**. Organizations should simulate disasters to ensure they can properly restore data and that **applications** can still function correctly once the data is recovered. Testing should cover various backup sets, whether they are daily, weekly, or monthly sources.
+
+## Power resiliency
+
+Electricity is the foundation for all computing systems and organizations must engineer their data centers to handle potential outages. Because companies cannot control the reliability of local power providers, they design redundant systems to maintain access to electricity during events ranging from short brownouts to multi-day natural disasters.
+
+### Uninterruptible Power Supplies (UPS)
+A UPS provides temporary power, typically via internal batteries, to keep systems operational when main power fails. It protects against several types of power issues:
+-   **Blackouts:** A complete loss of power.
+-   **Brownouts:** A drop in voltage.
+-   **Surges:** An excessive amount of voltage.
+
+There are three primary types of UPS systems:
+-   **Offline / Standby UPS:** Stays on main power until a failure occurs, at which point an internal switch moves the system to battery backup.
+-   **Line-interactive UPS:** Can slowly increase voltage during a brownout, making it ideal for areas with frequent voltage drops.
+-   **Online / Double-conversion UPS:** Constantly runs systems from battery power, eliminating the need to switch back and forth during a transition.
+
+UPS features can include varying battery capacities, different numbers of outlets, and suppression features for ethernet or telephone cables. Additionally, many can send signals to connected systems to initiate a **graceful shutdown** before the battery is fully depleted.
+
+### Generators
+For long-term outages, organizations use **generators**, which provide power for as long as fuel is available. Generators can be designed to power an entire building or just specific sets of outlets.
+
+### Combined Power Strategy
+Most organizations utilize both a UPS and a generator together. When a power outage occurs, there is typically a **ramp-up process** of about a minute while the generator starts. The **UPS is used to bridge this gap**, providing immediate power until the generator is fully operational and can take over the load.
