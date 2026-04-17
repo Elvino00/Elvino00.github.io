@@ -43,3 +43,32 @@ Once a baseline is established, it requires ongoing management:
 -   **Industrial Systems (SCADA/ICS):** These large-scale systems are often secured through **network isolation**, such as an **air-gap**, which ensures they have no access to the internet or the rest of the organization's network.
 -   **Embedded Systems and IoT:** These devices (e.g., smartwatches, HVAC, lighting) often have limited access to their internal operating systems. Hardening involves <ins>prioritizing security patches</ins> and placing these devices on **segmented networks** behind firewalls to limit the scope of a potential exploit.
 -   **Real-Time Operating Systems (RTOS):** Used in time-sensitive environments like military or automotive equipment, these should be **isolated** from the rest of the network, run with the minimum number of services, and potentially use host-based security technologies.
+
+
+## Securing Wireless and Mobile
+
+### Wireless Network Management and Visualization
+A critical part of maintaining a wireless network is performing **site surveys** to understand performance and see how neighboring networks might be affecting your signal.
+-   **Site Surveys:** These should be performed at **regular intervals** to identify both internal and external access points (APs) and determine the best channels for your network.
+-   **Heat Maps:** [These tools](https://res.cloudinary.com/dnhgctqsu/image/upload/q_auto/f_auto/v1776442106/image_2026-04-17_180824758_lgzq8d.png) help visualize <ins>signal strength</ins> throughout a workplace; strong signals are typically shown in yellow or red, while weaker signals are blue. 
+-   **Survey Tools:** Software like **NetSpot** or built-in OS utilities can provide metrics such as SSIDs, BSSIDs, channel information, and frequency bands.
+-   **Spectrum Analyzers:** These specialized tools are used to identify <ins>interference</ins> from any device, not just access points, that might be using the same frequencies.
+
+### Mobile Device Management (MDM) and Policies
+Organizations often use a **Mobile Device Manager (MDM)** to centrally administer mobile devices, whether they are company-owned or personal.
+-   **Functionality:** Administrators can use an MDM to roll out applications, disable device features (like cameras) in specific locations, and enforce security policies such as **screen locks and PIN requirements**.
+-   **Segmentation:** MDMs allow for <ins>partitioning</ins> a device so that <ins>business data</ins> remains <ins>separate</ins> and protected <ins>from</ins> a <ins>user’s personal information</ins>. This also allows administrators to delete business data without affecting the user's personal files.
+-   **Device Lifecycle:** Policies must be in place for when devices are sold or traded in to <ins>ensure data is properly deleted</ins> and <ins>new devices are integrated into the MDM</ins>.
+
+### Deployment Models
+There are three primary models for how devices are provided to and used by employees:
+-   **BYOD (Bring Your Own Device):** Employees use their personal phones for work. While convenient, these devices <ins>must meet company requirements</ins> to be managed by the MDM to ensure both personal privacy and corporate security.
+-   **COPE (Corporate Owned, Personally Enabled):** The company purchases the device and assigns it to the employee, often allowing it to be used for both work and personal purposes.
+-   **CYOD (Choose Your Own Device):** A variation of the corporate-owned model where the organization provides a list of approved devices for the user to choose from.
+
+### Security Challenges and Threats
+Mobile and wireless technologies introduce several specific security risks:
+-   **Physical and Data Risks:** Because mobile devices are small and highly portable, they are easy to hide and can contain massive amounts of data that could be anywhere in the world.
+-   **Cellular and Wi-Fi Vulnerabilities:** On 4G and 5G networks, there are concerns regarding traffic monitoring and location tracking. On Wi-Fi, especially in public places like hotels, encryption (such as a **VPN**) is essential to prevent **on-path attacks** or unauthorized traffic monitoring. 
+-   **Interference:** Attackers in the same area can cause frequency interference, leading to a **denial of service (DoS) attack**.
+-   **Bluetooth:** Referred to as a **Personal Area Network (PAN)**, Bluetooth requires a formal pairing process to prevent unauthorized access to data. Users are cautioned against automatically connecting to unknown Bluetooth devices.
