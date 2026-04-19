@@ -71,4 +71,51 @@ Mobile and wireless technologies introduce several specific security risks:
 -   **Physical and Data Risks:** Because mobile devices are small and highly portable, they are easy to hide and can contain massive amounts of data that could be anywhere in the world.
 -   **Cellular and Wi-Fi Vulnerabilities:** On 4G and 5G networks, there are concerns regarding traffic monitoring and location tracking. On Wi-Fi, especially in public places like hotels, encryption (such as a **VPN**) is essential to prevent **on-path attacks** or unauthorized traffic monitoring. 
 -   **Interference:** Attackers in the same area can cause frequency interference, leading to a **denial of service (DoS) attack**.
--   **Bluetooth:** Referred to as a **Personal Area Network (PAN)**, Bluetooth requires a formal pairing process to prevent unauthorized access to data. Users are cautioned against automatically connecting to unknown Bluetooth devices.
+-   **Bluetooth:** Referred to as a **Personal Area Network (PAN)**, Bluetooth requires a formal pairing process to prevent unauthorized access to data. Users should be avoid connecting automatically to unknown Bluetooth devices.
+
+## Wireless Security Settings
+
+### Wireless Security Fundamentals
+Wireless networks face the inherent risk of attackers listening to communication sent over the air. To mitigate this, private networks typically **encrypt all traffic** so that captured packets remain unreadable. Additionally, wireless protocols must ensure **integrity**, verifying that data received is exactly what was sent, which is often managed through a **Message Integrity Check (MIC)**.
+
+### WPA2 vs. WPA3
+-   **WPA2 Vulnerabilities:** WPA2 uses a **four-way handshake** during initial connections. Attackers can capture the hash associated with this handshake and use **GPU processing or cloud-based cracking** to perform an offline **brute force attack** to derive the pre-shared key.
+-   **WPA3 Improvements:** WPA3 replaces the four-way handshake with **Simultaneous Authentication of Equals (SAE)**, also known as the **Dragonfly handshake**. SAE uses a derivation of the **[Diffie-Hellman key exchange](https://res.cloudinary.com/dnhgctqsu/image/upload/q_auto/f_auto/v1776590571/DiffieHellman_ggh6a3.png)** to create session keys on the end devices rather than sending hashes across the network, effectively eliminating the risk of brute force attacks.
+-   **Encryption in WPA3:** WPA3 introduces **GCMP (Galois Counter Mode Protocol)**, a stronger block cipher mode that includes both data confidentiality and a built-in message integrity check. 
+-   **Individualized Security:** In WPA3, every user on the network receives a **different session key**, meaning users cannot see each other's traffic even if they use the same pre-shared key.
+
+### Authentication Methods
+Authentication ensures only authorized users can access the network. There are three primary configurations:
+-   **Open System:** No authentication or security is used.
+-   **Personal (WPA-PSK):** Commonly used at home, where everyone uses the same **pre-shared key** (password).
+-   **Enterprise (WPA3-802.1X):** Used in workplaces to provide separate credentials for every individual, often involving a username and password.
+
+### The AAA Framework and 802.1X
+Enterprise security often utilizes a **centralized authentication server**, frequently referred to as a **AAA server**, running protocols like **RADIUS, LDAP, or TACACS**. This framework consists of:
+-   **Authentication:** Verifying the user's identity, typically via a username and secret password.
+-   **Authorization:** Determining which resources the individual is allowed to access once they are on the network.
+-   **Accounting:** Tracking metrics such as login/logout times and the amount of data transferred.
+
+**802.1X**, also known as **Network Access Control (NAC)**, is used for both wireless and wired networks to prevent access until credentials are provided. It commonly uses the **Extensible Authentication Protocol (EAP)**, a flexible framework that allows manufacturers to customize the authentication process.
+
+### The 802.1X Authentication Process
+This process involves three distinct roles:
+1.  **Supplicant:** The user or device attempting to join the network.
+2.  **Authenticator:** The device the user first connects to, such as a switch or wireless access point.
+3.  **Authentication Server:** The backend AAA server that validates the credentials.
+
+When a connection is attempted, the authenticator blocks access and prompts the supplicant for credentials. The supplicant sends an **EAP response**, which the authenticator passes to the authentication server. Once the server validates the login information, it instructs the authenticator to allow the supplicant onto the network.
+
+## Application Security
+
+IT professionals must maintain a critical **balance between the speed of application development and the security of the final product** to prevent vulnerabilities like buffer overflows and SQL injections. If these issues are not identified during quality assurance testing, researchers or attackers may find and exploit them.
+
+Some methods for securing applications are:
+
+-   **Input Validation:** This involves <ins>analyzing</ins> all <ins>data entering an application</ins>—whether through forms, fields, or freeform text—to <ins>ensure it matches an expected format</ins>, such as the specific length and characters of a zip code. If the input is incorrect, the application should prompt the user for a correction.
+-   **Fuzzing:** This is an **automated testing process** where "fuzzers" provide random types of data to input fields to see if the application performs unexpectedly, which indicates a need for stronger input validation.
+-   **Secure Cookies:** Cookies are data files used for <ins>tracking and session management</ins> that can be easily <ins>read by third parties</ins>. Because of this, developers should **avoid storing sensitive information** in them and use a **secure attribute** to ensure they are only transferred over encrypted HTTPS connections.
+-   **Static Application Security Testing (SAST):** AKA "static code analysis", uses automated analyzers to scan code for "glaring problems" like database injections. However, SAST is not perfect; it can produce **false positives** and may miss implementation-specific vulnerabilities, such as poorly applied cryptography.
+-   **Code Signing:** To verify that an application truly originates from a specific developer and has not been altered, developers use **digital signatures and asymmetric encryption**. The operating system checks this signature during installation and alerts the user if the validation fails.
+-   **Sandboxing:** This technique isolates an application so it only has access to necessary data. During development, **digital sandboxes** protect the production network from new code. In production, sandboxing limits an application's scope; for instance, a mobile browser might be permitted to see bookmarks but prevented from accessing a user's camera roll.
+-   **Monitoring and Logging:** Building monitoring into applications creates **extensive logs** that help identify attacks like SQL injections or unusual behavior, such as unexpected file transfers and spikes in client access.
