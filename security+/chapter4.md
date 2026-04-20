@@ -119,3 +119,30 @@ Some methods for securing applications are:
 -   **Code Signing:** To verify that an application truly originates from a specific developer and has not been altered, developers use **digital signatures and asymmetric encryption**. The operating system checks this signature during installation and alerts the user if the validation fails.
 -   **Sandboxing:** This technique isolates an application so it only has access to necessary data. During development, **digital sandboxes** protect the production network from new code. In production, sandboxing limits an application's scope; for instance, a mobile browser might be permitted to see bookmarks but prevented from accessing a user's camera roll.
 -   **Monitoring and Logging:** Building monitoring into applications creates **extensive logs** that help identify attacks like SQL injections or unusual behavior, such as unexpected file transfers and spikes in client access.
+
+## Asset Management
+
+### The Purchasing Process
+Organizations follow a **formal purchasing process** for acquiring goods and services from third parties. This typically begins with an end user identifying a need and working with IT and purchasing departments to analyze budgets. The process involves **negotiations with suppliers** regarding pricing, licensing terms, and contract details. Once goods are delivered, the organization pays an **invoice** based on agreed-upon terms, such as immediate payment or a 30 to 60-day window.
+
+### Asset Tracking and Inventory
+When tangible products are received, they are entered into a **central asset tracking system** to manage them throughout their entire lifecycle.
+-   **Ownership:** The system identifies who has control of the asset; for example, a specific laptop is assigned to a specific user's name.
+-   **Classification:** Assets are designated by type (laptop, mobile device, etc.) and categorized as either **hardware or software**.
+-   **Tax Implications:** Tracking these categories is vital for taxes. Hardware is a **capital expenditure** that may depreciate, whereas software is generally an **operating expense**.
+-   **Help Desk Support:** Asset systems help the help desk by <ins>automatically populating support tickets</ins> with a device's make and model.
+-   **Enumeration:** The system can track a device as a single entity or <ins>enumerate its internal components</ins>, such as the CPU, memory, and storage drives.
+-   **Asset Tags:** Physical tags or barcodes are often attached to devices to assist with identification and serve as a **security feature** if the device is lost or stolen.
+
+### Decommissioning and Data Sanitization
+When a device is ready for reuse or disposal, organizations must ensure sensitive data is removed.
+-   **Sanitization:** Depending on the next step, an organization might delete sensitive files for internal reuse or use a **secure delete utility** to ensure data can never be recovered.
+-   **Physical Destruction:** To guarantee data is gone, drives can be shredded, pulverized, or destroyed manually with a drill or hammer.
+-   **Degaussing and Incineration:** Degaussing uses a strong electromagnetic field to delete data and render hard drives unusable, while incineration physically destroys the drive entirely.
+-   **Third-Party Services:** For large volumes of devices, organizations often hire third parties who must provide a **certificate of destruction** as formal confirmation that the data is inaccessible.
+
+### Data Retention
+In addition to destroying data, organizations must often **retain data** due to legal mandates or best practices.
+-   **Mandates:** Regulations may require specific types of data, such as emails or financial records, to be kept for a set number of years.
+-   **Policies:** Retention policies cover original sources, copies, and backups.
+-   **Operational Benefits:** Retaining data is a best practice for **disaster recovery** and protecting against accidental deletion. Different types of data will require different retention procedures and lengths of time.
