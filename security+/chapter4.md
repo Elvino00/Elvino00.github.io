@@ -146,3 +146,91 @@ In addition to destroying data, organizations must often **retain data** due to 
 -   **Mandates:** Regulations may require specific types of data, such as emails or financial records, to be kept for a set number of years.
 -   **Policies:** Retention policies cover original sources, copies, and backups.
 -   **Operational Benefits:** Retaining data is a best practice for **disaster recovery** and protecting against accidental deletion. Different types of data will require different retention procedures and lengths of time.
+
+## Vulnerability Scanning
+
+### Network Vulnerability Scanning
+**Vulnerability scans** are used to determine if a system is potentially <ins>susceptible to an attack</ins> without actually performing the attack itself. This distinguishes them from penetration tests, which do involve active exploitation. A basic example is a **port scan**, which identifies open ports that an attacker might leverage.
+
+Key aspects of these scans include:
+-   **Internal and External Scanning:** While scans are often associated with external threats, they should also be performed internally to guard against **insider attacks**.
+-   **Data Accuracy:** Scanners provide a large amount of data, but not all of it is accurate. Results must be manually reviewed to identify **false positives**.
+-   **Severity Levels:** Reports typically categorize findings by severity, such as **critical, high, medium, low, or informational**. Examples of critical findings include weak SSH host keys due to library bugs or the presence of unsupported, unpatchable operating systems.
+-   **Remediation:** Once vulnerabilities are verified, they should be addressed through a formal **change control process** to apply necessary patches.
+
+### Application Security Testing
+There are two primary ways application developers check their code for vulnerabilities:
+
+1.  **Static Application Security Testing (SAST):** This involves software reviewing the application’s **source code**. 
+    -   **Strengths:** It can identify issues like buffer overflows and database injections.
+    -   **Weaknesses:** It often fails to detect implementation errors related to **authentication or cryptography**. Like network scans, SAST results must be <ins>checked for false positives</ins>.
+
+2.  **Dynamic Analysis (Fuzzing):** Also known as fault injecting or robustness testing, this method involves sending **random input** into a running application to see if it crashes or produces unexpected errors. 
+    -   **Automation:** Because it requires thousands of iterations, it is almost always an **automated process**.
+    -   **Tools:** The Carnegie Mellon Computer Emergency Response Team (CERT) provides a tool called the **Basic Fuzzing Framework (BFF)** for this purpose.
+
+### Software Package Verification
+When installing new software, it is vital to **verify the package's contents** to ensure it can be trusted. It's recommend to:
+-   **Verify the Source:** Ensure the package comes directly from the manufacturer rather than a third party, which might have added malware.
+-   **Lab Testing:** If the contents of a package are uncertain, it should be tested in a **lab environment** before being deployed into production.
+
+## Threat Intelligence
+
+Being an IT security professional means **staying up to date with the latest threats** and the **threat actors** behind them to understand where attacks originate. This intelligence is used to make informed security decisions, such as identifying the need for additional security tools or specific training. Within an organization, researchers use this data to understand risks, while the IT department focuses on protecting against identified threats.
+
+There are several categories of threat intelligence.
+
+### Open-Source Intelligence (OSINT)
+OSINT is information **available to anyone** who knows where to look. Some sources include:
+-   **The Internet:** Discussion groups (including those hosted by hacking groups), social media posts, and information shared by other researchers.
+-   **Government Sources:** Public hearings, reports, and websites, as almost everything produced by the government is open-source and available to the public.
+-   **Commercial Data:** Publicly available financial reports or databases containing project details and associated risks.
+
+### Proprietary and Third-Party Services
+There are companies built around compiling threat intelligence for a fee. The primary advantage of these services is their ability to **analyze threats across many different organizations simultaneously**. By monitoring the broader threat landscape, they can identify attack trends and **alert your organization** before a threat actually arrives. These companies use a mix of public sources, private data, and sometimes previously classified information that has been made public.
+
+### Collaborative Alliances
+Organizations often work together to share intelligence about threats on their own networks. A primary example is the **Cyber Threat Alliance (CTA)**. Members of the CTA gather threat details and put them into a **standard format** for distribution. The alliance validates and scores these submissions to determine a **severity level**, allowing all members to decide how to best use that intelligence for their own network protection.
+
+### The Dark Web
+The dark web is an **overlay network** that requires specialized software to access. It serves as a source for detailed threat intelligence because it allows professionals to:
+-   **Monitor hacking groups** and their current activities.
+-   Identify the specific **tools and techniques** being used to attack organizations.
+-   Observe "stores" where stolen information, such as **credit card data**, is sold.
+-   Check forums and posts to see if their own **organization's name** is being mentioned in relation to an attack.
+
+
+## Penetration Testing
+
+**Penetration testing** (or pen testing) is the process of **simulating an attack** on an organization's own systems to see if access can be gained through actual exploits.
+
+### Planning and Rules of Engagement
+Before a test begins, it is critical to establish the **Rules of Engagement (RoE)**. This is a formal, written document that ensures everyone understands the following aspects:
+-   **Scope:** Specifically which <ins>systems</ins> are <ins>allowed to be tested</ins> ("**in scope**") and which <ins>must not be touched</ins> ("**out of scope**") to ensure production systems remain functional.
+-   **Timing:** <ins>When</ins> the tests are allowed to occur, such as only after business hours (e.g., after 6:00 PM) to avoid disrupting operations.
+-   **Type of Test:** Whether the test is an on-site <ins>physical breach</ins>, an <ins>internal test</ins>, or an <ins>external test</ins> from outside the facility.
+-   **Logistics:** Specific IP address ranges for testing, emergency contacts, and procedures for handling sensitive information discovered during the test.
+
+It's possible to have a standardized overview of the process by looking at the **NIST Technical Guide to Information Security Testing and Assessment** (document 800-115).
+
+### Execution and Risks
+The primary objective of a pen test is to **exploit known vulnerabilities** to gain system access. However, exploiting these vulnerabilities can cause **system or service failure**. For example, using a **buffer overflow** to achieve privilege escalation might cause an operating system to crash or become unstable.
+
+Commonly used testing methods include:
+-   **Technical Exploits:** Database injections and buffer overflows.
+-   **Password Attacks:** Brute force attacks.
+-   **Social Engineering:** Attacks that may be conducted entirely over the phone.
+
+### Post-Exploitation Activities
+Once a system is successfully compromised, the tester moves into a larger process involving:
+-   **Lateral Movement:** Moving from the initial compromised device to <ins>other devices</ins> within the <ins>network</ins>.
+-   **Persistence:** Ensuring they can access the system again later. This is often done by creating a **backdoor**, such as adding a new account or changing default passwords, because the original vulnerability might be closed by a software patch.
+-   **Pivoting:** Using the first compromised system as a **relay or proxy** (a "pivot point") to bypass firewalls and reach other internal systems.
+
+### Vulnerability Disclosure and Bug Bounties
+New vulnerabilities are constantly made public through **CVE (Common Vulnerabilities and Exposures) lists**. The process of disclosure typically follows these steps:
+1.  A researcher identifies a vulnerability and notifies the developer.
+2.  The developer creates, tests, and publishes a patch.
+3.  The vulnerability and its mitigation are then made public.
+
+This process can take weeks or months. To encourage this responsible disclosure, many developers offer **bug bounties**, which are financial rewards for researchers who find and report vulnerabilities to them rather than exposing them publicly immediately.
