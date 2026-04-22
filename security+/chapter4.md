@@ -234,3 +234,33 @@ New vulnerabilities are constantly made public through **CVE (Common Vulnerabili
 3.  The vulnerability and its mitigation are then made public.
 
 This process can take weeks or months. To encourage this responsible disclosure, many developers offer **bug bounties**, which are financial rewards for researchers who find and report vulnerabilities to them rather than exposing them publicly immediately.
+
+
+## Analyzing vulnerabilities
+
+### Identifying False Positives and False Negatives
+When reviewing log files or vulnerability reports, it is common to encounter **false positives**, which is information indicating a vulnerability exists when <ins>it actually does not</ins>. It is important to note that vulnerabilities labeled as "low" or "informational" are still valid and should not be dismissed as false positives. Instead, a **false negative** occurs when a vulnerability exists on a system but the scanning software fails to detect it. False negatives are considered much worse than false positives because they leave an organization unaware of a hole that an attacker could exploit. To minimize these issues, it is essential to **update signatures** before performing any scan.
+
+### Vulnerability Scoring and Databases
+Vulnerabilities are typically categorized by **severity** (such as critical, high, or low) to help organizations address the most dangerous issues first. Several resources help standardize this process:
+-   **CVSS (Common Vulnerability Scoring System):** This system assigns a score between 0 and 10, with 10 being the most critical. Because scoring systems evolve, vulnerabilities may have <ins>multiple scores from different versions</ins>, such as CVSS 2.0 and CVSS 3.x.
+-   **NVD (National Vulnerability Database):** Located at [nvd.nist.gov](https://nvd.nist.gov), this database provides CVSS scores and is synchronized with the main CVE list.
+-   **CVE (Common Vulnerabilities and Exposures):** Found at [cve.org](https://www.cve.org), this database provides standardized identifiers for vulnerabilities.
+-   **Manufacturer Databases:** Many companies, like Microsoft, maintain their own security bulletins and vulnerability databases for their specific products.
+
+### Types of Vulnerability Scans
+Scanners can identify vulnerabilities across various platforms:
+-   **Application Scans:** These look for holes in <ins>desktop</ins> or <ins>mobile applications</ins>, such as a known bypass vulnerability in WhatsApp desktop.
+-   **Web Application Scans:** These target <ins>web-based applications on servers</ins>, such as incorrect access control in a content management system.
+-   **Network Device Scans:** These find issues in <ins>firewalls</ins>,<ins>switches</ins>, and <ins>routers</ins>, such as vulnerabilities found in D-Link software.
+
+### Quantifying Risk and Impact
+To prioritize fixes, organizations must understand the **exposure factor**, often represented as a percentage. For instance, if a vulnerability could cause a service to be unavailable 50% of the time, it has a 50% exposure factor. If it could completely disable a service and has no patch, it might be considered a 100% exposure factor.
+
+**Context** is also vital for prioritization:
+-   **Environment:** A system on a public cloud accessible to the internet has a much higher priority than an isolated system in a test lab.
+-   **Business Impact:** Organizations consider whether an application is critical, revenue-generating, or internally versus externally facing.
+-   **Ease of Exploit:** Vulnerabilities that are relatively easy to exploit are typically given the highest priority.
+
+### Patching and Risk Tolerance
+Because it is impossible to patch every device simultaneously, organizations must determine their **risk tolerance**—the amount of risk they are willing to accept by leaving a vulnerability unpatched while they perform necessary testing. While testing is required to ensure a patch doesn't break the environment, the organization remains vulnerable during that time. If a vulnerability affects many systems and is easy to exploit, the organization will likely have a **low risk tolerance** and may rush the testing process to patch as quickly as possible.
