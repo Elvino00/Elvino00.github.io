@@ -264,3 +264,28 @@ To prioritize fixes, organizations must understand the **exposure factor**, ofte
 
 ### Patching and Risk Tolerance
 Because it is impossible to patch every device simultaneously, organizations must determine their **risk tolerance**—the amount of risk they are willing to accept by leaving a vulnerability unpatched while they perform necessary testing. While testing is required to ensure a patch doesn't break the environment, the organization remains vulnerable during that time. If a vulnerability affects many systems and is easy to exploit, the organization will likely have a **low risk tolerance** and may rush the testing process to patch as quickly as possible.
+
+## Vulnerability Remediation
+
+### Patching and Risk Transfer
+In most cases, vulnerabilities are mitigated by installing **security patches**, which are typically released on a **standard schedule** (weekly or monthly). However, for severe vulnerabilities or **zero-day exploits**, manufacturers may provide unscheduled patches to immediately address active threats. Organizations must constantly test these updates before deploying them to production environments. When technical remediation isn't enough, some organizations use **cybersecurity insurance** to transfer risk, covering revenue losses, data recovery costs, or legal fees resulting from an attack. These policies generally do not cover intentional acts or direct fund transfers, but they have become more common due to the prevalence of **ransomware**.
+
+### Segmentation and Air Gapping
+To limit the scope of a potential attack, organizations use **segmentation** to isolate devices on their own networks or **VLANs**. While this may not stop an initial breach, <ins>it prevents attackers from moving laterally</ins> through the rest of the network. If a patch cannot be installed because it causes software conflicts, a vulnerable segment might be completely **air gapped**, meaning it is moved to a physically separate network with no connectivity to other systems. **Next-generation firewalls** are often used to monitor traffic between segments, allowing administrators to identify and log specific application traffic.
+
+### Compensating Controls and Service Management
+If a system cannot be patched and no internal firewall is available, other **compensating controls** can be used. These include:
+-   **Disabling the vulnerable service:** This prevents exploitation but makes the service unavailable to users.
+-   **Revoking access:** Administrators can stop all users from accessing a specific application.
+-   **Edge firewall policies:** Restricting outside access to internal services.
+-   **Access Control Lists (ACLs):** Implementing security rules on routers or installing software-based firewalls on the application servers themselves.
+
+### Exemptions and the Decision Process
+Sometimes, a security or change control committee may grant a formal **exemption** for a vulnerability, deciding not to patch it to maintain **service uptime and availability**. This decision is based on a collective risk assessment; for example, a vulnerability that requires **local access** to a server locked in a secure data center might be deemed a "reasonable security risk". These exemptions are rarely made by one person and require a group to weigh the risks against operational needs.
+
+### Verification and Reporting
+After patches are deployed, it is a best practice to perform a **vulnerability scan** to confirm the patch was installed properly and to find any systems that were missed. Verification can also involve checking the feedback from the patching system or performing **manual audits** by logging into systems directly. For large organizations with thousands of devices, a **reporting system** is essential to monitor:
+-   The total number of identified vulnerabilities.
+-   The ratio of patched vs. unpatched systems.
+-   New threat notifications and patch deployment errors.
+-   Current exceptions and exemptions.
