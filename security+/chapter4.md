@@ -337,3 +337,113 @@ Several tools are used to consolidate and analyze network data:
 -   **Antivirus and Anti-malware:** These tools identify malicious code like Trojans, worms, and ransomware. In modern usage, these two terms are largely interchangeable.
 -   **DLP (Data Loss Prevention):** DLP <ins>monitors and blocks the transfer of sensitive data</ins>, such as Social Security numbers or credit card info, in real-time. It can be deployed on endpoints, as network appliances, or in the cloud.
 -   **Vulnerability Scanners:** These are minimally invasive tools that <ins>identify potential vulnerabilities</ins> and perform <ins>port scans</ins> without exploiting them. They should be run regularly from both internal and external perspectives to find critical issues like unsupported operating systems.
+
+## Firewalls
+
+**Network-based firewalls** are appliances that sit inline in a network to <ins>allow</ins> or <ins>disallow traffic</ins> based on security decisions. While traditional firewalls make these decisions based on **port numbers**, modern **Next-Generation Firewalls (NGFW)** can analyze traffic to recognize the specific **application** being used. NGFWs are also known as application layer gateways, stateful multi-layer inspection devices, or deep packet inspection devices.
+
+### Firewall Capabilities and Routing
+Beyond basic security, firewalls often provide additional services:
+-   **VPN Services:** They can act as **VPN endpoints or concentrators** for point-to-point connections or remote access.
+-   **Routing:** Many function as **Layer 3 devices (routers)** at the network's ingress/egress point, performing **Network Address Translation (NAT)** and dynamic routing.
+-   **Application Awareness:** Traditional firewalls focus on ports (e.g., TCP 22 for SSH, TCP 80/443 for Web, UDP 53 for DNS, or UDP 123 for NTP), whereas NGFWs identify the traffic as the actual application regardless of the port.
+
+### Rule Bases and Access Control Lists (ACLs)
+Firewall policies, also called **Access Control Lists (ACLs)**, evaluate traffic against a list of rules. 
+-   **Evaluation Order:** Rules are processed from **top to bottom**. Because the firewall stops at the first match, **specific rules** should be placed at the top, while broad rules go at the bottom.
+-   **Implicit Deny:** Most firewalls include an "implicit deny" at the end of the rule base, meaning any traffic that does not match a specific rule is **automatically dropped**.
+-   **Rule Parameters:** A rule can include the source/destination IP, port numbers (services), the associated user, the application, or web categories.
+
+### Network Placement and Screened Subnets
+Firewalls are typically placed at the **ingress/egress point** between the internet and the internal network. To protect sensitive data, organizations often use a **screened subnet** (formerly known as a DMZ). This subnet hosts services that must be accessed from the internet, preventing external users from reaching the internal network where confidential data resides.
+
+### Intrusion Prevention Systems (IPS)
+Modern NGFWs often include an **Intrusion Prevention System (IPS)**. 
+-   **Detection Methods:** An IPS monitors traffic in real-time using **signatures** to recognize specific malware (like the Conficker worm) or by identifying **anomalies** (such as database injections) even if a signature does not exist.
+-   **Management:** IPS rule bases contain thousands of signatures that can be **grouped** to make broad security decisions, such as blocking all traffic associated with database injections.
+-   **Tuning:** Administrators must customize these rules to find a balance between high security and avoiding **false positives**. Rules can specifically target threats like malware or worms attempting to log in via protocols like FTP.
+
+## Web Filtering
+
+### Core Functions and Management
+-   **Purpose:** Filters can allow or disallow access based on the <ins>data inside web pages</ins>, rather than just the application itself. They are used to block "known-bad" sites containing viruses or malware and, in home environments, are often referred to as **parental controls**.
+-   **Allow and Block Lists:** Administrators can manage access by adding individual **Uniform Resource Locators (URLs)** or **Fully Qualified Domain Names (FQDNs)** to allow or block lists. 
+-   **Category-Based Filtering:** Because individual lists are hard to manage, URLs are often grouped into **categories** (e.g., gambling, hacking, travel, or education). Organizations can then apply rules to these categories, such as allowing educational sites while blocking gambling sites or logging alerts for "home and garden" visits.
+-   **Reputation Filtering:** Some filters evaluate a site's **perceived risk**. Sites are assigned ratings (e.g., trustworthy, suspicious, or high-risk) through automated scans or manual assignment, allowing for granular control based on a site's reputation.
+
+### Deployment Methods
+There are several ways content filtering is implemented:
+-   **Next-Generation Firewalls (NGFW):** Many firewalls now include URL filtering, Intrusion Prevention Systems (IPS), and standard firewall rules in a single device.
+-   **Agent-Based Filtering:** For mobile or remote workers who are not behind a corporate firewall, agents are installed directly on their devices. These agents are managed centrally and make filtering decisions locally on the user's system.
+-   **Proxies:** A **proxy** sits between the user and the external network, making requests on the user's behalf.
+    -   **Forward Proxies:** Internal proxies that receive a user's request, fetch the data, check it for malware or URL violations, and then pass it to the user.
+    -   **Explicit vs. Transparent:** An **explicit proxy** requires manual configuration in the application, while a **transparent proxy** works without the user's knowledge or special client configuration.
+    -   **Additional Features:** Proxies can provide **caching** (saving local copies of pages to speed up future requests) and **access control** based on IP addresses or credentials.
+-   **DNS Filtering:** This method uses the **Domain Name System (DNS)** to block access. If a user tries to access a malicious site, the DNS server—updated with real-time threat intelligence—refuses to provide the correct IP address, preventing the connection. A key benefit is that it can also block malicious software from communicating with **command and control servers**, even if that software isn't using a web browser.
+
+## Operating System Security
+
+### Windows: Active Directory and Group Policy
+**Active Directory** serves as a central, redundant database that <ins>catalogs all components of a network</ins>, including computers, devices, user accounts, file shares, printers, and security groups. This central resource allows administrators to:
+-   **Manage authentication:** Users log in to devices and resources using credentials defined within the database.
+-   **Assign access permissions:** Permissions can be assigned to individual users or entire groups.
+-   **Handle account management:** Functions such as adding accounts, modifying passwords, and removing accounts are performed here.
+
+**Group Policy** is a <ins>set of security policies</ins> overlaid on the computers and users within Active Directory. Managed through the **Group Policy Management Editor**, it allows for the configuration of:
+-   **Login scripts** that run when a user connects to the network.
+-   **Network configurations**, such as Quality of Service (QoS).
+-   **Security parameters** that all network users and devices must follow.
+
+Together, Active Directory and Group Policy provide a comprehensive control mechanism for managing network configuration and security policies.
+
+### Linux: DAC, MAC, and SELinux
+By default, the Linux operating system uses **Discretionary Access Control (DAC)**, which allows users to assign rights and permissions to resources at their own discretion. However, highly secure environments often require **Mandatory Access Control (MAC)**, where a central administrator assigns all rights and permissions.
+
+**Security-Enhanced Linux (SELinux)** is an open-source tool that can be installed on many Linux distributions to enable MAC. Key benefits include:
+-   **Least Privilege:** SELinux ensures users have only the permissions necessary for their specific job.
+-   **Containment:** If a security breach or malicious code occurs, its scope is limited, preventing it from affecting the entire device.
+
+## Secure Protocols
+
+### The Risk of Insecure Protocols
+Many common protocols send data "in the clear," meaning the information is not encrypted and can be easily read if intercepted. Examples of **insecure protocols** include:
+-   **Telnet**
+-   **FTP** (File Transfer Protocol)
+-   **SMTP** and **IMAP/POP3** (Email)
+-   **HTTP** (Web browsing)
+
+### Secure Alternatives
+To protect data, you should always aim to use secure versions of these protocols that utilize **encryption**. The source recommends the following transitions:
+-   Instead of Telnet, use **SSH (Secure Shell)**.
+-   Instead of HTTP, use **HTTPS**.
+-   Instead of IMAP, use **IMAPS**.
+-   Instead of FTP, use **SFTP**.
+
+### Identifying and Verifying Traffic
+One way to identify if a protocol is secure is by its **port number**, though this is not a guarantee. 
+-   **Port 80** is typically used for **HTTP** (insecure).
+-   **Port 443** is typically used for **HTTPS** (secure).
+
+Because port numbers alone do not guarantee security, it's suggested to perform a **packet capture**. If the data inside the packet is readable, the protocol is insecure; if it is encrypted, only the headers should be visible while the data remains protected.
+
+### Network-Level Encryption
+If an application does not support encryption, you can encrypt all traffic at the network level:
+-   **Wireless Security:** Using **WPA3** on a wireless access point ensures all data sent over the air is encrypted, unlike an "open" access point where traffic is sent in the clear.
+-   **VPN (Virtual Private Network):** A VPN creates an **encrypted tunnel** between a device and a VPN concentrator. While this protects all traffic sent over that specific link, it may require additional software or a subscription to a third-party service.
+
+## Email Security
+
+Original email protocols lack built-in security checks, making it easy for attackers to **spoof** messages. Spoofing occurs when an email appears to be from a <ins>trusted</ins> friend, family member, or organization, but <ins>did not actually originate from them</ins>. To counter this, organizations implement additional security features through their DNS servers.
+
+### Mail Gateways
+A **mail gateway** acts as a "gatekeeper" for an organization's email. It intercepts all incoming messages to determine if they are legitimate or should be sent to a spam folder. These gateways can be managed on-premises within a **screened subnet** or provided as a third-party cloud service.
+
+### DNS Security Records
+To verify the legitimacy of a sender, domain owners use three primary types of DNS text (TXT) records:
+
+-   **SPF (Sender Policy Framework):** This record defines <ins>which</ins> specific <ins>email servers</ins> are <ins>authorized</ins> to **send mail** on behalf of a domain. When a mail gateway receives an email, it queries the sender’s DNS to see if the originating server is <ins>listed</ins> in the SPF record.
+-   **DKIM (DomainKeys Identified Mail):** This mechanism adds a **digital signature** to the transport process between mail servers. The signature is not typically visible in the message itself but is found in the email headers. The receiving server uses a **public key** found in the sender's DNS TXT record to validate the signature and confirm the email's origin.
+-   **DMARC (Domain-based Message Authentication, Reporting, and Conformance):** DMARC serves as an extension of SPF and DKIM. It <ins>provides instructions</ins> to the <ins>receiving</ins> mail server on what to do if an email <ins>fails</ins> SPF or DKIM validation. Domain owners can choose to have failed messages **accepted, quarantined (sent to spam), or rejected**.
+
+### Reporting and Monitoring
+DMARC also includes a reporting feature that allows domain owners to receive **compliance reports**. These reports aggregate statistics on how many messages validated properly and how many were identified as potential spoofing attempts. This data helps domain owners understand the disposition of their email traffic across the internet.
