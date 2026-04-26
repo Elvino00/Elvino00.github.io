@@ -289,3 +289,51 @@ After patches are deployed, it is a best practice to perform a **vulnerability s
 -   The ratio of patched vs. unpatched systems.
 -   New threat notifications and patch deployment errors.
 -   Current exceptions and exemptions.
+
+## Security Monitoring
+
+Security monitoring is a continuous process required because attackers are <ins>constantly attempting to gain access</ins> to systems and services. To maintain a strong security posture, organizations use **dashboards** to view real-time activity and verify that all network activity is <ins>legitimate</ins>.
+
+### Key Areas of Monitoring
+Effective monitoring involves several critical points across the infrastructure:
+-   **Authentications and Logins:** Tracking who is logging in and from where is vital; for instance, seeing authentications from a country where the organization has no employees is a major cause for concern.
+-   **Systems and Services:** Monitoring includes checking running services, activity levels, backup completion status, and software versions to determine if **patching** is necessary.
+-   **Applications:** It is important to monitor application availability and the amount of traffic being transferred, as sudden spikes in data transfer can indicate an attacker is attempting to **exfiltrate data**.
+-   **Infrastructure:** This involves tracking remote access, such as VPN connections, to distinguish between employees, vendors, and guests. Firewalls and intrusion prevention systems (IPS) also provide warnings through spikes in attack activity.
+
+### Consolidating Data with SIEM
+Monitoring diverse systems is challenging because they use different log formats. A **Security Information and Event Manager (SIEM)** solves this by consolidating log files from firewalls, switches, servers, and routers into one central database. This consolidation allows for:
+-   **Reporting and Correlation:** Organizations can compare and correlate data across different systems, such as linking a VPN login to the specific information accessed on the network.
+-   **Baselines and Alerts:** By measuring normal data transfer levels, a SIEM can trigger an alert if those numbers are exceeded.
+
+### Vulnerability Scanning and Reporting
+Because mobile devices like laptops and tablets are constantly in motion, tracking vulnerabilities is difficult. Organizations use software to constantly scan devices for operating system versions, drivers, and installed applications. 
+-   **Actionable Reports:** These scans generate reports that <ins>identify devices out of compliance</ins> with security patches and outline the <ins>actions needed</ins> to <ins>fix them</ins>. 
+-   **Ad Hoc Reporting:** This is used for "what if" analysis, such as determining <ins>how many systems will be vulnerable</ins> once an operating system reaches its **end of life**.
+
+### Detection and Response
+The reality of security is that it takes an average of **nine months** for a company to identify and contain a breach. Attackers often stay hidden in a network for long periods, making long-term backup strategies and data collection mandates essential. 
+-   **Real-Time Alerts:** Immediate notifications (via SMS or email) should be generated for unusual activity, such as brute force attacks or large data transfers out of a data center.
+-   **Quarantine:** A common reaction to a high-priority alarm is to **quarantine** the affected system to prevent the attacker from moving to other devices on the network.
+-   **Tuning:** Monitoring requires a balancing act to minimize **false positives** (inaccurate alerts) and **false negatives** (missed events). Proper tuning ensures that alerts are accurate and allow for immediate decision-making.
+
+## Security Tools
+
+### SCAP and Automation
+To address the issue of different security tools using different terminology for the same vulnerabilities, the industry uses the **Security Content Automation Protocol (SCAP)**. Maintained by **NIST**, SCAP provides a common language for firewalls, IPS, and scanners to communicate. This standardization allows for **automated patching** and vulnerability removal without human intervention, which is essential for managing thousands of devices across multiple operating systems.
+
+### Security Benchmarks and Compliance
+**Security benchmarks** are sets of best practices used to configure systems as securely as possible right out of the box. The **Center for Internet Security (CIS)** provides an extensive library of these benchmarks for operating systems, applications, and mobile devices. To ensure ongoing compliance, organizations use two types of checks:
+-   **Agent-based:** Software is permanently installed and always running to monitor compliance, but it requires ongoing maintenance.
+-   **Agentless:** This check runs in the system's memory during events like a VPN login and removes itself once finished, requiring no permanent installation or maintenance.
+
+### Logging and Monitoring Tools
+Several tools are used to consolidate and analyze network data:
+-   **SIEM (Security Information and Event Manager):** This tool centralizes log files into a database for **reporting and correlation**. It allows administrators to see how different events (like a VPN login and a firewall block) relate and provides data for **forensics reports** to understand past security events.
+-   **SNMP (Simple Network Management Protocol):** This protocol is used to monitor and manage network devices. SNMP objects like network switches, routers, and other devices are listed in a **Management Information Base (MIB)** using **Object Identifiers (OIDs)**. It typically works via **polling** over UDP port 161. It also supports **SNMP traps**, which proactively send alarms to a management station over UDP port 162 when specific thresholds are met.
+-   **NetFlow:** Used to monitor traffic flows and application-level statistics. Probes collect data via port mirroring (SPAN) or physical taps and send it to a **NetFlow collector** to generate reports on the "top 10" conversations and endpoints.
+
+### Security and Data Protection Software
+-   **Antivirus and Anti-malware:** These tools identify malicious code like Trojans, worms, and ransomware. In modern usage, these two terms are largely interchangeable.
+-   **DLP (Data Loss Prevention):** DLP <ins>monitors and blocks the transfer of sensitive data</ins>, such as Social Security numbers or credit card info, in real-time. It can be deployed on endpoints, as network appliances, or in the cloud.
+-   **Vulnerability Scanners:** These are minimally invasive tools that <ins>identify potential vulnerabilities</ins> and perform <ins>port scans</ins> without exploiting them. They should be run regularly from both internal and external perspectives to find critical issues like unsupported operating systems.
