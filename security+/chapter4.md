@@ -447,3 +447,61 @@ To verify the legitimacy of a sender, domain owners use three primary types of D
 
 ### Reporting and Monitoring
 DMARC also includes a reporting feature that allows domain owners to receive **compliance reports**. These reports aggregate statistics on how many messages validated properly and how many were identified as potential spoofing attempts. This data helps domain owners understand the disposition of their email traffic across the internet.
+
+## Monitoring Data
+
+### File Integrity Monitoring (FIM)
+Applications typically consist of core files (executables and libraries) that rarely change unless there is an upgrade, and data files that change constantly. FIM is software designed to monitor and alert security teams if those "static" core files are suddenly modified.
+-   **Windows:** Uses the built-in **System File Checker (SFC)** on-demand to scan critical OS files and replace modified ones with original versions.
+-   **Linux:** Often uses a utility called **Tripwire**, which can provide real-time monitoring of file modifications.
+-   **Host-based IPS:** A host-based intrusion prevention system (HIPS) can also perform FIM while simultaneously blocking attacks against vulnerabilities.
+
+### Data Loss Prevention (DLP)
+DLP systems <ins>identify</ins> and <ins>block</ins> the <ins>transmission</ins> of <ins>sensitive data</ins>, such as Social Security numbers or medical information, in real-time. DLP is categorized based on where the data is located:
+-   **Data in Use:** Monitored by endpoint DLP software running on an individual system, focusing on data in the system's **active memory**.
+-   **Data in Motion:** Monitoring network packets in real-time as they travel across the network. This can be a standalone appliance or integrated into a **next-generation firewall**.
+-   **Data at Rest:** Software running directly on a server or workstation to monitor files stored in the **file system**.
+
+### Endpoint and USB Security
+DLP agents can control and block data transfers to **USB drives**, which are significant security risks due to their portability. 
+-   **Historical Case:** In November 2008, a random USB drive introduced the **agent.btz worm** into the US Department of Defense (DoD). 
+-   **Response:** This led to a temporary ban on all flash media and USB storage across the DoD until February 2010, requiring all USB drives to be disabled or managed by local DLP agents.
+
+### Cloud and Email DLP
+As applications move to the cloud, **Cloud-based DLP** solutions act as appliances to watch traffic moving in and out of cloud instances, blocking sensitive data transfers and malicious content like malware. 
+
+**Email** is one of the most common threat vectors for data loss. 
+-   **Inbound Email:** DLP can identify <ins>spoofed</ins> emails or keywords and <ins> quarantine</ins> suspicious messages.
+-   **Outbound Email:** DLP can block sensitive data (like W-2 forms or SSNs) and prevent fraudulent activities like fake wire transfers.
+-   **Boeing Example:** In 2016, a Boeing employee emailed a spreadsheet containing hidden sensitive data for 36,000 employees to a spouse. Although Boeing sells DLP software for classified networks, they were not using it in this instance, and an email DLP solution would have prevented the leak.
+
+## Endpoint Security
+
+### Endpoint Definition and Defense Strategy
+**Endpoints** are user-operated devices such as desktops, laptops, and mobile devices.
+-   Attackers exploit applications on these devices to access sensitive data.
+-   Security requires a **layered approach** or **defense in depth**, meaning multiple security solutions are implemented across all platforms.
+-   Protection often begins at the **edge**—where the internal network meets the internet—typically using a **firewall** with <ins>static</ins> security rules to monitor inbound and outbound traffic</ins>.
+
+### Access Control and Posture Assessments
+**Access control** limits a device's ability to <ins>reach specific data based on parameters</ins> like username, group membership, location, and the specific application being used.
+Because devices have varying configurations, organizations use **posture assessments** to ensure systems meet security standards. These assessments check for:
+- Up-to-date **antivirus** signatures.
+- Current **application versions**.
+- **Trust certificates** identifying the device as corporate-owned.
+- **Full disk encryption**, especially for remote devices.
+
+If a device fails an assessment, it may be **quarantined** on its own VLAN with instructions for the user on how to bring the system back into compliance.
+
+### Assessment Agents
+Posture assessments are conducted using different types of agents:
+-   **Persistent agents:** <ins>Permanently installed</ins> on the device; they can run at any time to <ins>monitor files and applications</ins>.
+-   **Dissolvable agents:** <ins>No installation required</ins>; they execute during login/connection and then <ins>remove themselves</ins> completely.
+-   **Agentless Network Access Control (NAC):** Integrated with Active Directory, these run only during the login or logoff process and do not require local software installation.
+
+### Advanced Detection (EDR and XDR)
+Because traditional antivirus struggles to keep up with over a million new virus variants daily, more modern solutions are used:
+
+-   **EDR (Endpoint Detection and Response):** Uses **behavioral analysis** and **machine learning** to monitor system processes. It provides **root-cause analysis** to determine how an infection occurred and can **automate responses**, such as <ins>isolating a system</ins> or <ins>rolling it back</ins> to a known-good configuration.
+-   **XDR (Extended Detection and Response):** Broadens the scope by <ins>correlating data</ins> from many different systems and network traffic simultaneously. 
+-   **User-behavior analytics:** A key component of XDR that builds a **baseline** of normal activity (users, devices, traffic types) to easily identify abnormal events in real time.
