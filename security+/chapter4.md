@@ -397,11 +397,11 @@ There are several ways content filtering is implemented:
 Together, Active Directory and Group Policy provide a comprehensive control mechanism for managing network configuration and security policies.
 
 ### Linux: DAC, MAC, and SELinux
-By default, the Linux operating system uses **Discretionary Access Control (DAC)**, which allows users to assign rights and permissions to resources at their own discretion. However, highly secure environments often require **Mandatory Access Control (MAC)**, where a central administrator assigns all rights and permissions.
+By default, the Linux operating system uses **Discretionary Access Control (DAC)**, which allows users to <ins>assign rights</ins> and permissions to <ins>resources</ins> at <ins>their own discretion</ins>. However, highly secure environments often require **Mandatory Access Control (MAC)**, where a central <ins>administrator assigns</ins> all <ins>rights</ins> and permissions.
 
 **Security-Enhanced Linux (SELinux)** is an open-source tool that can be installed on many Linux distributions to enable MAC. Key benefits include:
--   **Least Privilege:** SELinux ensures users have only the permissions necessary for their specific job.
--   **Containment:** If a security breach or malicious code occurs, its scope is limited, preventing it from affecting the entire device.
+-   **Least Privilege:** SELinux ensures users have <ins>only the permissions necessary</ins> for their specific job.
+-   **Containment:** If a security breach or malicious code occurs, its scope is <ins>limited</ins>, preventing it from affecting the entire device.
 
 ## Secure Protocols
 
@@ -505,3 +505,79 @@ Because traditional antivirus struggles to keep up with over a million new virus
 -   **EDR (Endpoint Detection and Response):** Uses **behavioral analysis** and **machine learning** to monitor system processes. It provides **root-cause analysis** to determine how an infection occurred and can **automate responses**, such as <ins>isolating a system</ins> or <ins>rolling it back</ins> to a known-good configuration.
 -   **XDR (Extended Detection and Response):** Broadens the scope by <ins>correlating data</ins> from many different systems and network traffic simultaneously. 
 -   **User-behavior analytics:** A key component of XDR that builds a **baseline** of normal activity (users, devices, traffic types) to easily identify abnormal events in real time.
+
+## Identity and access management
+
+**Identity and Access Management (IAM)** is a security framework used to ensure the **right people have the right permissions** at the right times. 
+
+### Core Concepts of IAM
+-   **The Lifecycle:** IAM begins when a user first needs access—often during **onboarding**—and ends when that access is removed during **offboarding**. It also manages changes in between, such as when a user is promoted or transfers to a different department.
+-   **Provisioning and Deprovisioning:** This is the core process of <ins>creating</ins> and </ins>deactivating user <ins>accounts</ins>. It involves assigning <ins>specific attributes</ins>, <ins>group permissions</ins>, and application access to ensure a user can do their job while **limiting extended or unnecessary access**, such as granting administrative rights to every employee.
+-   **Least Privilege:** A primary goal is ensuring users have <ins>only the permissions necessary for their roles</ins>. For instance, in **mandatory access control**, users are added to specific groups (like an "email group") to gain those rights.
+-   **Data Privacy:** By default, documents created by a user are private to them, and users are typically restricted from accessing the core operating system to prevent unauthorized changes or malware interference.
+
+### Identity Proofing and Verification
+-   **Identity Proofing:** This is a formal process, known as **resolution**, used to <ins>verify that a user is who they claim to be</ins> before an account is created.
+-   **Validation Methods:** Users may provide passwords or answers to security questions.
+-   **Attestation:** This involves verifying identity through **government documents** (passports, driver's licenses) or in-person meetings. Automated options may also include checking credit reports to ask specific questions about a person's history.
+
+### Authentication and Authorization Protocols
+-   **Centralized Authentication:** Clients typically send credentials to a centralized point, such as a **VPN concentrator** or **Active Directory** infrastructure, where a server validates the login information.
+-   **Single Sign-On (SSO):** SSO allows a user to <ins>authenticate once</ins> and <ins>gain access</ins> to <ins>all required resources</ins> for a set period (e.g., 24 hours) <ins>without re-entering credentials</ins> for every new printer or network share.
+-   **LDAP (Lightweight Directory Access Protocol):** Based on the X.500 standard, LDAP is used to <ins>access large directories</ins> of network data. It uses a **directory information tree** structure with **distinguished names** (e.g., CN for Common Name) and **leaf objects** to organize devices, users, and organizational units.
+-   **SAML (Security Assertion Markup Language):** SAML enables authentication via a <ins>third-party database</ins>. The process involves a client (browser), a resource server, and an authorization server that generates a **SAML token**.
+-   **OAuth and OpenID:** OAuth is an **authorization framework** built for modern and mobile systems to determine <ins>what resources a user can access</ins>. It is often paired with **OpenID** for authentication. An example is using a third-party app like Zapier to access files in a Google Drive account.
+
+### Federation and Interoperability
+-   **Federation:** This allows users to access a network or website using <ins>existing credentials from a third party</ins>—such as **Twitter, Facebook, or LinkedIn**—instead of creating a local account.
+-   **Interoperability:** Organizations must choose technologies that work together. For example, a new VPN concentrator might be chosen because it supports an existing LDAP/Active Directory server, or a new application might require authentication through an **API** to work with OAuth for authorization. These decisions are based on the organization's broader goals and existing resources.
+
+## Access Controls
+
+**Access control** is the process of <ins>enforcing policies</ins> to determine <ins>who can access specific data</ins> or resources after they have authenticated to a network.
+
+### The Principle of Least Privilege
+**Least privilege** is a principle that dictates that <ins>users should only be assigned the exact rights and permissions necessary to perform their job functions</ins>. By defaulting to <ins>limited privileges</ins> and <ins>avoiding administrator access</ins> for standard users, organizations can <ins>limit the potential damage</ins> if malicious software is executed on a user's system.
+
+### Access Control Models
+The are five primary access control models:
+
+-   **Mandatory Access Control (MAC):** This model is common in highly secure environments. It assigns security labels (such as confidential, secret, or top secret) to every resource. The system administrator defines the rights and permissions, ensuring that users can only access data that matches their specific clearance level.
+-   **Discretionary Access Control (DAC):** In this model, the creator or "owner" of the data has full control over who can access it and what permissions they have (e.g., read-only or modify). While DAC offers high flexibility, it is considered less secure because it relies on individual users to set appropriate security controls.
+-   **Role-Based Access Control (RBAC):** This model assigns <ins>permissions based on a user’s job function or role</ins> within the organization, such as a manager or director. Administrators create groups, assign permissions to those groups, and then add users to them; the users then inherit those permissions implicitly.
+-   **Rule-Based Access Control:** Access is <ins>determined by a set of system-enforced rules created by an administrator</ins>, rather than the user. When a user tries to access an object, the system checks the rule base to see if they meet specific criteria, such as using a specific web browser or accessing the data during a specific time frame.
+-   **Attribute-Based Access Control (ABAC):** Described as a "next generation" model, ABAC uses <ins>multiple complex criteria</ins> (attributes) to determine access. These attributes can include the user's IP address, the time of day, the specific action being requested (like reading or writing), and the user's relationship to the data.
+
+### Time of Day Restrictions
+One specific restriction that can be integrated into many of these models is **time of day restrictions**. This allows administrators to <ins>limit access to resources based on the clock</ins>, such as making a training room network inaccessible between midnight and 6:00 AM or limiting R&D database access to standard business hours. For global organizations, these policies must also account for the user's native time zone.
+
+## Multifactor Authentication
+
+There are various **authentication factors** used to verify a user's identity beyond the traditional username and password. These factors are generally categorized into four main types.
+
+### Something You Know
+This is the most common authentication factor because it involves <ins>information memorized by the user</ins>.
+-   **Passwords:** Strings of characters or phrases known only to the user.
+-   **PINs:** Personal Identification Numbers, such as the four-digit codes used at ATMs.
+-   **Patterns:** Specific swipe patterns used to unlock mobile devices or tablets.
+
+### Something You Have
+This factor relies on a physical or digital object in the user's possession.
+-   **Smart Cards and IDs:** Cards that can be inserted into a device, often used in conjunction with a PIN.
+-   **USB Security Keys:** Hardware keys containing a unique digital certificate.
+-   **Hardware Tokens:** Small devices that generate pseudo-random numbers that must match a code on the server.
+-   **Software Tokens and SMS:** Apps on a mobile phone that generate codes, or text messages (SMS) sent directly to a phone during the login process.
+
+### Something You Are
+This category refers to **biometric authentication**, which uses unique physical characteristics.
+-   **Examples:** Fingerprints and voiceprints are commonly used.
+-   **Implementation:** Systems do not store an actual image of the biometric (like a picture of a fingerprint); instead, they store a **mathematical representation** of it.
+-   **Considerations:** These factors are very difficult to change if compromised. Because biometrics can sometimes be circumvented, they are often used as part of a multi-factor approach rather than alone.
+
+### Somewhere You Are
+This factor uses **geolocation** to determine if a user is in a trusted or expected physical location.
+-   **Methods:** Location can be determined using GPS coordinates from a mobile device or by checking a user's IP address.
+-   **Security Use Case:** Systems can block login attempts that seem impossible, such as a login from a different country occurring only minutes after a previous session in another location. 
+-   **Limitations:** Identifying location via IP address is not perfect and becomes more complex with IP version 6 (IPv6).
+
+By combining these different parameters, organizations can implement more secure login processes beyond simple usernames and passwords.
