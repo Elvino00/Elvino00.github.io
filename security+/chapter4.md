@@ -41,7 +41,7 @@ Once a baseline is established, it requires ongoing management:
 -   **Network Infrastructure:** For switches, routers, and firewalls, the most common best practice is to **change default credentials**. Authentication should be configured locally or via a central server. Because patches for these purpose-built appliances are rare, they should be treated as high-priority events.
 -   **Cloud-Based Systems:** Hardening focuses on securing the **management workstation**, which often has complete access to the cloud environment. Use EDR to monitor for attacks and maintain **backups**, ideally with a separate cloud provider.
 -   **Industrial Systems (SCADA/ICS):** These large-scale systems are often secured through **network isolation**, such as an **air-gap**, which ensures they have no access to the internet or the rest of the organization's network.
--   **Embedded Systems and IoT:** These devices (e.g., smartwatches, HVAC, lighting) often have limited access to their internal operating systems. Hardening involves <ins>prioritizing security patches</ins> and placing these devices on **segmented networks** behind firewalls to limit the scope of a potential exploit.
+-   **Embedded Systems and IoT:** These devices (e.g. smartwatches, HVAC, lighting) often have limited access to their internal operating systems. Hardening involves <ins>prioritizing security patches</ins> and placing these devices on **segmented networks** behind firewalls to limit the scope of a potential exploit.
 -   **Real-Time Operating Systems (RTOS):** Used in time-sensitive environments like military or automotive equipment, these should be **isolated** from the rest of the network, run with the minimum number of services, and potentially use host-based security technologies.
 
 
@@ -207,7 +207,7 @@ The dark web is an **overlay network** that requires specialized software to acc
 ### Planning and Rules of Engagement
 Before a test begins, it is critical to establish the **Rules of Engagement (RoE)**. This is a formal, written document that ensures everyone understands the following aspects:
 -   **Scope:** Specifically which <ins>systems</ins> are <ins>allowed to be tested</ins> ("**in scope**") and which <ins>must not be touched</ins> ("**out of scope**") to ensure production systems remain functional.
--   **Timing:** <ins>When</ins> the tests are allowed to occur, such as only after business hours (e.g., after 6:00 PM) to avoid disrupting operations.
+-   **Timing:** <ins>When</ins> the tests are allowed to occur, such as only after business hours (e.g. after 6:00 PM) to avoid disrupting operations.
 -   **Type of Test:** Whether the test is an on-site <ins>physical breach</ins>, an <ins>internal test</ins>, or an <ins>external test</ins> from outside the facility.
 -   **Logistics:** Specific IP address ranges for testing, emergency contacts, and procedures for handling sensitive information discovered during the test.
 
@@ -346,7 +346,7 @@ Several tools are used to consolidate and analyze network data:
 Beyond basic security, firewalls often provide additional services:
 -   **VPN Services:** They can act as **VPN endpoints or concentrators** for point-to-point connections or remote access.
 -   **Routing:** Many function as **Layer 3 devices (routers)** at the network's ingress/egress point, performing **Network Address Translation (NAT)** and dynamic routing.
--   **Application Awareness:** Traditional firewalls focus on ports (e.g., TCP 22 for SSH, TCP 80/443 for Web, UDP 53 for DNS, or UDP 123 for NTP), whereas NGFWs identify the traffic as the actual application regardless of the port.
+-   **Application Awareness:** Traditional firewalls focus on ports (e.g. TCP 22 for SSH, TCP 80/443 for Web, UDP 53 for DNS, or UDP 123 for NTP), whereas NGFWs identify the traffic as the actual application regardless of the port.
 
 ### Rule Bases and Access Control Lists (ACLs)
 Firewall policies, also called **Access Control Lists (ACLs)**, evaluate traffic against a list of rules. 
@@ -368,8 +368,8 @@ Modern NGFWs often include an **Intrusion Prevention System (IPS)**.
 ### Core Functions and Management
 -   **Purpose:** Filters can allow or disallow access based on the <ins>data inside web pages</ins>, rather than just the application itself. They are used to block "known-bad" sites containing viruses or malware and, in home environments, are often referred to as **parental controls**.
 -   **Allow and Block Lists:** Administrators can manage access by adding individual **Uniform Resource Locators (URLs)** or **Fully Qualified Domain Names (FQDNs)** to allow or block lists. 
--   **Category-Based Filtering:** Because individual lists are hard to manage, URLs are often grouped into **categories** (e.g., gambling, hacking, travel, or education). Organizations can then apply rules to these categories, such as allowing educational sites while blocking gambling sites or logging alerts for "home and garden" visits.
--   **Reputation Filtering:** Some filters evaluate a site's **perceived risk**. Sites are assigned ratings (e.g., trustworthy, suspicious, or high-risk) through automated scans or manual assignment, allowing for granular control based on a site's reputation.
+-   **Category-Based Filtering:** Because individual lists are hard to manage, URLs are often grouped into **categories** (e.g. gambling, hacking, travel, or education). Organizations can then apply rules to these categories, such as allowing educational sites while blocking gambling sites or logging alerts for "home and garden" visits.
+-   **Reputation Filtering:** Some filters evaluate a site's **perceived risk**. Sites are assigned ratings (e.g. trustworthy, suspicious, or high-risk) through automated scans or manual assignment, allowing for granular control based on a site's reputation.
 
 ### Deployment Methods
 There are several ways content filtering is implemented:
@@ -523,8 +523,8 @@ Because traditional antivirus struggles to keep up with over a million new virus
 
 ### Authentication and Authorization Protocols
 -   **Centralized Authentication:** Clients typically send credentials to a centralized point, such as a **VPN concentrator** or **Active Directory** infrastructure, where a server validates the login information.
--   **Single Sign-On (SSO):** SSO allows a user to <ins>authenticate once</ins> and <ins>gain access</ins> to <ins>all required resources</ins> for a set period (e.g., 24 hours) <ins>without re-entering credentials</ins> for every new printer or network share.
--   **LDAP (Lightweight Directory Access Protocol):** Based on the X.500 standard, LDAP is used to <ins>access large directories</ins> of network data. It uses a **directory information tree** structure with **distinguished names** (e.g., CN for Common Name) and **leaf objects** to organize devices, users, and organizational units.
+-   **Single Sign-On (SSO):** SSO allows a user to <ins>authenticate once</ins> and <ins>gain access</ins> to <ins>all required resources</ins> for a set period (e.g. 24 hours) <ins>without re-entering credentials</ins> for every new printer or network share.
+-   **LDAP (Lightweight Directory Access Protocol):** Based on the X.500 standard, LDAP is used to <ins>access large directories</ins> of network data. It uses a **directory information tree** structure with **distinguished names** (e.g. CN for Common Name) and **leaf objects** to organize devices, users, and organizational units.
 -   **SAML (Security Assertion Markup Language):** SAML enables authentication via a <ins>third-party database</ins>. The process involves a client (browser), a resource server, and an authorization server that generates a **SAML token**.
 -   **OAuth and OpenID:** OAuth is an **authorization framework** built for modern and mobile systems to determine <ins>what resources a user can access</ins>. It is often paired with **OpenID** for authentication. An example is using a third-party app like Zapier to access files in a Google Drive account.
 
@@ -543,7 +543,7 @@ Because traditional antivirus struggles to keep up with over a million new virus
 The are five primary access control models:
 
 -   **Mandatory Access Control (MAC):** This model is common in highly secure environments. It assigns security labels (such as confidential, secret, or top secret) to every resource. The system administrator defines the rights and permissions, ensuring that users can only access data that matches their specific clearance level.
--   **Discretionary Access Control (DAC):** In this model, the creator or "owner" of the data has full control over who can access it and what permissions they have (e.g., read-only or modify). While DAC offers high flexibility, it is considered less secure because it relies on individual users to set appropriate security controls.
+-   **Discretionary Access Control (DAC):** In this model, the creator or "owner" of the data has full control over who can access it and what permissions they have (e.g. read-only or modify). While DAC offers high flexibility, it is considered less secure because it relies on individual users to set appropriate security controls.
 -   **Role-Based Access Control (RBAC):** This model assigns <ins>permissions based on a user’s job function or role</ins> within the organization, such as a manager or director. Administrators create groups, assign permissions to those groups, and then add users to them; the users then inherit those permissions implicitly.
 -   **Rule-Based Access Control:** Access is <ins>determined by a set of system-enforced rules created by an administrator</ins>, rather than the user. When a user tries to access an object, the system checks the rule base to see if they meet specific criteria, such as using a specific web browser or accessing the data during a specific time frame.
 -   **Attribute-Based Access Control (ABAC):** Described as a "next generation" model, ABAC uses <ins>multiple complex criteria</ins> (attributes) to determine access. These attributes can include the user's IP address, the time of day, the specific action being requested (like reading or writing), and the user's relationship to the data.
@@ -581,3 +581,89 @@ This factor uses **geolocation** to determine if a user is in a trusted or expec
 -   **Limitations:** Identifying location via IP address is not perfect and becomes more complex with IP version 6 (IPv6).
 
 By combining these different parameters, organizations can implement more secure login processes beyond simple usernames and passwords.
+
+## Password Security
+
+### Password Creation and Complexity
+To defend against password spraying and brute force attacks, it's recommendable to aim for a high level of **entropy**, that means how unpredictable a password is. The best practices for creating secure passwords are:
+-   **Complexity:** Using a mix of uppercase letters, lowercase letters, numbers, and special characters. 
+-   **Length:** A minimum of eight characters is ideal, though requirements are increasing as processing power improves. Using **phrases or sets of words** can help create much longer, more secure passwords.
+-   **Uniqueness:** You should use a **different password for every account** to prevent an attacker who compromises one account from gaining access to others.
+
+### Password Management Policies
+System administrators often implement policies to maintain account security:
+-   **Password Age and Expiration:** Systems track <ins>how long a password has been in use</ins>. Passwords typically expire every 30, 60, or 90 days, though critical systems may require changes every 7 to 15 days.
+-   **Password History:** Many systems <ins>remember previous passwords</ins> to <ins>prevent the reuse</ins> immediately after they expire.
+
+### Password Managers
+Because remembering unique passwords for every site is difficult, it's recommendable to use a **password manager**.
+-   **Functionality:** It stores all passwords in a single **encrypted database**.
+-   **Security:** Accessing the manager often requires additional authentication or multi-factor tokens.
+-   **Features:** Managers can provide "health summaries" to identify weak or compromised passwords and can **automatically generate** and fill in unique, random passwords for new sites.
+
+### Passwordless Authentication
+To solve the problems of password reuse and the burden of memory, many systems are moving toward **passwordless authentication**. 
+-   **Examples:** This includes biometric methods like **face recognition** on mobile phones or using a **PIN** (Personal Identification Number) for Windows.
+-   **Implementation:** These methods are often used alongside an initial password or other authentication factors.
+
+### Enterprise Security: Just-in-Time Permissions
+In complex IT environments, organizations may use **just-in-time (JIT) permissions** rather than assigning permanent administrative rights to individual users.
+-   **Temporary Access:** Technicians receive administrative access only for a limited time to solve a specific problem.
+-   **Central Clearinghouse:** Users request access from a central vault or clearinghouse that evaluates the request based on security policies.
+-   **Ephemeral Credentials:** Instead of sharing primary credentials, the vault creates **ephemeral (temporary) credentials** for the session. These are deleted once the session is complete, ensuring the primary credentials remain hidden and secure.
+
+## Scripting and automation
+
+### Core Benefits of Scripting
+- **Efficiency and Speed:** Scripting <ins>automates</ins> manual functions, allowing for problem <ins>resolution without human presence</ins> and preventing the need for manual intervention at inconvenient times. It runs at the speed of the host system and eliminates human errors, such as typing mistakes or misspellings.
+-   **Resource Allocation:** By automating repetitive or "boring" tasks, IT staff can <ins>focus</ins> on more interesting and <ins>complex work</ins>.
+-   **Consistency:** Scripts ensure that multiple systems—such as routers, firewalls, or cloud instances—are <ins>configured with</ins> exactly the <ins>same security controls</ins> and organizational settings.
+
+### Security and Infrastructure Applications
+-   **Enforcing Baselines:** Automation can identify <ins>when</ins> security <ins>patches arrive</ins> in a folder and <ins>automatically deploy them</ins> to all necessary systems to maintain security baselines.
+-   **Cloud Scaling:** When scaling cloud applications up or down, scripts can <ins>ensure</ins> that <ins>security features</ins> like firewalls and databases <ins>are scaled</ins> alongside the servers.
+-   **Monitoring and Response:** Systems can be monitored 24/7. For instance, a script can identify low disk space and automatically clear temporary files to keep a server running. If a script cannot resolve an issue, it can <ins>automatically escalate the problem</ins> to an on-call technician.
+-   **Access Management:** Automation streamlines **onboarding and offboarding** by creating user accounts, setting up home directories, and assigning users to the correct security groups. It can also monitor sensitive groups, such as the administrator group, and alert the organization immediately if a new person is added.
+-   **Guardrails:** These are automated verifications that <ins>monitor human input</ins> to <ins>prevent mistakes</ins>, such as a technician accidentally deleting critical files or a large area of a server.
+
+### Operational and Development Uses
+-   **Help Desk Automation:** Scripts can <ins>convert incoming emails into help desk tickets</ins> and <ins>assign them to the appropriate</ins> person based on the content of the message.
+-   **Service and Code Management:** Automation can <ins>enable or disable services</ins> for specific timeframes and allow developers to <ins>push code updates</ins> to systems <ins>automatically</ins>.
+-   **API Integration:** Scripts can communicate directly with **Application Programming Interfaces (APIs)** to control devices programmatically, removing the need for manual logins.
+
+### Concerns and Limitations
+-   **Complexity and Testing:** Scripts are complex and <ins>require extensive testing</ins> to ensure they <ins>interact correctly</ins> with other systems.
+-   **Cost and Maintenance:** There is a significant time and financial cost associated with coding scripts. Furthermore, scripts <ins>require ongoing support</ins> to remain <ins>compatible</ins> with <ins>operating system updates or changes in scripting languages</ins>.
+-   **Single Point of Failure:** If a script stops working, the devices and processes that rely on that automation may experience significant problems.
+-   **Technical Debt:** Automation can sometimes be used to hide the symptoms of a larger issue rather than addressing the root cause, which increases an organization's "technical debt".
+
+## Incident Response
+
+### Understanding and Preparing for Incidents
+Security incidents can range from **malware infections** via email attachments to **Distributed Denial-of-Service (DDoS)** attacks and **data exfiltration** for ransom. To manage these, organizations must engage in extensive **planning and preparation** before an incident occurs. Key preparation tools include:
+-   **Communication Methods:** Up-to-date contact lists for all essential personnel.
+-   **Incident "Go Bag":** A portable kit containing laptops, specialized software, removable media, forensic tools, and digital imaging systems to capture evidence.
+-   **Documentation and Baselines:** Network diagrams, server documentation, security baselines, and **file hashes** for critical data.
+-   **Recovery Resources:** Known-good images for operating systems and applications to replace compromised code.
+-   **Policies and Procedures:** A set of established rules that everyone must follow during a crisis.
+
+### Detection and Analysis
+Detecting an incident can be difficult because systems are under constant attack from automated scripts. Effective detection involves:
+-   **Log Review:** Monitoring web server logs and vulnerability scans to identify the origin and type of attack.
+-   **Monitoring Patch Cycles:** Keeping track of updates (like Microsoft's patch schedule) to protect unpatched systems.
+-   **Indicators of Compromise:** Using alerts from **Intrusion Prevention Systems (IPS)** for buffer overflows, antivirus reports, unauthorized configuration changes, or large spikes in network traffic that may indicate data exfiltration.
+
+### Containment, Eradication, and Recovery
+Once an attack is identified, it should be stopped as quickly as possible. There are several recovery strategies:
+-   **Sandboxing:** Running suspicious applications in a <ins>closed environment</ins> to observe their behavior, though some malware is designed to detect virtual machines and self-delete.
+-   **Eradication:** Disabling breached accounts and fixing the vulnerabilities that allowed the entry.
+-   **Reimaging:** Overwriting compromised files using **known-good backups** or original installation media to ensure the system is clean.
+
+### Post-Incident Activities
+After resolution, a **post-incident meeting** should be held as soon as possible while memories are fresh. This phase involves:
+-   **Analyzing the Timeline:** Determining exactly what happened and when.
+-   **Evaluating the Response:** Assessing if the planned procedures worked and if any early warning indicators were missed.
+-   **Process Improvement:** Integrating lessons learned into future incident-planning documentation.
+
+### Training
+**Training and testing** must occur before an incident is live on the network; there is no time for "on-the-job training" during a real attack. While maintaining incident response teams and training can be expensive, it ultimately saves the organization money when a major incident occurs.
