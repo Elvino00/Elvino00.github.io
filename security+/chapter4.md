@@ -667,3 +667,86 @@ After resolution, a **post-incident meeting** should be held as soon as possible
 
 ### Training
 **Training and testing** must occur before an incident is live on the network; there is no time for "on-the-job training" during a real attack. While maintaining incident response teams and training can be expensive, it ultimately saves the organization money when a major incident occurs.
+
+## Incident Planning
+
+### Testing and Evaluation
+Before an actual security event occurs, organizations should perform testing to evaluate the effectiveness of their **documented response plans** and the technical skill sets of their staff. To avoid disrupting business operations, these tests must be performed on **test systems** rather than production systems. Because participants have other duties, these exercises are typically constrained by limited time.
+
+A critical part of any test is the **post-event evaluation**. Organizations sit down after an exercise to discuss how well they performed and identify specific processes or procedures that require changes for future events.
+
+### Types of Security Exercises
+There are several methods for testing an organization's preparedness:
+
+-   **Tabletop Exercises:** These involve <ins>stakeholders sitting around a table</ins> to logistically <ins>step through policies</ins> and procedures for specific security scenarios. They are less resource-intensive than full-scale drills, often <ins>taking only a few hours</ins>, and allow different parts of the organization to <ins>coordinate their responses</ins> in real-time.
+-   **Simulations:** These are real-world tests of an attack, such as sending **phishing emails**, calling the help desk to attempt a password change, or trying to send data outside the organization to see if monitoring systems catch it. 
+-   **Phishing Simulations:** Security teams (or third parties) send fake phishing emails to employees to see who clicks on them. These simulations test internal automated filters, anti-phishing systems, and help identify users who may need **additional training**.
+
+### Root Cause Analysis
+When a security incident occurs, it often involves a series of smaller events, such as a server breach followed by malware installation or data transfer. **Root cause analysis** is used to determine exactly how an attacker entered the network. 
+-   **Evidence Collection:** Analysts <ins>evaluate log files</ins> and data stored on servers to <ins>reconstruct the attacker's actions</ins>.
+-   **Multiple Causes:** It is important <ins>not</ins> to look for <ins>just a single root cause</ins>, as there are often **multiple steps or processes** that allowed an attacker to gain access.
+-   **Addressing Mistakes:** If human error or social engineering was involved, organizations <ins>must</ins> find ways to <ins>correct those mistakes</ins> to prevent future attacks.
+
+### Proactive Security Measures
+-   **Threat Hunting:** This is the proactive process of finding vulnerabilities. It includes tracking newly announced vulnerabilities, ensuring systems are up to date with the **latest patches**, and adjusting firewall rules.
+-   **Monitoring and Automation:** Because it is difficult to identify an attack until it is in progress, continuous monitoring is vital. **Automated systems** can identify and stop certain types of attacks before they gain access, providing protection even when security teams are not actively watching.
+
+## Digital Forensics
+
+### Guidelines and Best Practices
+Security professionals follow established best practices for digital forensics to ensure that data collected today remains valid for legal use years later. A key reference for these guidelines is **RFC 3227**, which outlines <ins>procedures for evidence collection and archiving</ins>.
+
+### Data Acquisition and Legal Holds
+A **legal hold** is a formal <ins>request</ins>, usually from a lawyer, to <ins>preserve</ins> specific <ins>data</ins>.
+-   **Data Custodian:** This individual is responsible for evaluating the legal hold and acquiring the necessary **electronically stored information (ESI)**.
+-   **ESI Repository:** Organizations typically maintain a separate area to store acquired data.
+-   **Data Conversion:** Data <ins>may need to be converted</ins> from proprietary formats (like certain email clients) into standard formats (like text) to <ins>fulfill legal requirements</ins>.
+-   **Live Acquisition:** It is often necessary to collect data while a system is <ins>still running</ins>, especially if **encryption** might lock the data once the system is powered off.
+
+### Maintaining Data Integrity
+Ensuring that data remains in its **pristine, unmodified form** is a critical requirement.
+-   **Chain of Custody:** This process <ins>tracks everyone who accesses the data</ins> to <ins>confirm it has not changed</ins>.
+-   **Integrity Tools:** In the digital realm, **hashes and digital signatures** are used to <ins>maintain integrity</ins> and verify that the data viewed in the future is <ins>identical</ins> to what was originally collected.
+
+### Sources of Digital Evidence
+Forensic data can be acquired from a wide variety of sources, including:
+-   **System Components:** Disk, memory, firmware, and file systems.
+-   **Network Devices:** Logs from firewalls, routers, and other network equipment.
+-   **Virtual Environments:** Full copies or **snapshots** of virtual machines (VMs).
+-   **Hidden or Temporary Data:** Recycle bins, temporary storage, browser bookmarks, and saved logins.
+
+### Reporting and Analysis
+Documentation is essential for both internal use and third-party verification.
+-   **Acquisition Reports:** These detail <ins>every step</ins> taken to <ins>get data from its original source to the repository</ins>, <ins>including</ins> all <ins>integrity checks</ins>.
+-   **Analysis:** A factual <ins>description of the data's structure</ins> and how it can be understood.
+-   **Conclusion:** Provides <ins>insights</ins> and expert opinions <ins>on what occurred</ins> during the security event <ins>based on the analyzed data</ins>.
+
+### Preservation and E-Discovery
+-   **Working from Copies:** Analysts should always work from **copies** of the original media to prevent accidental modification and ensure a backup exists. This is particularly vital for **mobile devices**, which can be remotely wiped.
+-   **E-Discovery:** This is the specific process of collecting and producing electronic documents. Unlike a full forensic investigation, e-discovery focuses on the **acquisition and production** of data rather than the analysis of what that data means.
+-   **Data Recovery:** Forensic professionals may also use acquired drive images to perform **undeleting or recovery** of data that was previously removed.
+
+## Log Data
+
+### Types of Log Data
+Organizations store a massive amount of security-related information in log files across servers, devices, and network components. Key sources include:
+
+-   **Firewall Logs:** These document every traffic flow, including source and destination IP addresses, port numbers, and whether the traffic was allowed or blocked. **Next Generation Firewalls (NGFW)** provide additional detail on applications, URL categories, and potential anomalies.
+-   **Application Logs:** Applications create logs useful for security events, such as the **Windows Event Viewer** or the `/var/log` directory in Linux and Mac OS.
+-   **Endpoint Logs:** Devices like laptops and phones track login/logoff events, system processes, and management actions like password changes or account lockouts.
+-   **Operating System Logs:** OS-level logs monitor security events, brute-force attacks, and changes to critical system files. They often store authentication data and can trigger alerts if a vital service is disabled.
+-   **IPS and IDS Logs:** These provide information on known vulnerabilities and specific attack types, such as **SYN flood** denial-of-service attacks.
+-   **Network Infrastructure Logs:** Switches, routers, and wireless access points log routing table changes, authentication errors, and network-level attacks.
+
+### Log Management and Correlation
+Because the volume of data is so large, organizations often use a **Security Information and Event Management (SIEM)** system.
+-   **Consolidation:** SIEMs roll up logs from endpoints, firewalls, and applications into a single source.
+-   **Correlation:** By consolidating data, security professionals can correlate events across different devices to track the steps of a security incident.
+-   **Reporting and Dashboards:** SIEMs generate **automated reports** for long-term analysis and **dashboards** for an "at-a-glance" view of the network's current status.
+
+### Advanced Analysis Tools
+Beyond standard logs, there are other methods for gathering security insights:
+-   **Metadata:** This is hidden information within files. For example, email headers contain server and IP details, while photos may contain **GPS coordinates**. Word processing documents can contain the creator's contact info and title.
+-   **Vulnerability Scans:** These scans create logs identifying misconfigured devices, missing antivirus software, open file shares, and unpatched applications.
+-   **Packet Captures:** Tools like **Wireshark** allow for packet-level analysis of traffic. This provides a "bit and byte" breakdown of everything sent over the network, such as specific HTTP commands and header details.
