@@ -105,3 +105,17 @@ The scope of an organization also dictates its security focus:
 -   **Local/Regional:** Focuses on records and information used to manage specific cities or states.
 -   **National:** Involves federal government issues and **national defense**, often requiring more advanced encryption and data protection technologies to maintain high levels of confidentiality.
 -   **Global:** These organizations face the most complexity because they must navigate the different **international laws** for data protection and security in every country where they operate.
+
+## Data Roles and Responsibilities
+
+There are key roles and responsibilities related to managing and protecting data within an organization:
+
+-   **Data Owner:** This is typically a **high-level executive** who holds <ins>ultimate responsibility</ins> for a <ins>specific set of data</ins>.
+For instance, a Vice President of Sales would own customer relationship data, while a Treasurer would own financial information.
+-   **Data Controller:** This role is responsible for **managing how data will be used**. They provide specific instructions to processors on how data handling should occur. An example is a company's payroll department.
+-   **Data Processor:** The processor **actually uses or processes the data** based on the instructions provided by the controller. For example, a third-party payroll company acts as a data processor by using bank details and employee information to handle weekly payroll.
+-   **Data Custodian or Data Steward:** This individual is responsible for the **security, accuracy, and privacy** of the data. Their duties include:
+    -   Ensuring the organization complies with relevant **laws and regulations**.
+    -   Assigning **sensitivity labels** to data.
+    -   Linking those labels to **access controls** to ensure only authorized users can reach the data.
+    -   Determining exactly **which users have access** to which types of data.
