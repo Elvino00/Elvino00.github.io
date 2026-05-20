@@ -119,3 +119,15 @@ For instance, a Vice President of Sales would own customer relationship data, wh
     -   Assigning **sensitivity labels** to data.
     -   Linking those labels to **access controls** to ensure only authorized users can reach the data.
     -   Determining exactly **which users have access** to which types of data.
+
+## Risk Management
+
+**Risk management** is a critical process used by organizations to **identify and manage potential risks** before they escalate into larger problems. As an organization grows, the risks associated with it grow as well, and these threats can originate from either **internal or external sources**.
+
+There are several ways organizations approach and perform risk assessments:
+
+-   **One-time Assessments:** These are often specific to a particular project. Examples include evaluating the risks involved in **acquiring another company** or installing brand-new technology, such as **new software or equipment**.
+-   **Ongoing Assessments:** In many organizations, risk assessment is a continuous process. This is commonly seen in the **change control process**, where the potential risk of every single change must be evaluated before it is implemented.
+-   **Ad Hoc Assessments:** The term "ad hoc" means "for this purpose only". These assessments are conducted for a **specific, narrow purpose**, such as when a CEO learns about a **new type of attack** and wants to know if the organization is vulnerable. Typically, a committee is formed to study the threat, and once the findings are presented, the committee is disbanded.
+-   **Scheduled Assessments:** Some organizations perform assessments on a **regular schedule**, such as every three, six, or twelve months. These can be handled by **internal assessment teams** who maintain ongoing documentation without needing an external third party.
+-   **Mandated Assessments:** These are assessments required by specific **regulations or standards**. For instance, the **PCI DSS** (Payment Card Industry Data Security Standard) requires any organization that stores credit card numbers to perform a risk assessment **annually**.
