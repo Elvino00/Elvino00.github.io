@@ -194,3 +194,27 @@ The are several key metrics used when planning for and recovering from system ou
 -   **Recovery Point Objective (RPO):** This refers to a **point in time** that determines <ins>when an organization is considered operational</ins> based on data availability. An example provided is an organization that requires the last 12 months of customer data to be available; the time spent reloading that data from backups until the 12-month threshold is met represents the RPO.
 -   **Mean Time to Repair (MTTR):** This is the **average amount of time required to resolve a problem**. This duration encompasses the time needed to diagnose the issue, acquire replacement equipment, install it, and complete the configuration. Organizations can decrease their MTTR by investing more money upfront, such as by maintaining an on-site inventory of equipment or having rapid-response contracts with third-party vendors.
 -   **Mean Time Between Failures (MTBF):** This is a **prediction of how long a system will run** before the next outage occurs. It is used for planning and assessing the risk of using specific equipment. MTBF can be calculated by **dividing the total uptime of the equipment by the total number of breakdowns**. Manufacturers may provide these values as predictions, or they can be derived from historical performance data to help predict future issues.
+
+## Third Party risk assessment
+
+### Contracts and Agreements
+Risk assessment expectations and **penalties for breaches** should be written directly into the contract with a third party. 
+-   **Right to Audit:** This specific clause <ins>ensures all parties understand</ins> that <ins>regular audits will occur</ins> to <ins>review security controls</ins>.
+-   **Rules of Engagement (RoE):** When performing penetration tests, this document <ins>sets parameters</ins> including the scope, timing (e.g., after-hours), IP address ranges, emergency contacts, and how sensitive information should be handled.
+
+### Risk Assessment Methods
+-   **Penetration Testing:** Unlike a standard vulnerability scan, this involves **actively exploiting vulnerabilities** in systems or applications to <ins>test security</ins>. This can be done by the company itself or a specialized third party to provide unbiased reports.
+-   **Audits:** These focus on security controls such as **access management**, offboarding procedures, password storage, and VPN access. While sometimes required for compliance, regular audits are recommended to identify opportunities for security improvement.
+-   **Independent Assessments:** Bringing in an outside party provides a different perspective and **broad scope of understanding** gathered from their experience with many other organizations.
+
+### Supply Chain Analysis
+Supply Chain Analysis is a process that examines the <ins>entire journey</ins> from raw materials to the final product <ins>to identify security concerns</ins>.
+
+### Evaluation and Selection
+-   **Due Diligence:** This is the investigative process of <ins>verifying a company's claims</ins>—such as financial health, customer count, and background checks—<ins>before deciding to do business with them</ins>.
+-   **Conflicts of Interest:** Organizations must identify <ins>situations that compromise judgment</ins>, such as a vendor working with a major competitor, employing a relative of an executive, or offering gifts to secure a contract.
+
+### Continued Monitoring
+Risk management does not end when a contract is signed; it requires **ongoing monitoring**.
+-   **Monitoring Activities:** This includes financial health checks, IT security reviews, and monitoring news or social media for mentions of the partner.
+-   **Vendor Questionnaires:** These are used to <ins>gather information on a vendor’s own due diligence</ins>, **disaster recovery plans**, and technical data protection methods. The results from these questionnaires are integrated into a constantly updated risk analysis for that vendor.
