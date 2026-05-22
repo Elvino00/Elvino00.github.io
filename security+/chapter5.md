@@ -131,3 +131,66 @@ There are several ways organizations approach and perform risk assessments:
 -   **Ad Hoc Assessments:** The term "ad hoc" means "for this purpose only". These assessments are conducted for a **specific, narrow purpose**, such as when a CEO learns about a **new type of attack** and wants to know if the organization is vulnerable. Typically, a committee is formed to study the threat, and once the findings are presented, the committee is disbanded.
 -   **Scheduled Assessments:** Some organizations perform assessments on a **regular schedule**, such as every three, six, or twelve months. These can be handled by **internal assessment teams** who maintain ongoing documentation without needing an external third party.
 -   **Mandated Assessments:** These are assessments required by specific **regulations or standards**. For instance, the **PCI DSS** (Payment Card Industry Data Security Standard) requires any organization that stores credit card numbers to perform a risk assessment **annually**.
+
+## Risk Analysis
+
+### Qualitative Risk Assessment
+Qualitative analysis evaluates risk factors using **broad, descriptive terms** rather than specific numbers. 
+-   **Methodology:** It often uses a **traffic light grid** (red, yellow, green) to categorize risks as **low, medium, or high**.
+-   **Evaluation Factors:** Assessment involves looking at the **impact** of a risk, the **Annualized Rate of Occurrence (ARO)**, and the **cost of controls** to determine an overall risk level.
+-   **Examples:** Common factors analyzed include the use of **legacy Windows clients**, **untrained staff**, or devices operating without **antivirus software**.
+-   **Purpose:** This provides a high-level view to <ins>help</ins> organizations <ins>prioritize where to focus</ins> their <ins>efforts</ins> to resolve problems.
+
+### Quantitative Risk Assessment
+Quantitative analysis calculates **specific numerical values** to determine the financial impact of risks.
+-   **Annualized Rate of Occurrence (ARO):** How often a risk is expected to occur in a single year (e.g., how many laptops are likely to be stolen).
+-   **Asset Value (AV):** The total value of an asset to the organization, which includes replacement costs, impact on sales, and potential fines.
+-   **Exposure Factor (EF):** The percentage of an asset's value lost during a risk event, ranging from 0.0 to 1.0 (100% loss).
+-   **Single-Loss Expectancy (SLE):** The monetary loss from a single event, calculated as **AV x EF**.
+-   **Annualized Loss Expectancy (ALE):** The total expected yearly cost of a risk, calculated as **ARO x SLE**.
+
+### Impact and Likelihood
+Risk calculations consider several types of impacts. Priority is as follows:
+1.  **Life:** This is the **most important concern**, as people cannot be replaced.
+2.  **Property:** Impact on buildings and resources.
+3.  **Safety:** The impact on the safety of individuals and the company.
+4.  **Financial:** The monetary impact calculated through quantitative analysis.
+
+### Risk Appetite and Tolerance
+Organizations must decide how much risk they are willing to accept:
+-   **Risk Appetite:** The amount of <ins>risk</ins> an organization is <ins>willing to take</ins>, often described by a **posture** such as conservative, neutral, or expansionary.
+-   **Risk Tolerance:** A larger variance than appetite; it represents the actual <ins>limit</ins> of <ins>what an organization will allow before acting</ins>. 
+    -   *Example:* A highway speed limit of 55 mph represents the risk appetite (the law), but police not ticketing until a driver hits 65 mph represents the risk tolerance.
+
+### Risk Documentation
+Project-associated risks are documented in a **risk register**.
+-   **Goal:** To <ins>detail</ins> individual <ins>risks</ins> and <ins>provide solutions</ins> to avoid them.
+-   **Components:** Each entry includes **Key Risk Indicators (KRI)** (e.g., ill-defined project schedules), an assigned **Risk Owner** responsible for managing the risk, and a **risk threshold** to balance the cost of resolving the risk against the potential cost to the company.
+
+## Risk management strategies
+
+### Risk Management Strategies
+-   **Transfer:** This involves **moving the risk under the control of a different party**. A common example of risk transfer is purchasing **cybersecurity insurance**.
+-   **Accept:** This is the **most common course of action**, where a company acknowledges the risk and decides what they would like to do with it. 
+-   **Avoid:** This strategy involves **completely removing the risk** from the organization, which eliminates the need for further risk management for that specific issue.
+-   **Mitigate:** Organizations can **invest in tools or processes to reduce the impact of a risk**. For example, installing a **next-generation firewall** can mitigate risks associated with internet connectivity.
+
+### Managing Policy Conflicts
+When a company accepts risk, it may need to address situations where existing security policies cannot be met:
+-   **Exemptions:** These are used when a **security policy simply cannot be followed**. An example provided is a piece of manufacturing equipment running Windows that the manufacturer does not support patching for. Management might approve an exemption for that device, provided it remains disconnected from the network.
+-   **Exceptions:** An exception is created when there is a **conflict between a policy and operational requirements**. For instance, if a policy requires patching within three days, but a specific patch is found to crash critical software, an exception allows the company to delay the patch until the software is updated to be compatible.
+
+### Risk Reporting
+To manage these various issues, organizations use **risk reporting** to track and describe every risk they are monitoring.
+-   **Function:** It provides a **list of risks and instructions on how to handle them**.
+-   **Audience:** It is a document frequently **referenced by upper management** to inform business decisions, such as what equipment to purchase.
+-   **Maintenance:** This is a **living document** that is constantly updated to include **critical and emerging risks**.
+
+## Business impact analysis
+
+The are several key metrics used when planning for and recovering from system outages as part of a business impact analysis and these are:
+
+-   **Recovery Time Objective (RTO):** This is a defined <ins>time frame</ins> for **how long it takes to get a system back up and running** after an outage. For instance, an organization's RTO might be the total time required to get both a web server and a database server operational again.
+-   **Recovery Point Objective (RPO):** This refers to a **point in time** that determines <ins>when an organization is considered operational</ins> based on data availability. An example provided is an organization that requires the last 12 months of customer data to be available; the time spent reloading that data from backups until the 12-month threshold is met represents the RPO.
+-   **Mean Time to Repair (MTTR):** This is the **average amount of time required to resolve a problem**. This duration encompasses the time needed to diagnose the issue, acquire replacement equipment, install it, and complete the configuration. Organizations can decrease their MTTR by investing more money upfront, such as by maintaining an on-site inventory of equipment or having rapid-response contracts with third-party vendors.
+-   **Mean Time Between Failures (MTBF):** This is a **prediction of how long a system will run** before the next outage occurs. It is used for planning and assessing the risk of using specific equipment. MTBF can be calculated by **dividing the total uptime of the equipment by the total number of breakdowns**. Manufacturers may provide these values as predictions, or they can be derived from historical performance data to help predict future issues.
