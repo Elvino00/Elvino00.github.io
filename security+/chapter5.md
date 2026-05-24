@@ -218,3 +218,27 @@ Supply Chain Analysis is a process that examines the <ins>entire journey</ins> f
 Risk management does not end when a contract is signed; it requires **ongoing monitoring**.
 -   **Monitoring Activities:** This includes financial health checks, IT security reviews, and monitoring news or social media for mentions of the partner.
 -   **Vendor Questionnaires:** These are used to <ins>gather information on a vendor’s own due diligence</ins>, **disaster recovery plans**, and technical data protection methods. The results from these questionnaires are integrated into a constantly updated risk analysis for that vendor.
+
+## Agreement types
+
+There are several types of formal and informal agreements used when working with third parties and business partners.
+
+### Service Level Agreement (SLA)
+A **SLA** is used with service providers to establish **minimum terms for service**, specifically regarding **uptime or availability**. For instance, an agreement with an internet service provider (ISP) might mandate no more than four hours of unscheduled downtime and require a technician to be dispatched if a failure occurs. It ensures both parties understand the exact requirements for service levels.
+
+### Memorandum of Understanding (MOU) and Memorandum of Agreement (MOA)
+-   **MOU:** This is an **informal document**, not a signed contract, that provides a **broad overview** of <ins>how two organizations might work together</ins>. It generally outlines broad goals and may include confidentiality statements. 
+-   **MOA:** This is one step above an MOU and provides **more detail** regarding the <ins>relationship</ins> and <ins>how companies will work together</ins>. While it may contain some legally binding information, it is **not a contract** and is generally not legally enforceable.
+
+### Master Service Agreement (MSA) and Statement of Work (SOW)
+-   **MSA:** A **legal contract** that establishes the <ins>terms between organizations</ins> for an **ongoing relationship**. It provides a **framework** for future work, covering foundation details like billing, payment systems, and general service terms.
+-   **SOW:** Used in conjunction with an MSA, the SOW provides a **detailed breakdown of specific services** to be provided. It allows organizations to focus on a particular set of tasks without renegotiating basic contract terms. A typical SOW includes the **scope of the job, location, deliverables schedule, and specific expectations**. It serves as a reference point to verify if the agreed-upon work was actually completed.
+
+### Non-Disclosure Agreement (NDA)
+An **NDA** is a formal contract used to ensure that shared information remains **confidential**. It allows parties to discuss trade secrets or business activities freely without worrying about the information reaching others. NDAs can be:
+-   **Unilateral (One-way):** Only one party is required to maintain confidentiality.
+-   **Bilateral (Mutual):** Both parties must maintain confidentiality.
+-   **Multilateral:** More than two parties are involved in the agreement.
+
+### Business Partners Agreement (BPA)
+A **BPA** is used for **formal partnerships** and details the **financial arrangements and ownership stakes** of each partner. It outlines how business decisions are made and establishes protocols for when things go wrong, such as **financial issues or disasters** that might shut down the business.
