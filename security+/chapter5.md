@@ -242,3 +242,31 @@ An **NDA** is a formal contract used to ensure that shared information remains *
 
 ### Business Partners Agreement (BPA)
 A **BPA** is used for **formal partnerships** and details the **financial arrangements and ownership stakes** of each partner. It outlines how business decisions are made and establishes protocols for when things go wrong, such as **financial issues or disasters** that might shut down the business.
+
+## Compliance
+
+**Compliance** is the process of **meeting a series of standards** established by laws, regulations, or third-party agreements. It is a critical business function because failing to remain in compliance can result in **fines, loss of employment, or incarceration**.
+
+### Management and Oversight
+To manage these requirements, many organizations perform **internal compliance checks** led by a **Central Compliance Officer (CCO)**. The CCO is responsible for ensuring the organization meets state, local, and federal requirements and reporting the organization’s status to others. Organizations may also face **external compliance requirements** from third parties, which often involve mandatory **ongoing reporting** at specific intervals. Missing these reports or providing incorrect information can lead to sanctions.
+
+### Regulatory Examples
+There are several key US regulations:
+-   **Sarbanes-Oxley Act (SOX):** Formally known as the Public Company Accounting Reform and Investor Protection Act of 2002.
+-   **HIPAA:** The Health Insurance Portability and Accountability Act, which ensures medical information remains private.
+-   **Gramm-Leach-Bliley Act (GLBA):** Requires financial institutions to provide privacy information to customers.
+
+### Consequences of Non-Compliance
+The penalties for non-compliance can be severe, as illustrated by **HIPAA violations**:
+-   Standard violations can result in **fines of $50,000 and one year in prison**.
+-   If done under false pretenses, fines increase to **$100,000 and five years in prison**.
+-   Intent to sell or use health information maliciously can lead to **$250,000 fines and 10 years in prison**.
+
+Beyond legal penalties, organizations face **reputational damage**. For example, **Uber** was breached in 2016 but failed to disclose it for over a year, allegedly paying hackers to keep quiet. This resulted in **$148 million in fines**, three years of probation for their former chief security officer, and significant financial and reputational harm. Additionally, failing to comply can lead to the **loss of business licenses**, which can be an "economic hit" and very expensive to regain.
+
+### Operational Concepts and Monitoring
+Key aspects of compliance monitoring are:
+-   **Contractual Compliance:** <ins>Agreements between private organizations</ins> that can sometimes be <ins>resolved without legal proceedings</ins> if a <ins>breach occurs</ins>.
+-   **Due Care vs. Due Diligence:** Internal compliance activities are typically referred to as **due care**, while activities involving third parties are referred to as **due diligence**.
+-   **Attestation and Acknowledgment:** An executive typically signs off to <ins>state</ins> that the <ins>organization is in good standing</ins> and acting in good faith.
+-   **Automation:** Because large companies have extensive requirements, they often use **automated compliance monitoring systems** to collect data from people and third parties and compile up-to-date reports.
