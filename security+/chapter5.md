@@ -270,3 +270,28 @@ Key aspects of compliance monitoring are:
 -   **Due Care vs. Due Diligence:** Internal compliance activities are typically referred to as **due care**, while activities involving third parties are referred to as **due diligence**.
 -   **Attestation and Acknowledgment:** An executive typically signs off to <ins>state</ins> that the <ins>organization is in good standing</ins> and acting in good faith.
 -   **Automation:** Because large companies have extensive requirements, they often use **automated compliance monitoring systems** to collect data from people and third parties and compile up-to-date reports.
+
+## Privacy
+
+### Privacy Laws and Regulations
+Privacy protections exist at multiple jurisdictional levels:
+-   **Local and State:** Governments collect and protect data regarding homes, vehicles, and medical licensing.
+-   **National:** Laws like **HIPAA** in the United States protect healthcare information for everyone in the country.
+-   **International:** The **General Data Protection Regulation (GDPR)** in the European Union is a primary example of countries working together to ensure privacy for citizens regardless of their location.
+
+### The GDPR and the "Data Subject"
+The GDPR shifts the perspective of privacy to the individual, known as the **data subject**—defined as any identified or identifiable natural person. 
+-   **Protected Information:** This includes names, addresses, photos, emails, bank details, social media posts, location data, and genetic makeup.
+-   **Control and the "Right to be Forgotten":** The GDPR puts control back into the hands of the user, allowing them to decide what happens to their data. This includes the right to request that a website remove all of their private information.
+
+### Data Roles and Responsibilities
+The key roles involved in managing data within an organization are:
+-   **Data Owner:** The individual with overall responsibility for the data (e.g., a VP of Sales owns customer data; a Treasurer owns financial data).
+-   **Data Controller:** The entity responsible for managing **how** data is used. For example, a payroll department acts as a controller by defining pay amounts and schedules.
+-   **Data Processor:** The entity that **actually uses** the data. This can be an internal department or a third party, such as a payroll company that processes paychecks. When using third parties, organizations often use **Non-Disclosure Agreements (NDAs)** to maintain privacy.
+
+### Data Inventory and Usage
+Organizations must maintain a **data inventory**, which is a comprehensive listing of all collected and stored data.
+-   **Inventory Details:** This list includes the data owner, the format of the data, and how often it is updated.
+-   **Internal Usage:** Data is used internally for project collaboration, IT security, and data quality checks.
+-   **External Sharing:** When sharing information with third parties, organizations must ensure they follow all legal guidelines and regulations for privacy.
