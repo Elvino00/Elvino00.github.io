@@ -282,7 +282,7 @@ Privacy protections exist at multiple jurisdictional levels:
 ### The GDPR and the "Data Subject"
 The GDPR shifts the perspective of privacy to the individual, known as the **data subject**—defined as any identified or identifiable natural person. 
 -   **Protected Information:** This includes names, addresses, photos, emails, bank details, social media posts, location data, and genetic makeup.
--   **Control and the "Right to be Forgotten":** The GDPR puts control back into the hands of the user, allowing them to decide what happens to their data. This includes the right to request that a website remove all of their private information.
+-   **Control and the "Right to be Forgotten":** The <ins>GDPR puts control</ins> back <ins>into the hands of the user</ins>, allowing them to decide what happens to their data. This includes the right to request that a website remove all of their private information.
 
 ### Data Roles and Responsibilities
 The key roles involved in managing data within an organization are:
@@ -292,6 +292,48 @@ The key roles involved in managing data within an organization are:
 
 ### Data Inventory and Usage
 Organizations must maintain a **data inventory**, which is a comprehensive listing of all collected and stored data.
--   **Inventory Details:** This list includes the data owner, the format of the data, and how often it is updated.
+-   **Inventory Details:** This list includes the <ins>data owner</ins>, the <ins>format of the data</ins>, and <ins>how often it is updated</ins>.
 -   **Internal Usage:** Data is used internally for project collaboration, IT security, and data quality checks.
--   **External Sharing:** When sharing information with third parties, organizations must ensure they follow all legal guidelines and regulations for privacy.
+-   **External Sharing:** When sharing information with third parties, organizations must ensure they <ins>follow</ins> all <ins>legal guidelines</ins> and regulations for <ins>privacy</ins>.
+
+## Audits and assessments
+
+### Purpose and Benefits of Audits
+A **cybersecurity audit** is used to examine various parts of a computing environment, including **IT infrastructure, software, and network devices**. Organizations also use audits to review **policies and procedures** to ensure they are adequately protected against modern threats. One of the primary benefits of an audit is the ability to find **vulnerabilities** before hackers do, which significantly improves safety.
+
+### Key Concepts and Roles
+-   **Attestation:** It's an **"opinion of truth"** regarding the results of an audit. Typically, an organization will perform an audit and then attest to its findings.
+-   **Audit Committee:** This group is responsible for **risk management** within an organization. They have the <ins>authority to both start and stop internal audits</ins> and are <ins>responsible</ins> for compiling self-assessments to <ins>determine the organization's compliance standing</ins>.
+
+### Internal vs. External Audits
+-   **Internal Audits:** These are conducted within the organization to ensure that **compliance tasks** are being followed properly.
+-   **Self-Assessments:** Audits often begin with a self-assessment, allowing an organization to compare its **internal processes** against its own requirements.
+-   **External Audits:** Some regulations require a **third party** to perform the audit. In these cases, external auditors will often come on-site to review **records** and gather specific details. The frequency and specific type of these audits are generally determined by the **regulations** themselves.
+
+### Outcomes
+The results of an audit provide a clear picture of an organization's **current compliance status**. Furthermore, they identify specific areas where there is **room for improvement** in the future.
+
+## Penetration Tests
+
+Penetration testing encompasses both digital and physical security assessments to identify and address vulnerabilities.
+
+### Physical Penetration Testing
+While often thought of as a digital activity, **physical penetration testing** is a critical security tool because physical access to a device makes it "exceptionally easy" to circumvent an operating system's security. With physical access, an attacker can modify the boot process, boot from external media, or replace operating system files. Consequently, servers are typically kept in highly secure data centers. In a physical pen test, testers attempt to **gain access to a facility** by entering without keys and testing every possible entry point, including doors, windows, and elevators.
+
+### Penetration Testing Teams
+Penetration testing involves two primary sides that work best when integrated to provide a constant feedback loop:
+-   **Red Team:** The **offensive side** that attacks systems, identifies vulnerabilities, and attempts to exploit them.
+-   **Blue Team:** The **defensive side** that identifies and blocks attacks in real time.
+-   **Integration:** When these teams work together, the red team provides information on discovered openings to the blue team so they can **patch the vulnerability** and better identify future attacks.
+
+### Testing Environments
+The level of information provided to a pen tester varies depending on the specific test:
+-   **Known Environment:** The organization provides **full disclosure** of all systems to be attacked.
+-   **Partially Known Environment:** A mix of known and unknown environments where only some information is provided, often to ensure testers focus on **certain systems**.
+-   **Unknown Environment:** Also known as a **blind test**, where no information is provided, and testers must find all details on their own.
+
+### Reconnaissance
+Before an attack, testers perform **reconnaissance** to understand security tools, servers, and applications in place. This allows them to build network maps, identify IP configurations, and understand remote site connections. Reconnaissance is categorized into two types:
+
+-   **Passive Reconnaissance:** Gathering information from sources that <ins>do not tie back directly to the customer's network</ins>. Examples include searching **social media**, corporate websites, online forums (like Reddit), **social engineering**, **dumpster diving**, or speaking with third-party business partners.
+-   **Active Reconnaissance:** A direct method of gathering information by **querying devices** on the network. Because this involves sending packets across the network, it is easily detected and often recorded in **firewall log files**. Examples include ping scans, port scans, DNS queries, operating system fingerprinting, and version scans.
