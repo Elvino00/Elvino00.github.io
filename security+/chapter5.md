@@ -337,3 +337,31 @@ Before an attack, testers perform **reconnaissance** to understand security tool
 
 -   **Passive Reconnaissance:** Gathering information from sources that <ins>do not tie back directly to the customer's network</ins>. Examples include searching **social media**, corporate websites, online forums (like Reddit), **social engineering**, **dumpster diving**, or speaking with third-party business partners.
 -   **Active Reconnaissance:** A direct method of gathering information by **querying devices** on the network. Because this involves sending packets across the network, it is easily detected and often recorded in **firewall log files**. Examples include ping scans, port scans, DNS queries, operating system fingerprinting, and version scans.
+
+## Security awareness
+
+**Security awareness** involves proactive measures to educate employees and monitor for potential security threats. Key strategies include running **phishing campaigns**, recognizing **anomalous behavior**, and utilizing a dedicated **security awareness team** to track metrics and provide training.
+
+### Phishing Campaigns and User Education
+Organizations often conduct internal or third-party **automated phishing campaigns** to determine how many employees might click on a malicious link. 
+-   **Response to Mistakes:** If a user clicks a simulated phishing link, they receive an automated notification and are required to undergo **additional training**, which can be conducted online or in person.
+-   **Recognition Signs:** Users are taught to identify phishing by looking for **spelling and grammatical errors**, verifying the **domain name**, checking for unusual attachments, and noting requests for personal information or login credentials.
+-   **Email Filtering:** These campaigns also serve to test the effectiveness of **email filters**, which should ideally block such attempts before they reach an inbox. 
+-  **Reporting:** Organizations must have a well-known process for users to report suspicious emails to the IT security team.
+
+### Anomalous Behavior Recognition
+The security team monitors for **unusual workstation activity**, categorized into three types of behavior:
+-   **Risky Behavior:** Includes a person or service modifying a host file, replacing operating system files, or uploading sensitive files from a device.
+-   **Unexpected Behavior:** Activities such as logging in from a foreign country or a sudden increase in data transfers from a device.
+-   **Unintentional Behavior (Human Error):** Mistakes like typing the wrong domain name, misplacing a USB drive, or misconfiguring security settings.
+
+To be effective, this monitoring must be an **automated process** that sends alerts and generates daily reports for the security team.
+
+### Monitoring, Metrics, and Reporting
+Security teams track specific **security metrics** to evaluate the organization's posture, including **phishing click rates**, password manager adoption, and multifactor authentication (MFA) use. Constant monitoring allows the team to identify users who need **extended training** or to determine if security configurations need to be changed for specific individuals.
+
+### The Security Awareness Team
+A specialized **security awareness team** is responsible for communicating security issues to the entire user community. Their duties include:
+-   **Creating Materials:** Developing emails, posters, and classroom or online training materials to highlight security concerns.
+-   **Customization:** Tailoring training based on specific **job functions** or mandated **compliance requirements**.
+-   **Correlating Data:** Using detailed metrics to show stakeholders how training efforts and security controls correlate back to the **overall security of the company**.
