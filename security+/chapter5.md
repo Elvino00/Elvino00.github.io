@@ -365,3 +365,17 @@ A specialized **security awareness team** is responsible for communicating secur
 -   **Creating Materials:** Developing emails, posters, and classroom or online training materials to highlight security concerns.
 -   **Customization:** Tailoring training based on specific **job functions** or mandated **compliance requirements**.
 -   **Correlating Data:** Using detailed metrics to show stakeholders how training efforts and security controls correlate back to the **overall security of the company**.
+
+## User training
+
+Security training for users is a critical best practice that should ideally occur **before they connect to a network for the first time**. This training is often **specialized** to meet the specific requirements of different departments, such as accounting or shipping and receiving. It is also essential to extend this training to **third parties**, including contractors, partners, and suppliers, who connect to internal devices and services.
+
+Key components of an effective user training program include:
+
+-   **Documentation and Tracking:** Organizations should keep detailed records of who has completed training to ensure a baseline understanding of IT security. Security policies must be documented and easily accessible via the company intranet and employee handbooks.
+-   **Situational Awareness:** Users must be trained to maintain situational awareness by actively looking for threats during their daily work. This includes identifying **phishing attempts** via email links, attachments, unusual URLs, or text messages.
+-   **Physical and Hardware Security:** Training should cover physical attacks, such as suspicious envelopes containing **USB drives**, which can infect systems with malware. Additionally, users should be warned against using unknown **charging cables** when working outside the office.
+-   **Managing Insider Threats:** Because insider threats are difficult to identify, organizations should implement a multi-factored approach. This includes requiring **multiple approvals** for updates to critical processes and performing **active file monitoring** to alert security teams of unauthorized changes.
+-   **Password Management:** Organizations should guide users with requirements for **password length and complexity**. These standards can often be enforced administratively using tools like Windows Group Policy.
+-   **Social Engineering and Operational Security:** Users need to understand common **social engineering techniques** so they can identify and report them to the IT security team. Ideally, users should develop a level of **operational security** where they learn to interpret security from an attacker's perspective.
+-   **Data Protection and Remote Work:** Users must understand how to identify and protect **sensitive data**. For those working from home or remote sites, training should emphasize that **family and friends must not access work systems**. Remote security is further bolstered by additional **endpoint security** and increased protection for **VPN access**.
