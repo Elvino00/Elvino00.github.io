@@ -87,7 +87,6 @@ sudo journalctl -u firewalld -f   # In tempo reale, mentre si invia il ping
 1. Come si comporta firewalld con zone diverse?
 
 2. Se assegno `enp7s0` alla zona *trusted* e `enp1s0` a *public*, le regole cambiano?
- Ho provato ma non ho ancora capito il comportamento.
 
 3. **Reject** vs **Drop** in produzione?
 

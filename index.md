@@ -45,3 +45,8 @@ Technical analysis of excercises and vulnerabilities.
 - [Capitolo 3](security+/chapter3.md)
 - [Capitolo 4](security+/chapter4.md)
 - [Capitolo 5](security+/chapter5.md)
+
+
+## Laboratori
+
+- [Laboratorio: Firewall con firewalld su CentOS](laboratori/firewalld.md)
