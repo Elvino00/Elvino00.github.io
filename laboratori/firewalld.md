@@ -1,14 +1,14 @@
 ## Laboratorio: Firewall con firewalld su CentOS
 
 **Obiettivo:**  
-Configurare un firewall virtuale su CentOS 7 che inoltri il traffico tra due reti e blocchi selettivamente pacchetti verso un IP specifico.
+Configurare un firewall virtuale su CentOS 9 che inoltri il traffico tra due reti e blocchi selettivamente pacchetti verso un IP specifico.
 
 ---
 
 ### Descrizione tecnica
 
 Ho creato un firewall virtuale con:
-- **CentOS 7** con due interfacce di rete:
+- **CentOS 9** con due interfacce di rete:
   - `enp1s0` (NAT) → accesso a internet
   - `enp7s0` (rete interna) → IP 192.168.100.1/24
 - **Client Linux (Lubuntu)** sulla stessa rete interna con IP 192.168.100.2/24
