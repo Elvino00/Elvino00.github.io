@@ -52,3 +52,4 @@ Technical analysis of excercises and vulnerabilities.
 - [Laboratorio: Firewall con firewalld su CentOS](laboratori/firewalld.md)
 - [Laboratorio: Gestione Identità (IAM) e MFA su Okta Platform](laboratori/okta.md)
 - [Windows Server 2025 & Active Directory Domain Services (AD DS) Security Lab](laboratori/windows_server.md)
+- [Gestione Incident L1/L2 e Tracciamento SLA su Jira Service Management](laboratori/jira.md)
