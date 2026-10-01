@@ -31,3 +31,7 @@ cat $HOME/'--spaces in this filename-'
 ### Note
 Questo livello insegna il concetto fondamentale di "word splitting" nello shell.
 La soluzione con `$HOME/` è ancora valida, ma ora serve anche il quoting per gli spazi.
+
+---
+
+**[← Bandit 1 → 2](https://elvino00.github.io/bandit/level1.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 3 → 4 →](https://elvino00.github.io/bandit/level3.html)**

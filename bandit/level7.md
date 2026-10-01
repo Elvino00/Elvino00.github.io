@@ -39,3 +39,7 @@ grep -oP 'millionth\s+\K.*' data.txt
 ### Note
 Il file `data.txt` era nella home directory, quindi `find` non era strettamente necessario.
 `grep` è uno strumento fondamentale per analisi testuale in sicurezza (log, configurazioni, dati).
+
+---
+
+**[← Bandit 6 → 7](https://elvino00.github.io/bandit/level6.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 8 → 9 →](https://elvino00.github.io/bandit/level8.html)**

@@ -66,3 +66,7 @@ Hash deterministici basati su input noti sono vulnerabili a:
 - Calcolo anticipato
 - Enumerazione
 - Attacchi a dizionario
+
+---
+
+**[← Bandit 21 → 22](https://elvino00.github.io/bandit/level21.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 23 → 24 →](https://elvino00.github.io/bandit/level23.html)**

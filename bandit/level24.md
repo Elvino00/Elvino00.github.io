@@ -71,3 +71,7 @@ Esecuzione pratica: 10000 tentativi su localhost richiedono solo pochi secondi
 2. Usano PIN a bassa entropia
 3. Non implementano ritardi progressivi
 4. Danno feedback dettagliati sugli errori
+
+---
+
+**[← Bandit 23 → 24](https://elvino00.github.io/bandit/level23.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 25 → 26 →](https://elvino00.github.io/bandit/level25.html)**

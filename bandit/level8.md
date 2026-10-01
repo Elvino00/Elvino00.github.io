@@ -37,3 +37,6 @@ AAA <- questa AAA non è consecutiva alla prima
 ### Note
 `uniq` è potente ma ha limitazioni: richiede input ordinato, lavora solo su righe complete.
 La pipeline Unix (`|`) permette di combinare tool semplici per risolvere problemi complessi.
+
+
+**[← Bandit 7 → 8](https://elvino00.github.io/bandit/level7.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 9 → 10 →](https://elvino00.github.io/bandit/level9.html)**

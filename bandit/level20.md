@@ -74,3 +74,6 @@ In scenari reali, tecniche simili possono essere usate per:
 - Debugare problemi di connettività
 
 **Problemi comuni**: Assicurarsi che la porta scelta non sia già in uso e che netcat sia effettivamente in ascolto prima di eseguire suconnect.
+
+---
+**[← Bandit 19 → 20](https://elvino00.github.io/bandit/level19.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 21 → 22 →](https://elvino00.github.io/bandit/level21.html)**

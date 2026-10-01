@@ -76,3 +76,7 @@ Gli script cron dovrebbero:
 - Usare file temporanei sicuri (`mktemp`)
 - Loggare in modo sicuro
 - Validare input e ambiente
+
+--
+
+**[← Bandit 20 → 21](https://elvino00.github.io/bandit/level20.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 22 → 23 →](https://elvino00.github.io/bandit/level22.html)**

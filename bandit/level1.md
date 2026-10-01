@@ -30,3 +30,5 @@ Dopo aver ottenuto la password, ho usato `exit` e, per affrontare il livello suc
 ssh bandit2@bandit.labs.overthewire.org -p 2220
 ```
 
+---
+**[← Bandit 0 → 1](https://elvino00.github.io/bandit/level0.html)** | **[📋 Indice Generale Progetti](https://elvino00.github.io/)** | **[Bandit 2 → 3 →](https://elvino00.github.io/bandit/level2.html)**

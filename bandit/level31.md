@@ -93,3 +93,7 @@ In scenari reali, i pre-receive hook sono usati per:
 - Possono essere usati per persistence in compromissioni
 - Possono esfiltrare dati durante push/pull
 - Devono essere revisionati come codice normale
+
+---
+
+**[← Bandit 30 → 31](https://elvino00.github.io/bandit/level30.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 32 → 33 →](https://elvino00.github.io/bandit/level32.html)**

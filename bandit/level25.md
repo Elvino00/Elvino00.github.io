@@ -89,3 +89,8 @@ In scenari reali, vulnerabilità simili appaiono in:
 4. Monitorare esecuzioni anomale
 
 **Nota per Windows/PowerShell**: usare Command Prompt o client SSH alternativi (PuTTY) per controllo preciso della geometria terminale.
+
+
+---
+
+**[← Bandit 24 → 25](https://elvino00.github.io/bandit/level24.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 26 → 27 →](https://elvino00.github.io/bandit/level26.html)**

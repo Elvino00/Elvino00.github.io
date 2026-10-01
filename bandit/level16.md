@@ -80,3 +80,7 @@ La chiave RSA privata è estremamente sensibile: permessi `600` e cancellazione 
 La password ottenuta non viene riportata per sicurezza.
 
 **Problemi comuni**: Su Windows, assicurarsi che il file della chiave sia salvato con encoding UTF-8 senza BOM e fine riga LF (Unix), non CRLF (Windows).
+
+---
+
+**[← Bandit 15 → 16](https://elvino00.github.io/bandit/level15.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 17 → 18 →](https://elvino00.github.io/bandit/level17.html)**

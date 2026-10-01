@@ -59,3 +59,7 @@ In scenari reali, servizi SSL/TLS potrebbero richiedere:
 - Client certificate authentication
 - Specific cipher suites
 - SNI (Server Name Indication)
+
+---
+
+**[← Bandit 14 → 15](https://elvino00.github.io/bandit/level14.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 16 → 17 →](https://elvino00.github.io/bandit/level16.html)**

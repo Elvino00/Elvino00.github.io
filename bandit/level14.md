@@ -44,3 +44,7 @@ In scenari reali, servizi simili potrebbero essere:
 - API interne
 - Servizi di autenticazione
 - Daemon custom
+
+---
+
+**[← Bandit 13 → 14](https://elvino00.github.io/bandit/level13.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 15 → 16 →](https://elvino00.github.io/bandit/level15.html)**

@@ -34,3 +34,8 @@ cat readme
 
 ### Note
 Il file `readme` conteneva la password che non riporto per sicurezza.
+
+
+---
+
+**[← Indice Progetti](https://elvino00.github.io)** | **[Livello Successivo (Bandit 1 → 2) →](https://elvino00.github.io/bandit/level1.html)**

@@ -30,3 +30,7 @@ cat ...Hiding-From-You
 
 ### Note
 Il file si chiamava *...Hiding-From-You* . I file nascosti sono una feature del filesystem, non una misura di sicurezza.
+
+---
+
+**[← Bandit 2 → 3](https://elvino00.github.io/bandit/level2.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 4 → 5 →](https://elvino00.github.io/bandit/level4.html)**

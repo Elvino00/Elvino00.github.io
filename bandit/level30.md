@@ -82,3 +82,7 @@ In scenari reali, i tag possono contenere:
 - Tag di sviluppo potrebbero avere configurazioni di test
 - Tag sperimentali potrebbero contenere codice vulnerabile
 - Tag legacy potrebbero referenziare commit con segreti
+
+---
+
+**[← Bandit 29 → 30](https://elvino00.github.io/bandit/level29.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 31 → 32 →](https://elvino00.github.io/bandit/level31.html)**

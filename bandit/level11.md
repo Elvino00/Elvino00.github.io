@@ -43,3 +43,6 @@ La password ottenuta non viene riportata per sicurezza.
 
 **Importante**: `tr` funziona solo su caratteri singoli, non su byte o multibyte.
 Per dati binari, servirebbero tool diversi.
+
+--
+**[← Bandit 10 → 11](https://elvino00.github.io/bandit/level10.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 12 → 13 →](https://elvino00.github.io/bandit/level12.html)**

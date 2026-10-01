@@ -38,3 +38,6 @@ cat /var/lib/dpkg/info/bandit7.password
 ### Note
 Ho trovato il comando `find` complesso inizialmente, ma la pratica è essenziale.
 La redirezione `2>/dev/null` è cruciale quando si cercano in aree con permessi limitati.
+
+---
+**[← Bandit 5 → 6](https://elvino00.github.io/bandit/level5.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 7 → 8 →](https://elvino00.github.io/bandit/level7.html)**

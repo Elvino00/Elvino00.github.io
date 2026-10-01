@@ -69,3 +69,6 @@ find . -type f -size 1033c ! -executable -exec file {} \; | grep text
 ### Note
 Ho usato un approccio manuale (ispezione visiva di `ls -la` output) che ha funzionato ma non scala.
 La soluzione con `find` sarebbe stata più professionale e trasferibile a scenari reali.
+
+---
+**[← Bandit 4 → 5](https://elvino00.github.io/bandit/level4.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 6 → 7 →](https://elvino00.github.io/bandit/level6.html)**

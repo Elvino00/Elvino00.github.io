@@ -71,3 +71,6 @@ In scenari reali, questa tecnica può essere utile per:
 - Automatizzare attività remote senza shell interattiva
 
 **Problemi comuni**: Assicurarsi che il comando remoto sia tra virgolette e che i percorsi dei file siano corretti.
+
+---
+**[← Bandit 17 → 18](https://elvino00.github.io/bandit/level17.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 19 → 20 →](https://elvino00.github.io/bandit/level19.html)**

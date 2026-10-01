@@ -73,3 +73,7 @@ Best practice per binari setuid:
 5. Audit regolare del codice
 
 **Nota**: Se ./bandit27-do non funziona direttamente, assicurarsi di essere nella directory corretta e che il binario abbia permessi di esecuzione.
+
+---
+
+**[← Bandit 25 → 26](https://elvino00.github.io/bandit/level25.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 27 → 28 →](https://elvino00.github.io/bandit/level27.html)**

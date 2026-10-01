@@ -46,3 +46,7 @@ strings data.txt | grep -E '={2,}'
 ### Note
 Le classi POSIX (`[[:print:]]`) sono più portabili di range specifici.
 La combinazione di tool Unix (`grep`, `sed`, `tail`) permette di risolvere problemi complessi con semplici componenti.
+
+---
+
+**[← Bandit 8 → 9](https://elvino00.github.io/bandit/level8.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 10 → 11 →](https://elvino00.github.io/bandit/level10.html)**

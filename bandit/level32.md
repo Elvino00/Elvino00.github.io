@@ -51,3 +51,7 @@ done
 ```
 
 Si potrebbe vedere cosa succede testando `$0` con questo script.
+
+---
+
+**[← Bandit 31 → 32](https://elvino00.github.io/bandit/level31.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** 

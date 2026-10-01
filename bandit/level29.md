@@ -102,3 +102,7 @@ In scenari reali, i branch possono contenere:
 - File di configurazione `.env` in branch temporanei
 - Chiavi API in commit di feature branch
 - Dati di test con informazioni reali
+
+---
+
+**[← Bandit 28 → 29](https://elvino00.github.io/bandit/level28.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 30 → 31 →](https://elvino00.github.io/bandit/level30.html)**

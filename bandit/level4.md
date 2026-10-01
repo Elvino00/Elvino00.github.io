@@ -43,3 +43,7 @@ strings ./* | head
 ### Note
 Ho risolto tentando ogni file finché `cat ./-file07` ha restituito testo leggibile.
 In retrospettiva, usare `file ./*` sarebbe stato più efficiente.
+
+---
+
+**[← Bandit 3 → 4](https://elvino00.github.io/bandit/level3.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 5 → 6 →](https://elvino00.github.io/bandit/level5.html)**

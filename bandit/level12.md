@@ -124,3 +124,6 @@ done
 ### Note
 Il livello simula un scenario di forensics: dati offuscati molteplici volte.
 La persistenza e il metodo sistematico sono più importanti della velocità.
+
+--
+**[← Bandit 11 → 12](https://elvino00.github.io/bandit/level11.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 13 → 14 →](https://elvino00.github.io/bandit/level13.html)**

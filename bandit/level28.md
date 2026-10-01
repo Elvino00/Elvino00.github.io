@@ -76,3 +76,7 @@ In scenari reali, la cronologia Git ha esposto:
 - `trufflehog`: scanner per segreti in repository
 - `git-hound`: tool per trovare segreti nella cronologia
 - `BFG Repo-Cleaner`: rimuove file di grandi dimensioni o sensibili
+
+---
+
+**[← Bandit 27 → 28](https://elvino00.github.io/bandit/level27.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 29 → 30 →](https://elvino00.github.io/bandit/level29.html)**

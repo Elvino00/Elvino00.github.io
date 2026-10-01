@@ -80,3 +80,7 @@ In scenari reali, repository Git possono contenere:
 5. Proteggere l'accesso al server Git
 
 **Problemi comuni**: assicurarsi di avere spazio in `/tmp/` e permessi di scrittura.
+
+---
+
+**[← Bandit 26 → 27](https://elvino00.github.io/bandit/level26.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 28 → 29 →](https://elvino00.github.io/bandit/level28.html)**

@@ -58,3 +58,7 @@ In scenari reali, questo approccio può essere usato per:
 - Identificare modifiche a file di configurazione
 - Analizzare log per attività sospette
 - Confrontare snapshot di filesystem
+
+---
+
+**[← Bandit 16 → 17](https://elvino00.github.io/bandit/level16.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 18 → 19 →](https://elvino00.github.io/bandit/level18.html)**

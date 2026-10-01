@@ -67,3 +67,7 @@ Le chiavi SSH private sono estremamente sensibili:
 
 La password per il livello 14 è leggibile solo dall'utente bandit14.
 Dopo l'uso, eliminare la chiave privata dalla macchina locale per sicurezza.
+
+---
+
+**[← Bandit 12 → 13](https://elvino00.github.io/bandit/level12.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 14 → 15 →](https://elvino00.github.io/bandit/level14.html)**

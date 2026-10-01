@@ -68,3 +68,6 @@ I binari setuid sono un meccanismo potente ma pericoloso. In ambienti reali:
 
 
 **Importante**: Mai copiare o modificare binari setuid senza comprendere appieno le implicazioni di sicurezza.
+
+---
+**[← Bandit 18 → 19](https://elvino00.github.io/bandit/level18.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 20 → 21 →](https://elvino00.github.io/bandit/level20.html)**

@@ -89,3 +89,7 @@ In scenari reali, vulnerabilità simili sono state sfruttate in:
 3. Esecuzione in ambienti isolati
 4. Logging dettagliato di tutte le esecuzioni
 5. Limitazione risorse 
+
+---
+
+**[← Bandit 22 → 23](https://elvino00.github.io/bandit/level22.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 24 → 25 →](https://elvino00.github.io/bandit/level24.html)**

@@ -47,3 +47,7 @@ Base64 è comune in:
 - Configurazioni con dati binari
 
 La decodifica diretta con `base64 -d` è stata immediata.
+
+--
+
+**[← Bandit 9 → 10](https://elvino00.github.io/bandit/level9.html)** | **[📋 Indice Generale Bandit](https://elvino00.github.io/)** | **[Bandit 11 → 12 →](https://elvino00.github.io/bandit/level11.html)**
